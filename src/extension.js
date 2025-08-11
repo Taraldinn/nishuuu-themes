@@ -3,7 +3,7 @@ const vscode = require('vscode');
 let statusBarItem;
 let currentAccentColor = '#80CBC4'; // Default teal
 
-// Accent color presets - expanded list
+// Accent color presets - expanded list with mapping to icon accent names
 const accentColors = {
     'acid-lime': '#C6FF00',
     'blue': '#5393FF',
@@ -24,6 +24,29 @@ const accentColors = {
     'vira': '#E9A581',
     'white': '#FFFFFF',
     'yellow': '#FFCF3D'
+};
+
+// Map accent colors to their closest icon accent variant
+const accentToIconMapping = {
+    'acid-lime': 'lime',
+    'blue': 'blue',
+    'bright-teal': 'teal',
+    'carbon': 'teal',  // carbon uses teal as fallback
+    'cyan': 'cyan',
+    'deepforest': 'lime', 
+    'graphene': 'blue',
+    'indigo': 'indigo',
+    'lime': 'lime',
+    'ocean': 'blue',
+    'orange': 'orange',
+    'palenight': 'purple',
+    'pink': 'pink',
+    'purple': 'purple',
+    'teal': 'teal',
+    'tomato': 'tomato',
+    'vira': 'vira',
+    'white': 'white',
+    'yellow': 'yellow'
 };
 
 // Icon theme mapping
@@ -119,6 +142,44 @@ function updateStatusBar() {
     
     // Remove background color to let the text/icon color show better
     statusBarItem.backgroundColor = undefined;
+}
+
+async function generateDynamicIconTheme(accentName) {
+    const fs = require('fs').promises;
+    const path = require('path');
+    
+    try {
+        // Get the base icon theme (we'll use teal as base)
+        const extensionPath = vscode.extensions.getExtension('taraldinn.nishuuu-themes').extensionPath;
+        const baseThemePath = path.join(extensionPath, 'themes', 'tara-icons-teal.json');
+        const baseTheme = JSON.parse(await fs.readFile(baseThemePath, 'utf8'));
+        
+        // Map the accent to the available icon variant
+        const iconAccent = accentToIconMapping[accentName] || 'teal';
+        
+        // Create a copy of the base theme
+        const dynamicTheme = JSON.parse(JSON.stringify(baseTheme));
+        
+        // Update folder icons to use the accent color
+        for (const [key, definition] of Object.entries(dynamicTheme.iconDefinitions)) {
+            if (definition.iconPath && definition.iconPath.includes('folder_') && definition.iconPath.includes('_open')) {
+                // This is an open folder icon - update to use accent color
+                const iconName = path.basename(definition.iconPath, '.svg');
+                const baseIconName = iconName.replace(/\.accent\.\w+$/, '');
+                definition.iconPath = `../icons/folders/filled/${baseIconName}.accent.${iconAccent}.svg`;
+            }
+        }
+        
+        // Write the dynamic theme to a temporary file
+        const dynamicThemePath = path.join(extensionPath, 'themes', 'tara-icons-dynamic.json');
+        await fs.writeFile(dynamicThemePath, JSON.stringify(dynamicTheme, null, 4));
+        
+        return 'tara-icons-dynamic';
+    } catch (error) {
+        console.error('Error generating dynamic icon theme:', error);
+        // Fallback to static theme
+        return iconThemeMapping[accentName] || 'tara-icons-teal';
+    }
 }
 
 async function selectAccentColor() {
@@ -408,16 +469,25 @@ function applyAccentColor() {
         
         // Chat (if available)
         'chat.slashCommandForeground': accentColor,
-        'chat.avatarForeground': accentColor
+        'chat.avatarForeground': accentColor,
+        
+        // File explorer colors
+        'tree.inactiveIndentGuidesStroke': accent40,
+        'tree.indentGuidesStroke': accent80,
+        
+        // File and folder name colors (when selected/focused)
+        'list.focusOutline': accentColor,
+        'list.focusAndSelectionOutline': accentColor
     };
     
     // Apply the color customizations
     config.update('workbench.colorCustomizations', colorCustomizations, vscode.ConfigurationTarget.Global);
     
-    // Update icon theme if not using custom accent
-    if (!customAccent && iconThemeMapping[accent]) {
-        const iconTheme = iconThemeMapping[accent];
-        config.update('workbench.iconTheme', iconTheme, vscode.ConfigurationTarget.Global);
+    // Update icon theme with dynamic folder colors
+    if (!customAccent) {
+        generateDynamicIconTheme(accent).then(iconTheme => {
+            config.update('workbench.iconTheme', iconTheme, vscode.ConfigurationTarget.Global);
+        });
     }
     
     updateStatusBar();

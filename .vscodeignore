@@ -18,6 +18,16 @@ npm-debug.log
 coverage
 .eslintrc.json
 screenshots/**
+
+# Documentation and scripts (not needed in extension)
+docs/**
+scripts/**
+cleanup.sh
+icon.svg
+*.md.backup
+*.json.backup
+*.new
+*-temp*
 docs/**
 .github/**
 *.md

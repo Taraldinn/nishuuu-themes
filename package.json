@@ -2,8 +2,9 @@
   "name": "nishuuu-themes",
   "displayName": "Nishuuu Themes",
   "description": "A beautiful collection of dark themes and icon themes featuring Tara color schemes with comprehensive syntax highlighting, terminal support, and beautiful file/folder icons",
-  "version": "1.0.0",
-  "publisher": "nishuuu",
+  "version": "1.1.1",
+  "icon": "icon.png",
+  "publisher": "taraldinn",
   "author": {
     "name": "Nishuuu",
     "email": "your-email@example.com"
@@ -15,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nishuuu/nishuuu-themes.git"
+    "url": "https://github.com/taraldinn/nishuuu-themes.git"
   },
   "bugs": {
-    "url": "https://github.com/nishuuu/nishuuu-themes/issues"
+    "url": "https://github.com/taraldinn/nishuuu-themes/issues"
   },
-  "homepage": "https://github.com/nishuuu/nishuuu-themes#readme",
+  "homepage": "https://github.com/taraldinn/nishuuu-themes#readme",
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -238,6 +239,11 @@
         "id": "tara-icons-deepforest",
         "label": "Tara Icons Deepforest",
         "path": "./themes/tara-icons-deepforest.json"
+      },
+      {
+        "id": "tara-icons-dynamic",
+        "label": "Tara Icons Dynamic (Auto-generated)",
+        "path": "./themes/tara-icons-dynamic.json"
       }
     ]
   },

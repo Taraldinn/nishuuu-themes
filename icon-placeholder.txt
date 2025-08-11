@@ -1,0 +1,7 @@
+# This is a placeholder for the extension icon
+# You should replace this with an actual PNG image file named 'icon.png'
+# Recommended size: 128x128 pixels
+# The icon should represent the Nishuuu Themes brand
+
+# For now, this serves as a reminder to create a proper icon
+# The icon will be displayed in the VS Code Extensions panel

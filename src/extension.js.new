@@ -1,0 +1,346 @@
+const vscode = require('vscode');
+
+let statusBarItem;
+let currentAccentColor = '#80CBC4'; // Default teal
+
+// Accent color presets matching Vira
+const accentColors = {
+    carbon: '#737374',
+    deepforest: '#a3c679', 
+    graphene: '#6a90d0',
+    ocean: '#6ebad7',
+    palenight: '#a178c4',
+    teal: '#80CBC4'
+};
+
+// Icon theme mapping
+const iconThemeMapping = {
+    carbon: 'tara-icons-carbon',
+    deepforest: 'tara-icons-deepforest',
+    graphene: 'tara-icons-graphene', 
+    ocean: 'tara-icons-ocean',
+    palenight: 'tara-icons-palenight',
+    teal: 'tara-icons-teal'
+};
+
+/**
+ * @param {vscode.ExtensionContext} context
+ */
+function activate(context) {
+    console.log('Nishuuu Themes extension activated');
+
+    // Create status bar item
+    statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+    statusBarItem.command = 'nishuuu.selectAccentColor';
+    statusBarItem.tooltip = 'Click to change accent color';
+    context.subscriptions.push(statusBarItem);
+
+    // Initialize accent color from settings
+    initializeAccentColor();
+
+    // Register commands
+    const selectAccentCommand = vscode.commands.registerCommand('nishuuu.selectAccentColor', selectAccentColor);
+    const resetAccentCommand = vscode.commands.registerCommand('nishuuu.resetAccentColor', resetAccentColor);
+    const toggleOutlinedCommand = vscode.commands.registerCommand('nishuuu.toggleOutlinedIcons', toggleOutlinedIcons);
+
+    context.subscriptions.push(selectAccentCommand, resetAccentCommand, toggleOutlinedCommand);
+
+    // Listen for configuration changes
+    vscode.workspace.onDidChangeConfiguration(event => {
+        if (event.affectsConfiguration('nishuuu.accent') || 
+            event.affectsConfiguration('nishuuu.customAccent') ||
+            event.affectsConfiguration('nishuuu.tabIndicator')) {
+            applyAccentColor();
+        }
+    }, null, context.subscriptions);
+
+    // Show status bar item
+    statusBarItem.show();
+}
+
+function initializeAccentColor() {
+    const config = vscode.workspace.getConfiguration('nishuuu');
+    const accent = config.get('accent', 'teal');
+    const customAccent = config.get('customAccent', '');
+    
+    if (customAccent && customAccent.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)) {
+        currentAccentColor = customAccent;
+    } else {
+        currentAccentColor = accentColors[accent] || accentColors.teal;
+    }
+    
+    updateStatusBar();
+    applyAccentColor();
+}
+
+function updateStatusBar() {
+    const config = vscode.workspace.getConfiguration('nishuuu');
+    const accent = config.get('accent', 'teal');
+    const customAccent = config.get('customAccent', '');
+    
+    if (customAccent) {
+        statusBarItem.text = `$(paintcan) Custom`;
+        statusBarItem.color = currentAccentColor;
+    } else {
+        statusBarItem.text = `$(paintcan) ${accent.charAt(0).toUpperCase() + accent.slice(1)}`;
+        statusBarItem.color = currentAccentColor;
+    }
+    
+    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
+}
+
+async function selectAccentColor() {
+    const config = vscode.workspace.getConfiguration('nishuuu');
+    const currentAccent = config.get('accent', 'teal');
+    
+    const items = [
+        {
+            label: '$(circle-filled) Carbon',
+            description: 'Elegant gray accent',
+            detail: accentColors.carbon,
+            accent: 'carbon'
+        },
+        {
+            label: '$(circle-filled) Deepforest', 
+            description: 'Natural green accent',
+            detail: accentColors.deepforest,
+            accent: 'deepforest'
+        },
+        {
+            label: '$(circle-filled) Graphene',
+            description: 'Clean blue accent', 
+            detail: accentColors.graphene,
+            accent: 'graphene'
+        },
+        {
+            label: '$(circle-filled) Ocean',
+            description: 'Deep blue accent',
+            detail: accentColors.ocean,
+            accent: 'ocean'
+        },
+        {
+            label: '$(circle-filled) Palenight',
+            description: 'Purple accent',
+            detail: accentColors.palenight,
+            accent: 'palenight'
+        },
+        {
+            label: '$(circle-filled) Teal',
+            description: 'Vibrant teal accent',
+            detail: accentColors.teal,
+            accent: 'teal'
+        },
+        {
+            label: '$(gear) Custom Color...',
+            description: 'Enter custom hex color',
+            detail: 'Use any custom hex color',
+            accent: 'custom'
+        }
+    ];
+
+    // Mark current accent
+    const currentItem = items.find(item => item.accent === currentAccent);
+    if (currentItem) {
+        currentItem.label = currentItem.label.replace('$(circle-filled)', '$(check)');
+    }
+
+    const selection = await vscode.window.showQuickPick(items, {
+        placeHolder: 'Select an accent color for Nishuuu Themes',
+        matchOnDescription: true,
+        matchOnDetail: true
+    });
+
+    if (selection) {
+        if (selection.accent === 'custom') {
+            await selectCustomColor();
+        } else {
+            await config.update('accent', selection.accent, vscode.ConfigurationTarget.Global);
+            await config.update('customAccent', '', vscode.ConfigurationTarget.Global);
+            
+            currentAccentColor = accentColors[selection.accent];
+            updateStatusBar();
+            applyAccentColor();
+            
+            vscode.window.showInformationMessage(
+                `Accent color changed to ${selection.accent}. Icon theme will also update automatically.`
+            );
+        }
+    }
+}
+
+async function selectCustomColor() {
+    const customColor = await vscode.window.showInputBox({
+        prompt: 'Enter a custom accent color',
+        placeHolder: '#80CBC4',
+        validateInput: (value) => {
+            if (!value) return 'Please enter a color';
+            if (!value.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)) {
+                return 'Please enter a valid hex color (e.g., #80CBC4 or #ABC)';
+            }
+            return null;
+        }
+    });
+
+    if (customColor) {
+        const config = vscode.workspace.getConfiguration('nishuuu');
+        await config.update('customAccent', customColor, vscode.ConfigurationTarget.Global);
+        
+        currentAccentColor = customColor;
+        updateStatusBar();
+        applyAccentColor();
+        
+        vscode.window.showInformationMessage(
+            `Custom accent color applied: ${customColor}`
+        );
+    }
+}
+
+async function resetAccentColor() {
+    const config = vscode.workspace.getConfiguration('nishuuu');
+    await config.update('accent', 'teal', vscode.ConfigurationTarget.Global);
+    await config.update('customAccent', '', vscode.ConfigurationTarget.Global);
+    
+    currentAccentColor = accentColors.teal;
+    updateStatusBar();
+    applyAccentColor();
+    
+    vscode.window.showInformationMessage('Accent color reset to default teal');
+}
+
+async function toggleOutlinedIcons() {
+    const config = vscode.workspace.getConfiguration('nishuuu');
+    const current = config.get('outlinedIcons', false);
+    await config.update('outlinedIcons', !current, vscode.ConfigurationTarget.Global);
+    
+    vscode.window.showInformationMessage(
+        `Outlined icons ${!current ? 'enabled' : 'disabled'}`
+    );
+}
+
+function applyAccentColor() {
+    const config = vscode.workspace.getConfiguration();
+    const nishuu = vscode.workspace.getConfiguration('nishuuu');
+    const accent = nishuu.get('accent', 'teal');
+    const customAccent = nishuu.get('customAccent', '');
+    const tabIndicator = nishuu.get('tabIndicator', 'border');
+    
+    // Use custom color if provided, otherwise use preset
+    const accentColor = customAccent || accentColors[accent] || accentColors.teal;
+    currentAccentColor = accentColor;
+    
+    // Create alpha variants
+    const accent80 = accentColor + '80';
+    const accent40 = accentColor + '40';
+    const accent20 = accentColor + '20';
+    const accent14 = accentColor + '14';
+    const accent0D = accentColor + '0D';
+    
+    // Apply workbench color customizations matching Vira's accent system
+    const colorCustomizations = {
+        // Status bar and activity bar
+        'statusBarItem.remoteForeground': accentColor,
+        'statusBarItem.remoteBackground': accent14,
+        'statusBarItem.remoteHoverBackground': accentColor,
+        'statusBarItem.remoteHoverForeground': '#000000',
+        'activityBar.activeBorder': accentColor,
+        'activityBarBadge.background': accentColor,
+        'activityBarBadge.foreground': '#000000',
+        
+        // Panel and sidebar
+        'panelTitle.activeBorder': accentColor,
+        'sideBar.border': accent40,
+        'panel.border': accent40,
+        
+        // Editor and selection
+        'progressBar.background': accentColor,
+        'selection.background': accent80,
+        'editor.findMatchBorder': accentColor,
+        'editor.findMatchHighlightBorder': accent80,
+        'editor.findRangeHighlightBackground': accent40,
+        'editorCursor.foreground': accentColor,
+        'editorBracketMatch.border': accent80,
+        'editorOverviewRuler.findMatchForeground': accentColor,
+        
+        // Lists and inputs
+        'list.activeSelectionForeground': accentColor,
+        'list.inactiveSelectionForeground': accentColor,
+        'list.activeSelectionIconForeground': accentColor,
+        'list.inactiveSelectionIconForeground': accentColor,
+        'list.highlightForeground': accentColor,
+        'quickInputList.focusIconForeground': accentColor,
+        'editorSuggestWidget.highlightForeground': accentColor,
+        
+        // Buttons and extensions
+        'button.background': accentColor,
+        'button.hoverBackground': accent80,
+        'extensionButton.foreground': accentColor,
+        'extensionButton.background': accent14,
+        'extensionButton.hoverBackground': accent40,
+        'extensionButton.prominentForeground': accentColor,
+        'extensionButton.prominentBackground': accent14,
+        'extensionButton.prominentHoverBackground': accent40,
+        'extensionIcon.preReleaseForeground': accent20,
+        
+        // Links and notifications
+        'textLink.foreground': accentColor,
+        'notificationLink.foreground': accentColor,
+        'pickerGroup.foreground': accentColor,
+        'breadcrumb.activeSelectionForeground': accentColor,
+        'menu.selectionForeground': accentColor,
+        'menubar.selectionForeground': accentColor,
+        'settings.modifiedItemIndicator': accentColor,
+        
+        // Tabs based on indicator style
+        ...(tabIndicator === 'border' ? {
+            'tab.activeBorder': accentColor,
+            'tab.unfocusedActiveBorder': accentColor,
+            'tab.activeBorderTop': accentColor + '00',
+            'tab.unfocusedActiveBorderTop': accentColor + '00'
+        } : tabIndicator === 'fill' ? {
+            'tab.activeBackground': accent20,
+            'tab.activeBorder': accentColor + '00',
+            'tab.unfocusedActiveBorder': accentColor + '00'
+        } : {
+            'tab.activeBorderTop': accentColor,
+            'tab.activeBorder': accentColor + '00',
+            'tab.unfocusedActiveBorder': accentColor + '00'
+        }),
+        
+        // Notebooks and widgets
+        'notebook.focusedCellBorder': accentColor,
+        'notebook.inactiveFocusedCellBorder': accent80,
+        'editorWidget.resizeBorder': accentColor,
+        'editorWidget.border': accentColor,
+        
+        // Command center and toolbar
+        'commandCenter.activeBorder': accentColor,
+        'toolbar.activeBackground': accent20,
+        'sash.hoverBorder': accent80,
+        
+        // Chat (if available)
+        'chat.slashCommandForeground': accentColor,
+        'chat.avatarForeground': accentColor
+    };
+    
+    // Apply the color customizations
+    config.update('workbench.colorCustomizations', colorCustomizations, vscode.ConfigurationTarget.Global);
+    
+    // Update icon theme if not using custom accent
+    if (!customAccent && iconThemeMapping[accent]) {
+        const iconTheme = iconThemeMapping[accent];
+        config.update('workbench.iconTheme', iconTheme, vscode.ConfigurationTarget.Global);
+    }
+    
+    updateStatusBar();
+}
+
+function deactivate() {
+    if (statusBarItem) {
+        statusBarItem.dispose();
+    }
+}
+
+module.exports = {
+    activate,
+    deactivate
+};

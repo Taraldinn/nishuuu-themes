@@ -3,50 +3,36 @@ const vscode = require('vscode');
 let statusBarItem;
 let currentAccentColor = '#80CBC4'; // Default teal
 
-// Accent color presets - expanded list with mapping to icon accent names
+// Accent color presets - focused on primary themes with color previews
 const accentColors = {
-    'acid-lime': '#C6FF00',
-    'blue': '#5393FF',
-    'bright-teal': '#57D7FF',
-    'carbon': '#737374',
-    'cyan': '#64FFDA',
-    'deepforest': '#a3c679', 
-    'graphene': '#6a90d0',
-    'indigo': '#758AFF',
-    'lime': '#80CBC4',
-    'ocean': '#6ebad7',
-    'orange': '#FF7042',
-    'palenight': '#a178c4',
-    'pink': '#FF669E',
-    'purple': '#B54DFF',
     'teal': '#80CBC4',
-    'tomato': '#F95044',
-    'vira': '#E9A581',
-    'white': '#FFFFFF',
-    'yellow': '#FFCF3D'
+    'ocean': '#6EBAD7', 
+    'palenight': '#A178C4',
+    'graphene': '#6A90D0',
+    'blue': '#5393FF',
+    'cyan': '#64FFDA',
+    'lime': '#C6FF00',
+    'purple': '#B54DFF',
+    'orange': '#FF7042',
+    'pink': '#FF669E',
+    'yellow': '#FFCF3D',
+    'white': '#FFFFFF'
 };
 
-// Map accent colors to their closest icon accent variant
+// Map accent colors to their icon accent variant
 const accentToIconMapping = {
-    'acid-lime': 'lime',
-    'blue': 'blue',
-    'bright-teal': 'teal',
-    'carbon': 'teal',  // carbon uses teal as fallback
-    'cyan': 'cyan',
-    'deepforest': 'lime', 
-    'graphene': 'blue',
-    'indigo': 'indigo',
-    'lime': 'lime',
-    'ocean': 'blue',
-    'orange': 'orange',
-    'palenight': 'purple',
-    'pink': 'pink',
-    'purple': 'purple',
     'teal': 'teal',
-    'tomato': 'tomato',
-    'vira': 'vira',
-    'white': 'white',
-    'yellow': 'yellow'
+    'ocean': 'ocean',
+    'palenight': 'palenight', 
+    'graphene': 'graphene',
+    'blue': 'ocean',     // fallback to ocean
+    'cyan': 'teal',      // fallback to teal
+    'lime': 'teal',      // fallback to teal
+    'purple': 'palenight', // fallback to palenight
+    'orange': 'ocean',   // fallback to ocean
+    'pink': 'palenight', // fallback to palenight
+    'yellow': 'teal',    // fallback to teal
+    'white': 'graphene'  // fallback to graphene
 };
 
 // Icon theme mapping
@@ -186,110 +172,89 @@ async function selectAccentColor() {
     const config = vscode.workspace.getConfiguration('nishuuu');
     const currentAccent = config.get('accent', 'teal');
     
+    // Create color preview items with actual color circles
     const items = [
         {
-            label: '$(circle-filled) Acid Lime',
-            description: 'Electric lime green',
-            accent: 'acid-lime'
-        },
-        {
-            label: '$(circle-filled) Blue',
-            description: 'Classic blue accent',
-            accent: 'blue'
-        },
-        {
-            label: '$(circle-filled) Bright Teal',
-            description: 'Bright cyan-teal',
-            accent: 'bright-teal'
-        },
-        {
-            label: '$(circle-filled) Carbon',
-            description: 'Elegant gray accent',
-            accent: 'carbon'
-        },
-        {
-            label: '$(circle-filled) Cyan',
-            description: 'Pure cyan blue',
-            accent: 'cyan'
-        },
-        {
-            label: '$(circle-filled) Deepforest', 
-            description: 'Natural green accent',
-            accent: 'deepforest'
-        },
-        {
-            label: '$(circle-filled) Graphene',
-            description: 'Clean blue accent', 
-            accent: 'graphene'
-        },
-        {
-            label: '$(circle-filled) Indigo',
-            description: 'Deep indigo blue',
-            accent: 'indigo'
-        },
-        {
-            label: '$(circle-filled) Lime',
-            description: 'Fresh lime green',
-            accent: 'lime'
-        },
-        {
-            label: '$(circle-filled) Ocean',
-            description: 'Deep blue accent',
-            accent: 'ocean'
-        },
-        {
-            label: '$(circle-filled) Orange',
-            description: 'Bright orange accent',
-            accent: 'orange'
-        },
-        {
-            label: '$(circle-filled) Palenight',
-            description: 'Purple accent',
-            accent: 'palenight'
-        },
-        {
-            label: '$(circle-filled) Pink',
-            description: 'Vibrant pink accent',
-            accent: 'pink'
-        },
-        {
-            label: '$(circle-filled) Purple',
-            description: 'Rich purple accent',
-            accent: 'purple'
-        },
-        {
             label: '$(circle-filled) Teal',
-            description: 'Vibrant teal accent',
+            description: `${accentColors.teal} - Primary theme color`,
+            detail: 'Vibrant teal accent - matches Tara Teal theme',
             accent: 'teal'
         },
         {
-            label: '$(circle-filled) Tomato',
-            description: 'Vibrant tomato red',
-            accent: 'tomato'
+            label: '$(circle-filled) Ocean', 
+            description: `${accentColors.ocean} - Primary theme color`,
+            detail: 'Deep blue accent - matches Tara Ocean theme',
+            accent: 'ocean'
         },
         {
-            label: '$(circle-filled) Vira',
-            description: 'Original Vira accent',
-            accent: 'vira'
+            label: '$(circle-filled) Palenight',
+            description: `${accentColors.palenight} - Primary theme color`, 
+            detail: 'Purple accent - matches Tara Palenight theme',
+            accent: 'palenight'
         },
         {
-            label: '$(circle-filled) White',
-            description: 'Clean white accent',
-            accent: 'white'
+            label: '$(circle-filled) Graphene',
+            description: `${accentColors.graphene} - Primary theme color`,
+            detail: 'Clean blue accent - matches Tara Graphene theme', 
+            accent: 'graphene'
+        },
+        {
+            label: '$(circle-filled) Blue',
+            description: `${accentColors.blue} - Additional color`,
+            detail: 'Classic blue accent',
+            accent: 'blue'
+        },
+        {
+            label: '$(circle-filled) Cyan',
+            description: `${accentColors.cyan} - Additional color`,
+            detail: 'Pure cyan blue',
+            accent: 'cyan'
+        },
+        {
+            label: '$(circle-filled) Lime',
+            description: `${accentColors.lime} - Additional color`,
+            detail: 'Fresh lime green',
+            accent: 'lime'
+        },
+        {
+            label: '$(circle-filled) Purple',
+            description: `${accentColors.purple} - Additional color`,
+            detail: 'Rich purple accent',
+            accent: 'purple'
+        },
+        {
+            label: '$(circle-filled) Orange',
+            description: `${accentColors.orange} - Additional color`,
+            detail: 'Bright orange accent',
+            accent: 'orange'
+        },
+        {
+            label: '$(circle-filled) Pink',
+            description: `${accentColors.pink} - Additional color`,
+            detail: 'Vibrant pink accent',
+            accent: 'pink'
         },
         {
             label: '$(circle-filled) Yellow',
-            description: 'Golden yellow accent',
+            description: `${accentColors.yellow} - Additional color`,
+            detail: 'Golden yellow accent',
             accent: 'yellow'
+        },
+        {
+            label: '$(circle-filled) White',
+            description: `${accentColors.white} - Additional color`,
+            detail: 'Clean white accent',
+            accent: 'white'
         },
         {
             label: '$(gear) Custom Color...',
             description: 'Enter custom hex color',
+            detail: 'Define your own accent color',
             accent: 'custom'
         }
     ];
 
-    // Mark current accent
+    // Mark current accent with checkmark instead of filled circle
     const currentItem = items.find(item => item.accent === currentAccent);
     if (currentItem) {
         currentItem.label = currentItem.label.replace('$(circle-filled)', '$(check)');

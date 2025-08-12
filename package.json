@@ -1,8 +1,8 @@
 {
   "name": "nishuuu-themes",
   "displayName": "Nishuuu Themes",
-  "description": "Beautiful dark themes with Tara color schemes, dynamic accent colors, folder icon sync, and enhanced italic/bold font styling. 24 themes + 6 icon sets with comprehensive syntax highlighting.",
-  "version": "1.2.4",
+  "description": "Beautiful dark themes with 4 primary color schemes (Teal, Ocean, Palenight, Graphene), dynamic accent colors with color dot previews, folder icon sync, and enhanced styling. 8 clean, focused themes.",
+  "version": "2.0.0",
   "icon": "icon.png",
   "publisher": "taraldinn",
   "author": {
@@ -44,7 +44,9 @@
     "ocean",
     "teal",
     "palenight",
-    "deepforest"
+    "deepforest",
+    "webstrom",
+    "custom theme"
   ],
   "activationEvents": [
     "onStartupFinished"
@@ -59,46 +61,32 @@
           "default": "teal",
           "description": "Changes the accent color of the theme",
           "enum": [
-            "acid-lime",
-            "blue",
-            "bright-teal",
-            "carbon",
-            "cyan",
-            "deepforest",
-            "graphene",
-            "indigo",
-            "lime",
-            "ocean",
-            "orange",
-            "palenight",
-            "pink",
-            "purple",
             "teal",
-            "tomato",
-            "vira",
-            "white",
-            "yellow"
+            "ocean", 
+            "palenight",
+            "graphene",
+            "blue",
+            "cyan",
+            "lime",
+            "purple",
+            "orange",
+            "pink",
+            "yellow",
+            "white"
           ],
           "enumDescriptions": [
-            "Acid Lime - electric lime green",
-            "Blue - classic blue accent",
-            "Bright Teal - bright cyan-teal",
-            "Carbon - elegant gray accent",
-            "Cyan - pure cyan blue",
-            "Deepforest - natural green accent",
-            "Graphene - clean blue accent",
-            "Indigo - deep indigo blue",
-            "Lime - fresh lime green",
-            "Ocean - deep blue accent",
-            "Orange - bright orange accent",
-            "Palenight - purple accent",
-            "Pink - vibrant pink accent",
-            "Purple - rich purple accent",
-            "Teal - vibrant teal accent",
-            "Tomato - vibrant tomato red",
-            "Vira - original Vira accent",
-            "White - clean white accent",
-            "Yellow - golden yellow accent"
+            "🟢 Teal - vibrant teal accent (#80CBC4)",
+            "🔵 Ocean - deep blue accent (#6EBAD7)", 
+            "🟣 Palenight - purple accent (#A178C4)",
+            "⚪ Graphene - clean blue accent (#6A90D0)",
+            "🔷 Blue - classic blue accent (#5393FF)",
+            "🟦 Cyan - pure cyan blue (#64FFDA)",
+            "🟢 Lime - fresh lime green (#C6FF00)",
+            "🟣 Purple - rich purple accent (#B54DFF)",
+            "🟠 Orange - bright orange accent (#FF7042)",
+            "🩷 Pink - vibrant pink accent (#FF669E)",
+            "🟡 Yellow - golden yellow accent (#FFCF3D)",
+            "⚪ White - clean white accent (#FFFFFF)"
           ]
         },
         "nishuuu.customAccent": {
@@ -146,24 +134,14 @@
     ],
     "themes": [
       {
-        "label": "Tara Carbon",
+        "label": "Tara Teal",
         "uiTheme": "vs-dark",
-        "path": "./themes/tara-carbon.json"
+        "path": "./themes/tara-teal.json"
       },
       {
-        "label": "Tara Carbon High Contrast",
+        "label": "Tara Teal High Contrast",
         "uiTheme": "vs-dark",
-        "path": "./themes/tara-carbon-high-contrast.json"
-      },
-      {
-        "label": "Tara Graphene",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-graphene.json"
-      },
-      {
-        "label": "Tara Graphene High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-graphene-high-contrast.json"
+        "path": "./themes/tara-teal-high-contrast.json"
       },
       {
         "label": "Tara Ocean",
@@ -176,16 +154,6 @@
         "path": "./themes/tara-ocean-high-contrast.json"
       },
       {
-        "label": "Tara Teal",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-teal.json"
-      },
-      {
-        "label": "Tara Teal High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-teal-high-contrast.json"
-      },
-      {
         "label": "Tara Palenight",
         "uiTheme": "vs-dark",
         "path": "./themes/tara-palenight.json"
@@ -196,86 +164,21 @@
         "path": "./themes/tara-palenight-high-contrast.json"
       },
       {
-        "label": "Tara Deepforest",
+        "label": "Tara Graphene",
         "uiTheme": "vs-dark",
-        "path": "./themes/tara-deepforest.json"
+        "path": "./themes/tara-graphene.json"
       },
       {
-        "label": "Tara Deepforest High Contrast",
+        "label": "Tara Graphene High Contrast",
         "uiTheme": "vs-dark",
-        "path": "./themes/tara-deepforest-high-contrast.json"
-      },
-      {
-        "label": "Tara Carbon Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-carbon-italic.json"
-      },
-      {
-        "label": "Tara Carbon High Contrast Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-carbon-high-contrast-italic.json"
-      },
-      {
-        "label": "Tara Graphene Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-graphene-italic.json"
-      },
-      {
-        "label": "Tara Graphene High Contrast Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-graphene-high-contrast-italic.json"
-      },
-      {
-        "label": "Tara Ocean Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-ocean-italic.json"
-      },
-      {
-        "label": "Tara Ocean High Contrast Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-ocean-high-contrast-italic.json"
-      },
-      {
-        "label": "Tara Teal Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-teal-italic.json"
-      },
-      {
-        "label": "Tara Teal High Contrast Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-teal-high-contrast-italic.json"
-      },
-      {
-        "label": "Tara Palenight Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-palenight-italic.json"
-      },
-      {
-        "label": "Tara Palenight High Contrast Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-palenight-high-contrast-italic.json"
-      },
-      {
-        "label": "Tara Deepforest Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-deepforest-italic.json"
-      },
-      {
-        "label": "Tara Deepforest High Contrast Italic",
-        "uiTheme": "vs-dark",
-        "path": "./themes/tara-deepforest-high-contrast-italic.json"
+        "path": "./themes/tara-graphene-high-contrast.json"
       }
     ],
     "iconThemes": [
       {
-        "id": "tara-icons-carbon",
-        "label": "Tara Icons Carbon",
-        "path": "./themes/tara-icons-carbon.json"
-      },
-      {
-        "id": "tara-icons-graphene",
-        "label": "Tara Icons Graphene",
-        "path": "./themes/tara-icons-graphene.json"
+        "id": "tara-icons-teal",
+        "label": "Tara Icons Teal",
+        "path": "./themes/tara-icons-teal.json"
       },
       {
         "id": "tara-icons-ocean",
@@ -283,19 +186,14 @@
         "path": "./themes/tara-icons-ocean.json"
       },
       {
-        "id": "tara-icons-teal",
-        "label": "Tara Icons Teal",
-        "path": "./themes/tara-icons-teal.json"
-      },
-      {
         "id": "tara-icons-palenight",
         "label": "Tara Icons Palenight",
         "path": "./themes/tara-icons-palenight.json"
       },
       {
-        "id": "tara-icons-deepforest",
-        "label": "Tara Icons Deepforest",
-        "path": "./themes/tara-icons-deepforest.json"
+        "id": "tara-icons-graphene",
+        "label": "Tara Icons Graphene",
+        "path": "./themes/tara-icons-graphene.json"
       },
       {
         "id": "tara-icons-dynamic",

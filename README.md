@@ -1,33 +1,44 @@
 # Nishuuu Themes
 
-🎨 **A comprehensive VS Code theme extension** featuring **24 beautiful themes** with **Tara** color schemes, **dynamic accent colors**, **synchronized icon themes**, and **enhanced italic/bold font styling** for modern development.
+🎨 **A streamlined VS Code theme extension** featuring **4 primary color themes** with **dynamic accent colors**, **color previews**, **synchronized icon themes**, and **enhanced styling** for modern development.
 
 ## 📊 **Overview**
 
 ### 🌟 **What You Get**
-- **24 Color Themes** (12 regular + 12 italic/bold enhanced)
-- **6 Icon Themes** with dynamic accent color synchronization
-- **24 Accent Colors** with visual dropdown selection
-- **Dynamic folder icon colors** that change with your accent
+- **8 Total Themes** (4 primary themes × 2 variants each)
+  - **Teal** (regular + high contrast)
+  - **Ocean** (regular + high contrast) 
+  - **Palenight** (regular + high contrast)
+  - **Graphene** (regular + high contrast)
+- **4 Icon Themes** matching the primary color schemes
+- **12 Accent Colors** with visual color dot previews and hex codes
+- **Enhanced Color Picker** with native VS Code circle icons and detailed descriptions
+- **Dynamic folder icon colors** that sync with your accent
 - **Status bar integration** for quick theme customization
 - **Comprehensive syntax highlighting** for 50+ programming languages
 - **Terminal color theming** with full ANSI support
-- **Professional code styling** optimized for modern development
 
 ### 🎯 **Perfect For**
 - **Modern JavaScript/TypeScript** development
 - **React, Vue, Angular** projects
 - **Python, Go, Rust** and other languages
-- **Developers who value** beautiful, readable code
+- **Developers who value** clean, focused themes
 - **Teams seeking** consistent visual styling
-- **Anyone wanting** a premium theme experience
+- **Anyone wanting** a premium, streamlined theme experience
 
 ## ✨ Features
 
-### 🎨 **Complete Theme Collection**
-- **12 Base Color Themes** - Each in regular and high contrast variants
-- **12 Italic/Bold Enhanced Themes** - Enhanced font styling for better readability
-- **6 Icon Themes** - Matching accent colors for perfect coordination
+### 🎨 **Streamlined Theme Collection**
+- **4 Primary Color Themes** - Teal, Ocean, Palenight, Graphene (each with high contrast variant)
+- **WebStrom Dark** - Custom pure black theme with 10-color palette and precise syntax highlighting
+- **4 Icon Themes** - Perfectly matched accent colors for seamless coordination
+
+### 🌈 **Enhanced Color Selection**
+- **Visual Color Previews** with real color dot indicators and hex codes
+- **Primary Theme Colors** clearly marked and prioritized
+- **12 Curated Accent Colors** including all 4 primary theme colors
+- **Real-time Preview** of hex values in dropdown (e.g., `● Teal #80CBC4`)
+- **Smart Icon Mapping** automatically syncs folder colors
 - **Dynamic Accent Colors** - Change accent colors on the fly with 24 options
 - **Custom Accent Support** - Use any hex color as your accent
 - **Status Bar Integration** - Quick accent color selector in status bar

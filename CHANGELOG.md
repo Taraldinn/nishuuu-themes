@@ -7,6 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # Change Log
 
+## [2.1.3] - 2025-08-12
+### Fixed
+- **Removed Focus Borders** - Eliminated all focus borders (`focusBorder: #00000000`) for cleaner UI
+- **Enhanced Folder/File Selection** - Updated list selection colors to use theme accent colors
+- **Improved Sidebar Navigation** - File and folder selection now uses consistent accent colors
+- **Better Visual Hierarchy** - All selection states now properly highlight with theme colors
+
+### Updated Properties
+- `focusBorder` → `#00000000` (transparent, no borders)
+- `list.activeSelectionForeground` → theme accent color
+- `list.inactiveSelectionForeground` → theme accent color  
+- `list.highlightForeground` → theme accent color
+- `list.activeSelectionIconForeground` → theme accent color
+- `list.inactiveSelectionIconForeground` → theme accent color
+
+## [2.1.2] - 2025-08-12
+### Fixed
+- **Enhanced Tab Visibility** - Active file tabs now use theme accent colors for better text visibility
+- **Added Hover States** - Added explicit hover foreground and background colors for better UX
+- **Improved Contrast** - Fixed issue where active tab text was hard to read due to hover effects
+- **Consistent Colors** - Each theme now uses its signature accent color for active tab text
+
+### Details
+- Teal themes: Active tabs now use `#80CBC4` (teal accent)
+- Ocean themes: Active tabs now use `#6EBAD7` (ocean blue accent)  
+- Palenight themes: Active tabs now use `#A178C4` (purple accent)
+- Graphene themes: Active tabs now use `#6A90D0` (blue accent)
+- Carbon themes: Active tabs now use `#D9D9D9` (light gray)
+- Deepforest themes: Active tabs now use `#A3C679` (green accent)
+
+## [2.1.1] - 2025-08-12
+### Fixed
+- **Removed Tab Borders** - Eliminated left and right borders from file tabs across all Vira themes
+- **Consistent Tab Styling** - All themes now have clean, borderless tab appearance
+- **UI Polish** - Improved visual consistency between Tara and Vira theme collections
+
 ## [2.1.0] - 2025-08-12
 ### Added
 - **Complete Vira Theme Collection** - Added all 24 Vira themes to the collection

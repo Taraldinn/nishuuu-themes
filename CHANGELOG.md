@@ -5,6 +5,22 @@ All notable changes to the "Nishuuu Themes" extension will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+# Change Log
+
+## [2.1.0] - 2025-08-12
+### Added
+- **Complete Vira Theme Collection** - Added all 24 Vira themes to the collection
+  - 12 Vira color themes (Carbon, Deepforest, Graphene, Ocean, Palenight, Teal + High Contrast variants)
+  - 12 additional Vira Theme variants with enhanced styling
+  - 6 Vira icon themes matching the color schemes
+- **Expanded Theme Library** - Now includes 32 total themes across both Tara and Vira collections
+- **Enhanced Theme Variety** - Multiple styling approaches for each primary color scheme
+
+### Updated
+- Package description to reflect the expanded theme collection
+- README documentation with comprehensive theme listings
+- Theme selector now includes both Tara and Vira collections
+
 ## [2.0.0] - 2025-08-12
 
 ### Added

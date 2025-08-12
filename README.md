@@ -5,12 +5,10 @@
 ## 📊 **Overview**
 
 ### 🌟 **What You Get**
-- **8 Total Themes** (4 primary themes × 2 variants each)
-  - **Teal** (regular + high contrast)
-  - **Ocean** (regular + high contrast) 
-  - **Palenight** (regular + high contrast)
-  - **Graphene** (regular + high contrast)
-- **4 Icon Themes** matching the primary color schemes
+- **32 Total Themes** (Tara & Vira collections)
+  - **Tara Collection**: 8 themes (4 primary × 2 variants each)
+  - **Vira Collection**: 24 themes (multiple variants of each primary color)
+- **10 Icon Themes** (Tara + Vira icon sets)
 - **12 Accent Colors** with visual color dot previews and hex codes
 - **Enhanced Color Picker** with native VS Code circle icons and detailed descriptions
 - **Dynamic folder icon colors** that sync with your accent
@@ -47,12 +45,21 @@
 ### 🌈 **Available Themes**
 
 #### Color Themes
+**Tara Collection (8 themes):**
 - **Tara Carbon** - Elegant gray accent
 - **Tara Deepforest** - Natural green accent  
 - **Tara Graphene** - Clean blue accent
 - **Tara Ocean** - Deep blue accent
 - **Tara Palenight** - Purple accent
 - **Tara Teal** - Vibrant teal accent
+
+**Vira Collection (24 themes):**
+- **Vira Carbon** - Multiple carbon-themed variants
+- **Vira Deepforest** - Nature-inspired variations  
+- **Vira Graphene** - Sleek graphene variants
+- **Vira Ocean** - Ocean-themed options
+- **Vira Palenight** - Purple-tinted varieties
+- **Vira Teal** - Teal-focused themes
 
 Each theme includes:
 - **Regular variant** - Standard styling
@@ -72,12 +79,21 @@ Each theme includes:
 - **Object properties** in *italic* (structured data)
 
 #### Icon Themes
+**Tara Collection:**
 - **Tara Icons Carbon** - Gray accented icons
 - **Tara Icons Deepforest** - Green accented icons
 - **Tara Icons Graphene** - Blue accented icons  
 - **Tara Icons Ocean** - Ocean blue accented icons
 - **Tara Icons Palenight** - Purple accented icons
 - **Tara Icons Teal** - Teal accented icons
+
+**Vira Collection:**
+- **Vira Icons Carbon** - Carbon-themed icons
+- **Vira Icons Deepforest** - Forest-themed icons
+- **Vira Icons Graphene** - Graphene-styled icons
+- **Vira Icons Ocean** - Ocean-styled icons
+- **Vira Icons Palenight** - Palenight-themed icons
+- **Vira Icons Teal** - Teal-styled icons
 
 ## 🚀 Quick Start
 

@@ -1,15 +1,37 @@
 # Nishuuu Themes
 
-A beautiful collection of dark themes and icon themes featuring **Tara** color schemes with comprehensive syntax highlighting, terminal support, and beautiful file/folder icons. Inspired by and fully compatible with the Vira theme ecosystem.
+🎨 **A comprehensive VS Code theme extension** featuring **24 beautiful themes** with **Tara** color schemes, **dynamic accent colors**, **synchronized icon themes**, and **enhanced italic/bold font styling** for modern development.
+
+## 📊 **Overview**
+
+### 🌟 **What You Get**
+- **24 Color Themes** (12 regular + 12 italic/bold enhanced)
+- **6 Icon Themes** with dynamic accent color synchronization
+- **24 Accent Colors** with visual dropdown selection
+- **Dynamic folder icon colors** that change with your accent
+- **Status bar integration** for quick theme customization
+- **Comprehensive syntax highlighting** for 50+ programming languages
+- **Terminal color theming** with full ANSI support
+- **Professional code styling** optimized for modern development
+
+### 🎯 **Perfect For**
+- **Modern JavaScript/TypeScript** development
+- **React, Vue, Angular** projects
+- **Python, Go, Rust** and other languages
+- **Developers who value** beautiful, readable code
+- **Teams seeking** consistent visual styling
+- **Anyone wanting** a premium theme experience
 
 ## ✨ Features
 
 ### 🎨 **Complete Theme Collection**
-- **6 Color Themes** - Each in regular and high contrast variants
+- **12 Base Color Themes** - Each in regular and high contrast variants
+- **12 Italic/Bold Enhanced Themes** - Enhanced font styling for better readability
 - **6 Icon Themes** - Matching accent colors for perfect coordination
-- **Dynamic Accent Colors** - Change accent colors on the fly
+- **Dynamic Accent Colors** - Change accent colors on the fly with 24 options
 - **Custom Accent Support** - Use any hex color as your accent
-- **Status Bar Integration** - Accent color selector in status bar
+- **Status Bar Integration** - Quick accent color selector in status bar
+- **Folder Icon Sync** - Folder colors automatically match your accent
 
 ### 🌈 **Available Themes**
 
@@ -21,7 +43,22 @@ A beautiful collection of dark themes and icon themes featuring **Tara** color s
 - **Tara Palenight** - Purple accent
 - **Tara Teal** - Vibrant teal accent
 
-Each theme includes a **High Contrast** variant for better accessibility.
+Each theme includes:
+- **Regular variant** - Standard styling
+- **High Contrast variant** - Better accessibility
+- **Italic variant** - Enhanced with italic/bold font styling
+
+#### 🎯 **Italic/Bold Enhanced Features**
+- **Keywords** in **bold** (`if`, `for`, `while`, `class`, `function`)
+- **Function names** in *italic* (better readability)
+- **Class names** in ***bold italic*** (prominent highlighting)
+- **Variables/parameters** in *italic* (subtle emphasis)
+- **Constants** in **bold** (clear distinction)
+- **Import statements** in *italic* (visual separation)
+- **Type annotations** in **bold** (TypeScript/Flow)
+- **Decorators** in *italic* (Python/TypeScript)
+- **JSX/TSX components** in **bold** (React development)
+- **Object properties** in *italic* (structured data)
 
 #### Icon Themes
 - **Tara Icons Carbon** - Gray accented icons
@@ -42,7 +79,7 @@ Each theme includes a **High Contrast** variant for better accessibility.
 ### Activation
 1. Open Command Palette (`Ctrl+Shift+P`)
 2. Type "Preferences: Color Theme"
-3. Select any **Tara** theme
+3. Select any **Tara** theme (try the **Italic** variants for enhanced styling!)
 4. For icons: "Preferences: File Icon Theme" → Select matching **Tara Icons**
 
 ## 🎯 Accent Color System

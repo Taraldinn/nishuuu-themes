@@ -1,8 +1,8 @@
 {
   "name": "nishuuu-themes",
   "displayName": "Nishuuu Themes",
-  "description": "A beautiful collection of dark themes and icon themes featuring Tara color schemes with comprehensive syntax highlighting, terminal support, and beautiful file/folder icons",
-  "version": "1.1.1",
+  "description": "Beautiful dark themes with Tara color schemes, dynamic accent colors, folder icon sync, and enhanced italic/bold font styling. 24 themes + 6 icon sets with comprehensive syntax highlighting.",
+  "version": "1.2.2",
   "icon": "icon.png",
   "publisher": "taraldinn",
   "author": {
@@ -18,12 +18,8 @@
     "type": "git",
     "url": "https://github.com/taraldinn/nishuuu-themes.git"
   },
-  "bugs": {
-    "url": "https://github.com/taraldinn/nishuuu-themes/issues"
-  },
-  "homepage": "https://github.com/taraldinn/nishuuu-themes#readme",
   "engines": {
-    "vscode": "^1.95.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Themes"
@@ -38,6 +34,9 @@
     "syntax highlighting",
     "accent color",
     "customizable",
+    "italic",
+    "bold",
+    "font styling",
     "tara",
     "nishuuu",
     "carbon",
@@ -86,7 +85,7 @@
             "Bright Teal - bright cyan-teal",
             "Carbon - elegant gray accent",
             "Cyan - pure cyan blue",
-            "Deepforest - natural green accent", 
+            "Deepforest - natural green accent",
             "Graphene - clean blue accent",
             "Indigo - deep indigo blue",
             "Lime - fresh lime green",
@@ -137,7 +136,7 @@
         "category": "Nishuuu Themes"
       },
       {
-        "command": "nishuuu.resetAccentColor", 
+        "command": "nishuuu.resetAccentColor",
         "title": "Reset Accent Color",
         "category": "Nishuuu Themes"
       },
@@ -207,6 +206,66 @@
         "label": "Tara Deepforest High Contrast",
         "uiTheme": "vs-dark",
         "path": "./themes/tara-deepforest-high-contrast.json"
+      },
+      {
+        "label": "Tara Carbon Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-carbon-italic.json"
+      },
+      {
+        "label": "Tara Carbon High Contrast Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-carbon-high-contrast-italic.json"
+      },
+      {
+        "label": "Tara Graphene Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-graphene-italic.json"
+      },
+      {
+        "label": "Tara Graphene High Contrast Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-graphene-high-contrast-italic.json"
+      },
+      {
+        "label": "Tara Ocean Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-ocean-italic.json"
+      },
+      {
+        "label": "Tara Ocean High Contrast Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-ocean-high-contrast-italic.json"
+      },
+      {
+        "label": "Tara Teal Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-teal-italic.json"
+      },
+      {
+        "label": "Tara Teal High Contrast Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-teal-high-contrast-italic.json"
+      },
+      {
+        "label": "Tara Palenight Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-palenight-italic.json"
+      },
+      {
+        "label": "Tara Palenight High Contrast Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-palenight-high-contrast-italic.json"
+      },
+      {
+        "label": "Tara Deepforest Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-deepforest-italic.json"
+      },
+      {
+        "label": "Tara Deepforest High Contrast Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-deepforest-high-contrast-italic.json"
       }
     ],
     "iconThemes": [
@@ -248,12 +307,12 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "echo 'No compilation needed'",
+    "vscode:prepublish": "echo \"No compilation needed\"",
     "package": "vsce package",
     "publish": "vsce publish"
   },
   "devDependencies": {
-    "@types/vscode": "^1.95.0",
+    "@types/vscode": "^1.74.0",
     "@vscode/vsce": "^3.2.0"
   }
 }

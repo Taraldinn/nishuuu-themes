@@ -1,35 +1,39 @@
-.vscode/**
-.vscode-test/**
-out/test/**
-test/**
-.gitignore
-.yarnrc
-vsc-extension-quickstart.md
-**/tsconfig.json
-**/tslint.json
-**/*.map
-**/*.ts
-.git
-.DS_Store
-*.vsix
-node_modules/**
-npm-debug.log
-.nyc_output
-coverage
-.eslintrc.json
-screenshots/**
+# Development files
+**/.git/**
+**/.github/**
+**/node_modules/**
+**/.vscode/**
+**/.gitignore
 
-# Documentation and scripts (not needed in extension)
-docs/**
-scripts/**
-cleanup.sh
-icon.svg
-*.md.backup
-*.json.backup
-*.new
-*-temp*
-docs/**
-.github/**
-*.md
+# Build and package files
+**/*.vsix
+**/package-lock.json
+
+# Documentation (keep only essential)
+**/docs/**
+**/scripts/**
+**/*.md
 !README.md
 !CHANGELOG.md
+!LICENSE
+
+# Development utilities
+**/convert-icon.js
+**/cleanup.sh
+**/logo-generator.html
+**/icon-placeholder.txt
+
+# Source files (keep only compiled)
+**/src/*.backup
+**/src/*.new
+
+# Test files
+**/test-*
+**/demo-*
+
+# Temporary files
+**/*~
+**/*.backup
+**/*.old
+**/*.new
+**/tmp-*

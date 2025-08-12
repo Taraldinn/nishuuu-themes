@@ -1,39 +1,32 @@
-# Development files
+# Git and GitHub
 **/.git/**
 **/.github/**
 **/node_modules/**
-**/.vscode/**
 **/.gitignore
 
-# Build and package files
-**/*.vsix
+# Development files (exclude from package)
 **/package-lock.json
-
-# Documentation (keep only essential)
-**/docs/**
-**/scripts/**
-**/*.md
-!README.md
-!CHANGELOG.md
-!LICENSE
-
-# Development utilities
-**/convert-icon.js
-**/cleanup.sh
-**/logo-generator.html
-**/icon-placeholder.txt
-
-# Source files (keep only compiled)
-**/src/*.backup
-**/src/*.new
-
-# Test files
+**/*.vsix
 **/test-*
 **/demo-*
 
-# Temporary files
+# Non-essential documentation and scripts
+**/docs/**
+**/scripts/ultimate-cleanup.sh
+**/scripts/verify-project.sh
+**/STRUCTURE.md
+**/logo-generator.html
+
+# Temporary and backup files
 **/*~
 **/*.backup
 **/*.old
 **/*.new
 **/tmp-*
+**/.DS_Store
+**/cleanup.sh
+**/icon-placeholder.txt
+
+# Source backups
+**/src/*.backup
+**/src/*.new

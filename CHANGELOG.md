@@ -5,6 +5,39 @@ All notable changes to the "Nishuuu Themes" extension will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.4] - 2024-12-19
+
+### Changed
+- Final project cleanup and consolidation
+- Reorganized scripts folder with renamed, essential-only scripts
+- Consolidated development tools into `dev-tools.sh`
+- Updated documentation structure with comprehensive guides
+- Removed redundant files and improved project organization
+- Updated .vscodeignore for cleaner packaging
+
+## [1.2.3] - 2024-12-19
+
+### Changed
+- **🚫 Removed All Borders**: Complete borderless UI experience
+  - Removed tab borders (active, inactive, unfocused)
+  - Removed activity bar borders
+  - Removed panel and sidebar borders
+  - Removed input field borders
+  - Removed widget borders
+  - Removed all UI element borders
+
+### Fixed
+- Clean, modern borderless appearance
+- No visual distraction from borders
+- Smoother, more elegant interface
+- Better focus on content rather than UI elements
+
+### Technical
+- Updated all 24 themes to use transparent borders (#00000000)
+- Modified extension logic to exclude border applications
+- Updated tab indicator options (removed border, added none)
+- Default tab indicator now "none" for cleanest look
+
 ## [1.2.2] - 2025-08-12
 
 ### Fixed

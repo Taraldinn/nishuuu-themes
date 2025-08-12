@@ -372,7 +372,7 @@ function applyAccentColor() {
     const nishuu = vscode.workspace.getConfiguration('nishuuu');
     const accent = nishuu.get('accent', 'teal');
     const customAccent = nishuu.get('customAccent', '');
-    const tabIndicator = nishuu.get('tabIndicator', 'border');
+    const tabIndicator = nishuu.get('tabIndicator', 'none');
     
     // Use custom color if provided, otherwise use preset
     const accentColor = customAccent || accentColors[accent] || accentColors.teal;
@@ -385,23 +385,17 @@ function applyAccentColor() {
     const accent14 = accentColor + '14';
     const accent0D = accentColor + '0D';
     
-    // Apply workbench color customizations matching Vira's accent system
+    // Apply workbench color customizations matching Vira's accent system (NO BORDERS)
     const colorCustomizations = {
         // Status bar and activity bar
         'statusBarItem.remoteForeground': accentColor,
         'statusBarItem.remoteBackground': accent14,
         'statusBarItem.remoteHoverBackground': accentColor,
         'statusBarItem.remoteHoverForeground': '#000000',
-        'activityBar.activeBorder': accentColor,
         'activityBarBadge.background': accentColor,
         'activityBarBadge.foreground': '#000000',
         
-        // Panel and sidebar
-        'panelTitle.activeBorder': accentColor,
-        'sideBar.border': accent40,
-        'panel.border': accent40,
-        
-        // Editor and selection
+        // Editor and selection (NO PANEL/SIDEBAR BORDERS)
         'progressBar.background': accentColor,
         'selection.background': accent80,
         'editor.findMatchBorder': accentColor,
@@ -440,32 +434,17 @@ function applyAccentColor() {
         'menubar.selectionForeground': accentColor,
         'settings.modifiedItemIndicator': accentColor,
         
-        // Tabs based on indicator style
-        ...(tabIndicator === 'border' ? {
-            'tab.activeBorder': accentColor,
-            'tab.unfocusedActiveBorder': accentColor,
-            'tab.activeBorderTop': accentColor + '00',
-            'tab.unfocusedActiveBorderTop': accentColor + '00'
-        } : tabIndicator === 'fill' ? {
-            'tab.activeBackground': accent20,
-            'tab.activeBorder': accentColor + '00',
-            'tab.unfocusedActiveBorder': accentColor + '00'
-        } : {
-            'tab.activeBorderTop': accentColor,
-            'tab.activeBorder': accentColor + '00',
-            'tab.unfocusedActiveBorder': accentColor + '00'
-        }),
+        // Tabs - NO BORDERS, background only for fill style
+        ...(tabIndicator === 'fill' ? {
+            'tab.activeBackground': accent20
+        } : {}),
         
-        // Notebooks and widgets
-        'notebook.focusedCellBorder': accentColor,
-        'notebook.inactiveFocusedCellBorder': accent80,
-        'editorWidget.resizeBorder': accentColor,
-        'editorWidget.border': accentColor,
+        // Notebooks - NO BORDERS
+        'notebook.focusedCellBorder': '#00000000',
+        'notebook.inactiveFocusedCellBorder': '#00000000',
         
         // Command center and toolbar
-        'commandCenter.activeBorder': accentColor,
         'toolbar.activeBackground': accent20,
-        'sash.hoverBorder': accent80,
         
         // Chat (if available)
         'chat.slashCommandForeground': accentColor,

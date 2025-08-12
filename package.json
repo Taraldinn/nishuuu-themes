@@ -2,7 +2,7 @@
   "name": "nishuuu-themes",
   "displayName": "Nishuuu Themes",
   "description": "Beautiful dark themes with Tara color schemes, dynamic accent colors, folder icon sync, and enhanced italic/bold font styling. 24 themes + 6 icon sets with comprehensive syntax highlighting.",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "icon": "icon.png",
   "publisher": "taraldinn",
   "author": {
@@ -114,17 +114,15 @@
         },
         "nishuuu.tabIndicator": {
           "type": "string",
-          "default": "border",
+          "default": "none",
           "description": "Style of the active tab indicator",
           "enum": [
-            "border",
-            "fill",
-            "underline"
+            "none",
+            "fill"
           ],
           "enumDescriptions": [
-            "Border - colored border around active tab",
-            "Fill - filled background for active tab",
-            "Underline - underline below active tab"
+            "None - no visual indicator (clean look)",
+            "Fill - subtle background color for active tab"
           ]
         }
       }

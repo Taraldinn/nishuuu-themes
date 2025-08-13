@@ -1,442 +1,309 @@
 const vscode = require('vscode');
 
-let statusBarItem;
-let currentAccentColor = '#80CBC4'; // Default teal
-
-// Accent color presets - focused on primary themes with color previews
-const accentColors = {
+// Accent color pa/**
+ * Update status bar item
+ */
+function updateStatusBar() {
+    const config = vscode.workspace.getConfiguration('nishuuu');
+    const selectedAccent = config.get('accent', 'teal');
+    const currentColor = ACCENT_COLORS[selectedAccent] || ACCENT_COLORS.teal;
+    
+    statusBarItem.text = `$(circle-filled) ${selectedAccent.charAt(0).toUpperCase() + selectedAccent.slice(1)}`;
+    statusBarItem.tooltip = `Current accent color: ${selectedAccent} (${currentColor}). Click to change.`;
+    statusBarItem.color = currentColor;
+}a
+const ACCENT_COLORS = {
     'teal': '#80CBC4',
-    'ocean': '#6EBAD7', 
-    'palenight': '#A178C4',
-    'graphene': '#6A90D0',
-    'blue': '#5393FF',
+    'vira': '#6C63FF',
     'cyan': '#64FFDA',
-    'lime': '#C6FF00',
+    'blue': '#5393FF',
+    'indigo': '#3F51B5',
     'purple': '#B54DFF',
-    'orange': '#FF7042',
     'pink': '#FF669E',
+    'tomato': '#FF6347',
+    'orange': '#FF7042',
     'yellow': '#FFCF3D',
+    'acid-lime': '#C6FF00',
+    'lime': '#32CD32',
+    'bright-teal': '#1DE9B6',
     'white': '#FFFFFF'
 };
 
-// Map accent colors to their icon accent variant
-const accentToIconMapping = {
-    'teal': 'teal',
-    'ocean': 'ocean',
-    'palenight': 'palenight', 
-    'graphene': 'graphene',
-    'blue': 'ocean',     // fallback to ocean
-    'cyan': 'teal',      // fallback to teal
-    'lime': 'teal',      // fallback to teal
-    'purple': 'palenight', // fallback to palenight
-    'orange': 'ocean',   // fallback to ocean
-    'pink': 'palenight', // fallback to palenight
-    'yellow': 'teal',    // fallback to teal
-    'white': 'graphene'  // fallback to graphene
-};
-
-// Icon theme mapping
-const iconThemeMapping = {
-    'acid-lime': 'tara-icons-deepforest',
-    'blue': 'tara-icons-ocean',
-    'bright-teal': 'tara-icons-teal',
-    'carbon': 'tara-icons-carbon',
-    'cyan': 'tara-icons-teal',
-    'deepforest': 'tara-icons-deepforest',
-    'graphene': 'tara-icons-graphene', 
-    'indigo': 'tara-icons-palenight',
-    'lime': 'tara-icons-deepforest',
-    'ocean': 'tara-icons-ocean',
-    'orange': 'tara-icons-carbon',
-    'palenight': 'tara-icons-palenight',
-    'pink': 'tara-icons-palenight',
-    'purple': 'tara-icons-palenight',
-    'teal': 'tara-icons-teal',
-    'tomato': 'tara-icons-carbon',
-    'vira': 'tara-icons-carbon',
-    'white': 'tara-icons-carbon',
-    'yellow': 'tara-icons-carbon'
-};
+let statusBarItem;
 
 /**
- * @param {vscode.ExtensionContext} context
+ * Extension activation
  */
 function activate(context) {
-    console.log('Nishuuu Themes extension activated');
+    console.log('Nishuuu Themes extension is now active!');
 
     // Create status bar item
-    statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+    statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 1000);
     statusBarItem.command = 'nishuuu.selectAccentColor';
-    statusBarItem.tooltip = 'Click to change accent color';
-    context.subscriptions.push(statusBarItem);
-
-    // Initialize accent color from settings
-    initializeAccentColor();
-
-    // Register commands
-    const selectAccentCommand = vscode.commands.registerCommand('nishuuu.selectAccentColor', selectAccentColor);
-    const resetAccentCommand = vscode.commands.registerCommand('nishuuu.resetAccentColor', resetAccentColor);
-    const toggleOutlinedCommand = vscode.commands.registerCommand('nishuuu.toggleOutlinedIcons', toggleOutlinedIcons);
-
-    context.subscriptions.push(selectAccentCommand, resetAccentCommand, toggleOutlinedCommand);
-
-    // Listen for configuration changes
-    vscode.workspace.onDidChangeConfiguration(event => {
-        if (event.affectsConfiguration('nishuuu.accent') || 
-            event.affectsConfiguration('nishuuu.customAccent') ||
-            event.affectsConfiguration('nishuuu.tabIndicator')) {
-            applyAccentColor();
-        }
-    }, null, context.subscriptions);
-
-    // Show status bar item
-    statusBarItem.show();
-}
-
-function initializeAccentColor() {
-    const config = vscode.workspace.getConfiguration('nishuuu');
-    const accent = config.get('accent', 'teal');
-    const customAccent = config.get('customAccent', '');
     
-    if (customAccent && customAccent.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)) {
-        currentAccentColor = customAccent;
-    } else {
-        currentAccentColor = accentColors[accent] || accentColors.teal;
-    }
-    
+    // Update status bar immediately
     updateStatusBar();
-    applyAccentColor();
+    statusBarItem.show();
+
+    // Register select accent color command
+    const selectAccentColorCommand = vscode.commands.registerCommand('nishuuu.selectAccentColor', selectAccentColor);
+
+    // Watch for configuration changes
+    const configurationChangeListener = vscode.workspace.onDidChangeConfiguration(event => {
+        if (event.affectsConfiguration('nishuuu.accent')) {
+            updateStatusBar();
+            applyDynamicColors();
+        }
+    });
+
+    context.subscriptions.push(selectAccentColorCommand, configurationChangeListener, statusBarItem);
+
+    // Apply dynamic colors on startup
+    applyDynamicColors();
 }
 
+/**
+ * Update status bar with current accent color
+ */
 function updateStatusBar() {
     const config = vscode.workspace.getConfiguration('nishuuu');
-    const accent = config.get('accent', 'teal');
-    const customAccent = config.get('customAccent', '');
+    const selectedAccent = config.get('accent', 'teal');
+    const currentColor = ACCENT_COLORS[selectedAccent] || ACCENT_COLORS.teal;
     
-    if (customAccent) {
-        statusBarItem.text = `$(paintcan) Custom`;
-        statusBarItem.color = currentAccentColor;
-    } else {
-        // Convert hyphenated names to proper display format
-        const displayName = accent
-            .split('-')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-        statusBarItem.text = `$(paintcan) ${displayName}`;
-        statusBarItem.color = currentAccentColor;
-    }
-    
-    // Remove background color to let the text/icon color show better
-    statusBarItem.backgroundColor = undefined;
+    statusBarItem.text = `$(circle-filled) ${selectedAccent.charAt(0).toUpperCase() + selectedAccent.slice(1)}`;
+    statusBarItem.tooltip = `Current accent color: ${selectedAccent} (${currentColor}). Click to change.`;
+    statusBarItem.color = currentColor;
 }
 
-async function generateDynamicIconTheme(accentName) {
-    const fs = require('fs').promises;
-    const path = require('path');
-    
-    try {
-        // Get the base icon theme (we'll use teal as base)
-        const extensionPath = vscode.extensions.getExtension('taraldinn.nishuuu-themes').extensionPath;
-        const baseThemePath = path.join(extensionPath, 'themes', 'tara-icons-teal.json');
-        const baseTheme = JSON.parse(await fs.readFile(baseThemePath, 'utf8'));
-        
-        // Map the accent to the available icon variant
-        const iconAccent = accentToIconMapping[accentName] || 'teal';
-        
-        // Create a copy of the base theme
-        const dynamicTheme = JSON.parse(JSON.stringify(baseTheme));
-        
-        // Update folder icons to use the accent color
-        for (const [key, definition] of Object.entries(dynamicTheme.iconDefinitions)) {
-            if (definition.iconPath && definition.iconPath.includes('folder_') && definition.iconPath.includes('_open')) {
-                // This is an open folder icon - update to use accent color
-                const iconName = path.basename(definition.iconPath, '.svg');
-                const baseIconName = iconName.replace(/\.accent\.\w+$/, '');
-                definition.iconPath = `../icons/folders/filled/${baseIconName}.accent.${iconAccent}.svg`;
-            }
-        }
-        
-        // Write the dynamic theme to a temporary file
-        const dynamicThemePath = path.join(extensionPath, 'themes', 'tara-icons-dynamic.json');
-        await fs.writeFile(dynamicThemePath, JSON.stringify(dynamicTheme, null, 4));
-        
-        return 'tara-icons-dynamic';
-    } catch (error) {
-        console.error('Error generating dynamic icon theme:', error);
-        // Fallback to static theme
-        return iconThemeMapping[accentName] || 'tara-icons-teal';
-    }
-}
-
+/**
+ * Show accent color selection dropdown
+ */
 async function selectAccentColor() {
     const config = vscode.workspace.getConfiguration('nishuuu');
     const currentAccent = config.get('accent', 'teal');
     
-    // Create color preview items with actual color circles
-    const items = [
-        {
-            label: '$(circle-filled) Teal',
-            description: `${accentColors.teal} - Primary theme color`,
-            detail: 'Vibrant teal accent - matches Tara Teal theme',
-            accent: 'teal'
-        },
-        {
-            label: '$(circle-filled) Ocean', 
-            description: `${accentColors.ocean} - Primary theme color`,
-            detail: 'Deep blue accent - matches Tara Ocean theme',
-            accent: 'ocean'
-        },
-        {
-            label: '$(circle-filled) Palenight',
-            description: `${accentColors.palenight} - Primary theme color`, 
-            detail: 'Purple accent - matches Tara Palenight theme',
-            accent: 'palenight'
-        },
-        {
-            label: '$(circle-filled) Graphene',
-            description: `${accentColors.graphene} - Primary theme color`,
-            detail: 'Clean blue accent - matches Tara Graphene theme', 
-            accent: 'graphene'
-        },
-        {
-            label: '$(circle-filled) Blue',
-            description: `${accentColors.blue} - Additional color`,
-            detail: 'Classic blue accent',
-            accent: 'blue'
-        },
-        {
-            label: '$(circle-filled) Cyan',
-            description: `${accentColors.cyan} - Additional color`,
-            detail: 'Pure cyan blue',
-            accent: 'cyan'
-        },
-        {
-            label: '$(circle-filled) Lime',
-            description: `${accentColors.lime} - Additional color`,
-            detail: 'Fresh lime green',
-            accent: 'lime'
-        },
-        {
-            label: '$(circle-filled) Purple',
-            description: `${accentColors.purple} - Additional color`,
-            detail: 'Rich purple accent',
-            accent: 'purple'
-        },
-        {
-            label: '$(circle-filled) Orange',
-            description: `${accentColors.orange} - Additional color`,
-            detail: 'Bright orange accent',
-            accent: 'orange'
-        },
-        {
-            label: '$(circle-filled) Pink',
-            description: `${accentColors.pink} - Additional color`,
-            detail: 'Vibrant pink accent',
-            accent: 'pink'
-        },
-        {
-            label: '$(circle-filled) Yellow',
-            description: `${accentColors.yellow} - Additional color`,
-            detail: 'Golden yellow accent',
-            accent: 'yellow'
-        },
-        {
-            label: '$(circle-filled) White',
-            description: `${accentColors.white} - Additional color`,
-            detail: 'Clean white accent',
-            accent: 'white'
-        },
-        {
-            label: '$(gear) Custom Color...',
-            description: 'Enter custom hex color',
-            detail: 'Define your own accent color',
-            accent: 'custom'
-        }
-    ];
-
-    // Mark current accent with checkmark instead of filled circle
-    const currentItem = items.find(item => item.accent === currentAccent);
-    if (currentItem) {
-        currentItem.label = currentItem.label.replace('$(circle-filled)', '$(check)');
-    }
-
-    const selection = await vscode.window.showQuickPick(items, {
-        placeHolder: 'Select an accent color for Nishuuu Themes',
-        matchOnDescription: true
+    // Create quick pick items with SVG icons from vira-source build assets
+    const quickPickItems = Object.entries(ACCENT_COLORS).map(([key, color]) => {
+        const iconPath = getSvgFilePath(key);
+        
+        return {
+            label: key.charAt(0).toUpperCase() + key.slice(1),
+            description: '',
+            detail: key === currentAccent ? '✓ Currently selected' : '',
+            accent: key,
+            iconPath: iconPath
+        };
     });
 
-    if (selection) {
-        if (selection.accent === 'custom') {
-            await selectCustomColor();
-        } else {
-            await config.update('accent', selection.accent, vscode.ConfigurationTarget.Global);
-            await config.update('customAccent', '', vscode.ConfigurationTarget.Global);
-            
-            currentAccentColor = accentColors[selection.accent];
-            updateStatusBar();
-            applyAccentColor();
-            
-            vscode.window.showInformationMessage(
-                `Accent color changed to ${selection.accent}. Icon theme will also update automatically.`
-            );
-        }
-    }
-}
-
-async function selectCustomColor() {
-    const customColor = await vscode.window.showInputBox({
-        prompt: 'Enter a custom accent color',
-        placeHolder: '#80CBC4',
-        validateInput: (value) => {
-            if (!value) return 'Please enter a color';
-            if (!value.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)) {
-                return 'Please enter a valid hex color (e.g., #80CBC4 or #ABC)';
-            }
-            return null;
-        }
+    const selectedItem = await vscode.window.showQuickPick(quickPickItems, {
+        placeHolder: 'Select accent color',
+        title: '',
+        matchOnDescription: false,
+        matchOnDetail: false
     });
 
-    if (customColor) {
-        const config = vscode.workspace.getConfiguration('nishuuu');
-        await config.update('customAccent', customColor, vscode.ConfigurationTarget.Global);
-        
-        currentAccentColor = customColor;
-        updateStatusBar();
-        applyAccentColor();
-        
-        vscode.window.showInformationMessage(
-            `Custom accent color applied: ${customColor}`
-        );
+    if (selectedItem) {
+        await config.update('accent', selectedItem.accent, vscode.ConfigurationTarget.Global);
+        await config.update('customAccent', '', vscode.ConfigurationTarget.Global);
+        vscode.window.showInformationMessage(`Accent color changed to ${selectedItem.accent}`);
     }
 }
 
-async function resetAccentColor() {
-    const config = vscode.workspace.getConfiguration('nishuuu');
-    await config.update('accent', 'teal', vscode.ConfigurationTarget.Global);
-    await config.update('customAccent', '', vscode.ConfigurationTarget.Global);
+/**
+ * Get the SVG file path for an accent color from vira-source build assets
+ */
+function getSvgFilePath(accentKey) {
+    // Use SVG files from vira-source/build/assets/
+    const extensionPath = vscode.extensions.getExtension('taraldinn.nishuuu-themes')?.extensionPath;
+    if (!extensionPath) return undefined;
     
-    currentAccentColor = accentColors.teal;
-    updateStatusBar();
-    applyAccentColor();
+    const viraSourcePath = extensionPath.replace(/themes\/nishuuu-themes$/, 'themes/vira-source/build/assets');
     
-    vscode.window.showInformationMessage('Accent color reset to default teal');
-}
-
-async function toggleOutlinedIcons() {
-    const config = vscode.workspace.getConfiguration('nishuuu');
-    const current = config.get('outlinedIcons', false);
-    await config.update('outlinedIcons', !current, vscode.ConfigurationTarget.Global);
-    
-    vscode.window.showInformationMessage(
-        `Outlined icons ${!current ? 'enabled' : 'disabled'}`
-    );
-}
-
-function applyAccentColor() {
-    const config = vscode.workspace.getConfiguration();
-    const nishuu = vscode.workspace.getConfiguration('nishuuu');
-    const accent = nishuu.get('accent', 'teal');
-    const customAccent = nishuu.get('customAccent', '');
-    const tabIndicator = nishuu.get('tabIndicator', 'none');
-    
-    // Use custom color if provided, otherwise use preset
-    const accentColor = customAccent || accentColors[accent] || accentColors.teal;
-    currentAccentColor = accentColor;
-    
-    // Create alpha variants
-    const accent80 = accentColor + '80';
-    const accent40 = accentColor + '40';
-    const accent20 = accentColor + '20';
-    const accent14 = accentColor + '14';
-    const accent0D = accentColor + '0D';
-    
-    // Apply workbench color customizations matching Vira's accent system (NO BORDERS)
-    const colorCustomizations = {
-        // Status bar and activity bar
-        'statusBarItem.remoteForeground': accentColor,
-        'statusBarItem.remoteBackground': accent14,
-        'statusBarItem.remoteHoverBackground': accentColor,
-        'statusBarItem.remoteHoverForeground': '#000000',
-        'activityBarBadge.background': accentColor,
-        'activityBarBadge.foreground': '#000000',
-        
-        // Editor and selection (NO PANEL/SIDEBAR BORDERS)
-        'progressBar.background': accentColor,
-        'selection.background': accent80,
-        'editor.findMatchBorder': accentColor,
-        'editor.findMatchHighlightBorder': accent80,
-        'editor.findRangeHighlightBackground': accent40,
-        'editorCursor.foreground': accentColor,
-        'editorBracketMatch.border': accent80,
-        'editorOverviewRuler.findMatchForeground': accentColor,
-        
-        // Lists and inputs
-        'list.activeSelectionForeground': accentColor,
-        'list.inactiveSelectionForeground': accentColor,
-        'list.activeSelectionIconForeground': accentColor,
-        'list.inactiveSelectionIconForeground': accentColor,
-        'list.highlightForeground': accentColor,
-        'quickInputList.focusIconForeground': accentColor,
-        'editorSuggestWidget.highlightForeground': accentColor,
-        
-        // Buttons and extensions
-        'button.background': accentColor,
-        'button.hoverBackground': accent80,
-        'extensionButton.foreground': accentColor,
-        'extensionButton.background': accent14,
-        'extensionButton.hoverBackground': accent40,
-        'extensionButton.prominentForeground': accentColor,
-        'extensionButton.prominentBackground': accent14,
-        'extensionButton.prominentHoverBackground': accent40,
-        'extensionIcon.preReleaseForeground': accent20,
-        
-        // Links and notifications
-        'textLink.foreground': accentColor,
-        'notificationLink.foreground': accentColor,
-        'pickerGroup.foreground': accentColor,
-        'breadcrumb.activeSelectionForeground': accentColor,
-        'menu.selectionForeground': accentColor,
-        'menubar.selectionForeground': accentColor,
-        'settings.modifiedItemIndicator': accentColor,
-        
-        // Tabs - NO BORDERS, background only for fill style
-        ...(tabIndicator === 'fill' ? {
-            'tab.activeBackground': accent20
-        } : {}),
-        
-        // Notebooks - NO BORDERS
-        'notebook.focusedCellBorder': '#00000000',
-        'notebook.inactiveFocusedCellBorder': '#00000000',
-        
-        // Command center and toolbar
-        'toolbar.activeBackground': accent20,
-        
-        // Chat (if available)
-        'chat.slashCommandForeground': accentColor,
-        'chat.avatarForeground': accentColor,
-        
-        // File explorer colors
-        'tree.inactiveIndentGuidesStroke': accent40,
-        'tree.indentGuidesStroke': accent80,
-        
-        // File and folder name colors (when selected/focused)
-        'list.focusOutline': accentColor,
-        'list.focusAndSelectionOutline': accentColor
+    // Map accent keys to their corresponding SVG files in vira-source
+    const svgMapping = {
+        'teal': 'teal.svg',
+        'vira': 'vira.svg', 
+        'cyan': 'cyan.svg',
+        'blue': 'blue.svg',
+        'indigo': 'indigo.svg',
+        'purple': 'purple.svg',
+        'pink': 'pink.svg',
+        'tomato': 'tomato.svg',
+        'orange': 'orange.svg',
+        'yellow': 'yellow.svg',
+        'acid-lime': 'acid-lime.svg',
+        'lime': 'lime.svg',
+        'bright-teal': 'bright-teal.svg',
+        'white': 'white.svg'
     };
     
-    // Apply the color customizations
-    config.update('workbench.colorCustomizations', colorCustomizations, vscode.ConfigurationTarget.Global);
-    
-    // Update icon theme with dynamic folder colors
-    if (!customAccent) {
-        generateDynamicIconTheme(accent).then(iconTheme => {
-            config.update('workbench.iconTheme', iconTheme, vscode.ConfigurationTarget.Global);
-        });
-    }
-    
-    updateStatusBar();
+    const svgFileName = svgMapping[accentKey] || 'vira.svg';
+    return vscode.Uri.file(`${viraSourcePath}/${svgFileName}`);
 }
 
+/**
+ * Apply dynamic accent colors to the current theme
+ */
+/**
+ * Apply dynamic colors based on selected accent
+ */
+function applyDynamicColors() {
+    const config = vscode.workspace.getConfiguration('nishuuu');
+    const selectedAccent = config.get('accent', 'teal');
+    
+    const accentColor = ACCENT_COLORS[selectedAccent] || ACCENT_COLORS.teal;
+    
+    // Get the current color theme
+    const colorTheme = vscode.workspace.getConfiguration('workbench').get('colorTheme');
+    
+    // Only apply to our themes
+    if (!colorTheme || !colorTheme.toLowerCase().includes('tara')) {
+        return;
+    }
+    
+    // Apply dynamic CSS overrides for UI elements (not syntax highlighting)
+    const cssOverrides = {
+        // Status bar
+        'statusBar.background': accentColor,
+        'statusBar.foreground': getContrastColor(accentColor),
+        'statusBar.border': accentColor,
+        
+        // Activity bar
+        'activityBar.activeBorder': accentColor,
+        'activityBar.activeBackground': addAlpha(accentColor, 0.2),
+        'activityBar.activeFocusBorder': accentColor,
+        
+        // Tabs - Enhanced borders
+        'tab.activeBorder': accentColor,
+        'tab.activeBorderTop': 'transparent',
+        'tab.unfocusedActiveBorder': 'transparent',
+        'tab.unfocusedActiveBorderTop': 'transparent',
+        'tab.hoverBackground': addAlpha(accentColor, 0.1),
+        'tab.hoverBorder': accentColor,
+        
+        // Buttons and links
+        'button.background': accentColor,
+        'button.foreground': getContrastColor(accentColor),
+        'button.hoverBackground': adjustBrightness(accentColor, 0.1),
+        'textLink.foreground': accentColor,
+        'textLink.activeForeground': adjustBrightness(accentColor, 0.2),
+        
+        // Focus and selection
+        'focusBorder': accentColor,
+        'selection.background': addAlpha(accentColor, 0.3),
+        'list.activeSelectionBackground': addAlpha(accentColor, 0.2),
+        'list.hoverBackground': '#00000000', // Disable hover effects in explorer
+        'list.focusBackground': addAlpha(accentColor, 0.2),
+        'list.inactiveSelectionBackground': addAlpha(accentColor, 0.1),
+        'list.hoverForeground': '#D9D9D9', // Keep text visible but no background hover
+        
+        // File explorer specific - disable hover effects
+        'tree.indentGuidesStroke': '#212121',
+        'list.focusOutline': '#00000000',
+        'list.focusAndSelectionOutline': '#00000000',
+        
+        // Progress bar
+        'progressBar.background': accentColor,
+        
+        // Scrollbar
+        'scrollbarSlider.activeBackground': addAlpha(accentColor, 0.8),
+        'scrollbarSlider.hoverBackground': addAlpha(accentColor, 0.6),
+        
+        // Minimap
+        'minimap.selectionHighlight': accentColor,
+        
+        // Badge
+        'badge.background': accentColor,
+        'badge.foreground': getContrastColor(accentColor),
+        
+        // Notifications
+        'notificationCenterHeader.background': accentColor,
+        'notificationCenterHeader.foreground': getContrastColor(accentColor),
+        
+        // Panel
+        'panel.border': addAlpha(accentColor, 0.5),
+        'panelTitle.activeBorder': accentColor,
+        
+        // Sidebar
+        'sideBar.border': addAlpha(accentColor, 0.3),
+        
+        // Editor groups
+        'editorGroup.border': addAlpha(accentColor, 0.3),
+        'editorGroupHeader.tabsBorder': addAlpha(accentColor, 0.3)
+    };
+    
+    // Update workbench color customizations
+    const workbenchConfig = vscode.workspace.getConfiguration('workbench');
+    const currentCustomizations = workbenchConfig.get('colorCustomizations') || {};
+    
+    // Merge with existing customizations, but prioritize our accent colors
+    const updatedCustomizations = {
+        ...currentCustomizations,
+        ...cssOverrides
+    };
+    
+    // Apply the customizations
+    workbenchConfig.update('colorCustomizations', updatedCustomizations, vscode.ConfigurationTarget.Global);
+}
+
+/**
+ * Get contrasting color (white or black) for better readability
+ */
+function getContrastColor(hexColor) {
+    // Remove # if present
+    hexColor = hexColor.replace('#', '');
+    
+    // Convert to RGB
+    const r = parseInt(hexColor.substr(0, 2), 16);
+    const g = parseInt(hexColor.substr(2, 2), 16);
+    const b = parseInt(hexColor.substr(4, 2), 16);
+    
+    // Calculate luminance
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    
+    // Return black for light colors, white for dark colors
+    return luminance > 0.5 ? '#000000' : '#FFFFFF';
+}
+
+/**
+ * Add alpha transparency to hex color
+ */
+function addAlpha(hexColor, alpha) {
+    // Remove # if present
+    hexColor = hexColor.replace('#', '');
+    
+    // Convert to RGB
+    const r = parseInt(hexColor.substr(0, 2), 16);
+    const g = parseInt(hexColor.substr(2, 2), 16);
+    const b = parseInt(hexColor.substr(4, 2), 16);
+    
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+/**
+ * Adjust brightness of hex color
+ */
+function adjustBrightness(hexColor, factor) {
+    // Remove # if present
+    hexColor = hexColor.replace('#', '');
+    
+    // Convert to RGB
+    let r = parseInt(hexColor.substr(0, 2), 16);
+    let g = parseInt(hexColor.substr(2, 2), 16);
+    let b = parseInt(hexColor.substr(4, 2), 16);
+    
+    // Adjust brightness
+    r = Math.min(255, Math.max(0, Math.round(r + (255 - r) * factor)));
+    g = Math.min(255, Math.max(0, Math.round(g + (255 - g) * factor)));
+    b = Math.min(255, Math.max(0, Math.round(b + (255 - b) * factor)));
+    
+    // Convert back to hex
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+}
+
+/**
+ * Extension deactivation
+ */
 function deactivate() {
     if (statusBarItem) {
         statusBarItem.dispose();

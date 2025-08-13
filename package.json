@@ -1,8 +1,8 @@
 {
   "name": "nishuuu-themes",
   "displayName": "Nishuuu Themes",
-  "description": "Beautiful dark themes with 4 primary color schemes (Teal, Ocean, Palenight, Graphene), dynamic accent colors with color dot previews, folder icon sync, and enhanced styling. Includes both Tara and Vira theme collections - 32 total themes.",
-  "version": "2.1.3",
+  "description": "Beautiful dark themes based on Vira with 6 primary colors (Carbon, Deepforest, Graphene, Ocean, Palenight, Teal), dynamic accent colors with icon previews, and status bar integration. 12 clean, focused themes.",
+  "version": "3.0.0",
   "icon": "icon.png",
   "publisher": "taraldinn",
   "author": {
@@ -18,40 +18,33 @@
     "type": "git",
     "url": "https://github.com/taraldinn/nishuuu-themes.git"
   },
-  "engines": {
-    "vscode": "^1.74.0"
+  "bugs": {
+    "url": "https://github.com/taraldinn/nishuuu-themes/issues"
   },
+  "homepage": "https://github.com/taraldinn/nishuuu-themes#readme",
+  "keywords": [
+    "theme",
+    "dark",
+    "vira",
+    "tara",
+    "accent",
+    "color",
+    "dynamic",
+    "icon",
+    "status bar",
+    "ui",
+    "syntax"
+  ],
   "categories": [
     "Themes"
   ],
-  "keywords": [
-    "theme",
-    "dark theme",
-    "ui",
-    "icons",
-    "file icons",
-    "folder icons",
-    "syntax highlighting",
-    "accent color",
-    "customizable",
-    "italic",
-    "bold",
-    "font styling",
-    "tara",
-    "nishuuu",
-    "carbon",
-    "graphene",
-    "ocean",
-    "teal",
-    "palenight",
-    "deepforest",
-    "webstrom",
-    "custom theme"
-  ],
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "main": "./src/extension.js",
   "activationEvents": [
     "onStartupFinished"
   ],
-  "main": "./src/extension.js",
   "contributes": {
     "configuration": {
       "title": "Nishuuu Themes",
@@ -59,34 +52,38 @@
         "nishuuu.accent": {
           "type": "string",
           "default": "teal",
-          "description": "Changes the accent color of the theme",
+          "description": "Select accent color for the theme",
           "enum": [
             "teal",
-            "ocean", 
-            "palenight",
-            "graphene",
-            "blue",
+            "vira", 
             "cyan",
-            "lime",
+            "blue",
+            "indigo",
             "purple",
-            "orange",
             "pink",
+            "tomato",
+            "orange",
             "yellow",
+            "acid-lime",
+            "lime",
+            "bright-teal",
             "white"
           ],
           "enumDescriptions": [
-            "🟢 Teal - vibrant teal accent (#80CBC4)",
-            "🔵 Ocean - deep blue accent (#6EBAD7)", 
-            "🟣 Palenight - purple accent (#A178C4)",
-            "⚪ Graphene - clean blue accent (#6A90D0)",
-            "🔷 Blue - classic blue accent (#5393FF)",
-            "🟦 Cyan - pure cyan blue (#64FFDA)",
-            "🟢 Lime - fresh lime green (#C6FF00)",
-            "🟣 Purple - rich purple accent (#B54DFF)",
-            "🟠 Orange - bright orange accent (#FF7042)",
-            "🩷 Pink - vibrant pink accent (#FF669E)",
-            "🟡 Yellow - golden yellow accent (#FFCF3D)",
-            "⚪ White - clean white accent (#FFFFFF)"
+            "$(circle-filled) Teal - vibrant teal accent (#80CBC4)",
+            "$(circle-filled) Vira - signature vira color (#6C63FF)", 
+            "$(circle-filled) Cyan - pure cyan blue (#64FFDA)",
+            "$(circle-filled) Blue - classic blue accent (#5393FF)",
+            "$(circle-filled) Indigo - deep indigo (#3F51B5)",
+            "$(circle-filled) Purple - rich purple accent (#B54DFF)",
+            "$(circle-filled) Pink - vibrant pink accent (#FF669E)",
+            "$(circle-filled) Tomato - bright tomato red (#FF6347)",
+            "$(circle-filled) Orange - bright orange accent (#FF7042)",
+            "$(circle-filled) Yellow - golden yellow accent (#FFCF3D)",
+            "$(circle-filled) Acid Lime - electric lime (#C6FF00)",
+            "$(circle-filled) Lime - fresh lime green (#32CD32)",
+            "$(circle-filled) Bright Teal - electric teal (#1DE9B6)",
+            "$(circle-filled) White - clean white accent (#FFFFFF)"
           ]
         },
         "nishuuu.customAccent": {
@@ -94,24 +91,6 @@
           "default": "",
           "description": "Use a custom accent color (hex format like #80CBC4). Overrides the accent setting when provided.",
           "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
-        },
-        "nishuuu.outlinedIcons": {
-          "type": "boolean",
-          "default": false,
-          "description": "Use outlined folder icons instead of filled ones"
-        },
-        "nishuuu.tabIndicator": {
-          "type": "string",
-          "default": "none",
-          "description": "Style of the active tab indicator",
-          "enum": [
-            "none",
-            "fill"
-          ],
-          "enumDescriptions": [
-            "None - no visual indicator (clean look)",
-            "Fill - subtle background color for active tab"
-          ]
         }
       }
     },
@@ -120,28 +99,38 @@
         "command": "nishuuu.selectAccentColor",
         "title": "Select Accent Color",
         "category": "Nishuuu Themes"
-      },
-      {
-        "command": "nishuuu.resetAccentColor",
-        "title": "Reset Accent Color",
-        "category": "Nishuuu Themes"
-      },
-      {
-        "command": "nishuuu.toggleOutlinedIcons",
-        "title": "Toggle Outlined Icons",
-        "category": "Nishuuu Themes"
       }
     ],
     "themes": [
       {
-        "label": "Tara Teal",
+        "label": "Tara Carbon",
         "uiTheme": "vs-dark",
-        "path": "./themes/tara-teal.json"
+        "path": "./themes/tara-carbon.json"
       },
       {
-        "label": "Tara Teal High Contrast",
+        "label": "Tara Carbon High Contrast",
         "uiTheme": "vs-dark",
-        "path": "./themes/tara-teal-high-contrast.json"
+        "path": "./themes/tara-carbon-high-contrast.json"
+      },
+      {
+        "label": "Tara Deepforest",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-deepforest.json"
+      },
+      {
+        "label": "Tara Deepforest High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-deepforest-high-contrast.json"
+      },
+      {
+        "label": "Tara Graphene",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-graphene.json"
+      },
+      {
+        "label": "Tara Graphene High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-graphene-high-contrast.json"
       },
       {
         "label": "Tara Ocean",
@@ -164,141 +153,31 @@
         "path": "./themes/tara-palenight-high-contrast.json"
       },
       {
-        "label": "Tara Graphene",
+        "label": "Tara Teal",
         "uiTheme": "vs-dark",
-        "path": "./themes/tara-graphene.json"
+        "path": "./themes/tara-teal.json"
       },
       {
-        "label": "Tara Graphene High Contrast",
+        "label": "Tara Teal High Contrast",
         "uiTheme": "vs-dark",
-        "path": "./themes/tara-graphene-high-contrast.json"
-      },
-      {
-        "label": "Vira Carbon",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-carbon.json"
-      },
-      {
-        "label": "Vira Carbon High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-carbon-high-contrast.json"
-      },
-      {
-        "label": "Vira Deepforest",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-deepforest.json"
-      },
-      {
-        "label": "Vira Deepforest High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-deepforest-high-contrast.json"
-      },
-      {
-        "label": "Vira Graphene",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-graphene.json"
-      },
-      {
-        "label": "Vira Graphene High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-graphene-high-contrast.json"
-      },
-      {
-        "label": "Vira Ocean",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-ocean.json"
-      },
-      {
-        "label": "Vira Ocean High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-ocean-high-contrast.json"
-      },
-      {
-        "label": "Vira Palenight",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-palenight.json"
-      },
-      {
-        "label": "Vira Palenight High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-palenight-high-contrast.json"
-      },
-      {
-        "label": "Vira Teal",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-teal.json"
-      },
-      {
-        "label": "Vira Teal High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/vira-teal-high-contrast.json"
-      },
-      {
-        "label": "Vira Theme Carbon",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Carbon.json"
-      },
-      {
-        "label": "Vira Theme Carbon High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Carbon-High-Contrast.json"
-      },
-      {
-        "label": "Vira Theme Deepforest",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Deepforest.json"
-      },
-      {
-        "label": "Vira Theme Deepforest High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Deepforest-High-Contrast.json"
-      },
-      {
-        "label": "Vira Theme Graphene",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Graphene.json"
-      },
-      {
-        "label": "Vira Theme Graphene High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Graphene-High-Contrast.json"
-      },
-      {
-        "label": "Vira Theme Ocean",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Ocean.json"
-      },
-      {
-        "label": "Vira Theme Ocean High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Ocean-High-Contrast.json"
-      },
-      {
-        "label": "Vira Theme Palenight",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Palenight.json"
-      },
-      {
-        "label": "Vira Theme Palenight High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Palenight-High-Contrast.json"
-      },
-      {
-        "label": "Vira Theme Teal",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Teal.json"
-      },
-      {
-        "label": "Vira Theme Teal High Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Vira-Theme-Teal-High-Contrast.json"
+        "path": "./themes/tara-teal-high-contrast.json"
       }
     ],
     "iconThemes": [
       {
-        "id": "tara-icons-teal",
-        "label": "Tara Icons Teal",
-        "path": "./themes/tara-icons-teal.json"
+        "id": "tara-icons-carbon",
+        "label": "Tara Icons Carbon",
+        "path": "./themes/tara-icons-carbon.json"
+      },
+      {
+        "id": "tara-icons-deepforest",
+        "label": "Tara Icons Deepforest",
+        "path": "./themes/tara-icons-deepforest.json"
+      },
+      {
+        "id": "tara-icons-graphene",
+        "label": "Tara Icons Graphene",
+        "path": "./themes/tara-icons-graphene.json"
       },
       {
         "id": "tara-icons-ocean",
@@ -311,44 +190,9 @@
         "path": "./themes/tara-icons-palenight.json"
       },
       {
-        "id": "tara-icons-graphene",
-        "label": "Tara Icons Graphene",
-        "path": "./themes/tara-icons-graphene.json"
-      },
-      {
-        "id": "tara-icons-dynamic",
-        "label": "Tara Icons Dynamic (Auto-generated)",
-        "path": "./themes/tara-icons-dynamic.json"
-      },
-      {
-        "id": "vira-icons-carbon",
-        "label": "Vira Icons Carbon",
-        "path": "./themes/Vira-Icons-Carbon.json"
-      },
-      {
-        "id": "vira-icons-deepforest",
-        "label": "Vira Icons Deepforest",
-        "path": "./themes/Vira-Icons-Deepforest.json"
-      },
-      {
-        "id": "vira-icons-graphene",
-        "label": "Vira Icons Graphene",
-        "path": "./themes/Vira-Icons-Graphene.json"
-      },
-      {
-        "id": "vira-icons-ocean",
-        "label": "Vira Icons Ocean",
-        "path": "./themes/Vira-Icons-Ocean.json"
-      },
-      {
-        "id": "vira-icons-palenight",
-        "label": "Vira Icons Palenight",
-        "path": "./themes/Vira-Icons-Palenight.json"
-      },
-      {
-        "id": "vira-icons-teal",
-        "label": "Vira Icons Teal",
-        "path": "./themes/Vira-Icons-Teal.json"
+        "id": "tara-icons-teal",
+        "label": "Tara Icons Teal",
+        "path": "./themes/tara-icons-teal.json"
       }
     ]
   },

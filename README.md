@@ -1,229 +1,86 @@
-# Nishuuu Themes
+# Tara Themes 🎨
 
-🎨 **A streamlined VS Code theme extension** featuring **4 primary color themes** with **dynamic accent colors**, **color previews**, **synchronized icon themes**, and **enhanced styling** for modern development.
+Beautiful dark themes with dynamic accent colors and clean UI design. Based on popular color palettes with enhanced customization options.
 
-## 📊 **Overview**
-
-### 🌟 **What You Get**
-- **32 Total Themes** (Tara & Vira collections)
-  - **Tara Collection**: 8 themes (4 primary × 2 variants each)
-  - **Vira Collection**: 24 themes (multiple variants of each primary color)
-- **10 Icon Themes** (Tara + Vira icon sets)
-- **12 Accent Colors** with visual color dot previews and hex codes
-- **Enhanced Color Picker** with native VS Code circle icons and detailed descriptions
-- **Dynamic folder icon colors** that sync with your accent
-- **Status bar integration** for quick theme customization
-- **Comprehensive syntax highlighting** for 50+ programming languages
-- **Terminal color theming** with full ANSI support
-
-### 🎯 **Perfect For**
-- **Modern JavaScript/TypeScript** development
-- **React, Vue, Angular** projects
-- **Python, Go, Rust** and other languages
-- **Developers who value** clean, focused themes
-- **Teams seeking** consistent visual styling
-- **Anyone wanting** a premium, streamlined theme experience
+![Tara Themes](https://img.shields.io/visual-studio-marketplace/v/taraldinn.nishuuu-themes?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Downloads](https://img.shields.io/visual-studio-marketplace/d/taraldinn.nishuuu-themes?style=for-the-badge)
+![Rating](https://img.shields.io/visual-studio-marketplace/r/taraldinn.nishuuu-themes?style=for-the-badge)
 
 ## ✨ Features
 
-### 🎨 **Streamlined Theme Collection**
-- **4 Primary Color Themes** - Teal, Ocean, Palenight, Graphene (each with high contrast variant)
-- **WebStrom Dark** - Custom pure black theme with 10-color palette and precise syntax highlighting
-- **4 Icon Themes** - Perfectly matched accent colors for seamless coordination
+- **6 Primary Color Themes**: Carbon, Deepforest, Graphene, Ocean, Palenight, Teal
+- **High Contrast Variants**: Enhanced readability options
+- **Dynamic Accent Colors**: 12+ accent colors with live preview
+- **SVG Icon Integration**: Visual accent color selection
+- **Status Bar Integration**: Real-time accent color display
+- **Clean Tab Design**: Minimal, focused interface
+- **Icon Themes**: Matching file and folder icons
 
-### 🌈 **Enhanced Color Selection**
-- **Visual Color Previews** with real color dot indicators and hex codes
-- **Primary Theme Colors** clearly marked and prioritized
-- **12 Curated Accent Colors** including all 4 primary theme colors
-- **Real-time Preview** of hex values in dropdown (e.g., `● Teal #80CBC4`)
-- **Smart Icon Mapping** automatically syncs folder colors
-- **Dynamic Accent Colors** - Change accent colors on the fly with 24 options
-- **Custom Accent Support** - Use any hex color as your accent
-- **Status Bar Integration** - Quick accent color selector in status bar
-- **Folder Icon Sync** - Folder colors automatically match your accent
+## 🎯 Theme Variants
 
-### 🌈 **Available Themes**
+### Dark Themes
+- **Tara-Theme-Carbon** - Deep charcoal with teal accents
+- **Tara-Theme-Deepforest** - Rich forest green palette
+- **Tara-Theme-Graphene** - Modern graphite design
+- **Tara-Theme-Ocean** - Calming blue depths
+- **Tara-Theme-Palenight** - Soft purple nights
+- **Tara-Theme-Teal** - Fresh teal experience
 
-#### Color Themes
-**Tara Collection (8 themes):**
-- **Tara Carbon** - Elegant gray accent
-- **Tara Deepforest** - Natural green accent  
-- **Tara Graphene** - Clean blue accent
-- **Tara Ocean** - Deep blue accent
-- **Tara Palenight** - Purple accent
-- **Tara Teal** - Vibrant teal accent
-
-**Vira Collection (24 themes):**
-- **Vira Carbon** - Multiple carbon-themed variants
-- **Vira Deepforest** - Nature-inspired variations  
-- **Vira Graphene** - Sleek graphene variants
-- **Vira Ocean** - Ocean-themed options
-- **Vira Palenight** - Purple-tinted varieties
-- **Vira Teal** - Teal-focused themes
-
-Each theme includes:
-- **Regular variant** - Standard styling
-- **High Contrast variant** - Better accessibility
-- **Italic variant** - Enhanced with italic/bold font styling
-
-#### 🎯 **Italic/Bold Enhanced Features**
-- **Keywords** in **bold** (`if`, `for`, `while`, `class`, `function`)
-- **Function names** in *italic* (better readability)
-- **Class names** in ***bold italic*** (prominent highlighting)
-- **Variables/parameters** in *italic* (subtle emphasis)
-- **Constants** in **bold** (clear distinction)
-- **Import statements** in *italic* (visual separation)
-- **Type annotations** in **bold** (TypeScript/Flow)
-- **Decorators** in *italic* (Python/TypeScript)
-- **JSX/TSX components** in **bold** (React development)
-- **Object properties** in *italic* (structured data)
-
-#### Icon Themes
-**Tara Collection:**
-- **Tara Icons Carbon** - Gray accented icons
-- **Tara Icons Deepforest** - Green accented icons
-- **Tara Icons Graphene** - Blue accented icons  
-- **Tara Icons Ocean** - Ocean blue accented icons
-- **Tara Icons Palenight** - Purple accented icons
-- **Tara Icons Teal** - Teal accented icons
-
-**Vira Collection:**
-- **Vira Icons Carbon** - Carbon-themed icons
-- **Vira Icons Deepforest** - Forest-themed icons
-- **Vira Icons Graphene** - Graphene-styled icons
-- **Vira Icons Ocean** - Ocean-styled icons
-- **Vira Icons Palenight** - Palenight-themed icons
-- **Vira Icons Teal** - Teal-styled icons
-
-## 🚀 Quick Start
-
-### Installation
-1. Open VS Code
-2. Go to Extensions (`Ctrl+Shift+X`)
-3. Search for "Nishuuu Themes"
-4. Click **Install**
-
-### Activation
-1. Open Command Palette (`Ctrl+Shift+P`)
-2. Type "Preferences: Color Theme"
-3. Select any **Tara** theme (try the **Italic** variants for enhanced styling!)
-4. For icons: "Preferences: File Icon Theme" → Select matching **Tara Icons**
-
-## 🎯 Accent Color System
-
-### Using the Status Bar
-- Click the **$(paintcan) Accent** button in your status bar
-- Choose from 6 preset colors or enter a custom hex color
-- Icon theme automatically updates to match (for preset colors)
-
-### Available Accent Colors
-- **Carbon** (`#737374`) - Elegant gray
-- **Deepforest** (`#a3c679`) - Natural green
-- **Graphene** (`#6a90d0`) - Clean blue
-- **Ocean** (`#6ebad7`) - Deep blue  
-- **Palenight** (`#a178c4`) - Purple
-- **Teal** (`#80CBC4`) - Vibrant teal
-
-### Configuration Options
-
-```json
-{
-  "nishuuu.accent": "teal",
-  "nishuuu.customAccent": "",
-  "nishuuu.outlinedIcons": false,
-  "nishuuu.tabIndicator": "border"
-}
-```
-
-#### Settings Explained
-
-- **`nishuuu.accent`** - Preset accent color (`carbon`, `deepforest`, `graphene`, `ocean`, `palenight`, `teal`)
-- **`nishuuu.customAccent`** - Custom hex color (e.g., `#ff5722`) - overrides accent setting
-- **`nishuuu.outlinedIcons`** - Use outlined folder icons instead of filled
-- **`nishuuu.tabIndicator`** - Active tab indicator style (`border`, `fill`, `underline`)
-
-## 🛠️ Commands
-
-Access these via Command Palette (`Ctrl+Shift+P`):
-
-- **`Nishuuu Themes: Select Accent Color`** - Open accent color picker
-- **`Nishuuu Themes: Reset Accent Color`** - Reset to default teal
-- **`Nishuuu Themes: Toggle Outlined Icons`** - Switch icon outline style
-
-## 🎨 What Gets Accent Color
-
-The accent color system affects these elements:
-- **Activity Bar** - Active items and badges
-- **Status Bar** - Remote items and indicators  
-- **Tabs** - Active tab borders/backgrounds
-- **Editor** - Cursor, find matches, brackets
-- **Lists** - Selections and highlights
-- **Buttons** - Primary and extension buttons
-- **Links** - Text and notification links
-- **Panels** - Active panel titles
-- **Command Center** - Active items
-- **Notebooks** - Focused cell borders
-- **File Icons** - Folder accent colors (preset colors only)
-
-## 📸 Screenshots
-
-### Tara Carbon Theme
-![Tara Carbon](https://via.placeholder.com/800x450/0A0A0A/737374?text=Tara+Carbon+Theme)
-
-### Tara Teal Theme  
-![Tara Teal](https://via.placeholder.com/800x450/0A0A0A/80CBC4?text=Tara+Teal+Theme)
+### High Contrast Variants
+- All themes include high contrast versions for enhanced accessibility
 
 ### Icon Themes
-![Icon Themes](https://via.placeholder.com/800x450/0A0A0A/ffffff?text=Beautiful+File+Icons)
+- **Tara-Icons-Carbon** through **Tara-Icons-Teal**
+- Consistent design language across all variants
 
-## 🎨 Syntax Highlighting
+## 🚀 Installation
 
-Comprehensive syntax highlighting for:
-- **JavaScript/TypeScript** - React, Vue, Angular
-- **Python** - Full syntax support
-- **Web Technologies** - HTML, CSS, SCSS, JSON
-- **Backend** - PHP, Java, C#, Go, Rust
-- **Data** - SQL, YAML, XML, Markdown
-- **Configuration** - Docker, Nginx, Apache
-- **And many more...**
+1. Open VS Code Extensions (`Ctrl+Shift+X`)
+2. Search for "Tara Themes" or "nishuuu-themes"
+3. Click Install
+4. Go to `File > Preferences > Color Theme`
+5. Select your preferred Tara theme
 
-## 🖥️ Terminal Colors
+## 🎨 Accent Colors
 
-Each theme includes optimized terminal color schemes:
-- **ANSI Colors** - Full 16-color support
-- **Cursor Colors** - Accent-coordinated
-- **Selection** - Themed backgrounds
-- **Integration** - Works with all popular terminals
+Choose from 12 beautiful accent colors:
+- **Teal** (Default) - Fresh and modern
+- **Blue** - Classic and professional
+- **Purple** - Creative and elegant
+- **Pink** - Warm and inviting
+- **Orange** - Energetic and bold
+- **Yellow** - Bright and cheerful
+- **Lime** - Natural and vibrant
+- **Cyan** - Cool and refreshing
+- **Indigo** - Deep and sophisticated
+- **White** - Clean and minimal
+- **Bright Teal** - Enhanced vibrancy
+- **Tomato** - Warm and distinctive
 
-## 🤝 Contributing
+Access the accent color dropdown from the status bar for instant theme customization.
 
-We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
+## ⚙️ Configuration
 
-### Development Setup
-```bash
-git clone https://github.com/nishuuu/nishuuu-themes.git
-cd nishuuu-themes
-npm install
-code .
-```
+The extension automatically applies accent colors across:
+- Activity bar highlights
+- Button backgrounds
+- Status bar elements
+- Tab borders
+- Selection highlights
+- And much more!
 
-## 📄 License
+## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - feel free to use and modify as needed.
 
-## 🙏 Acknowledgments
+## 🙏 Credits
 
-- Inspired by the original **Vira Theme** by [Tyresius92](https://github.com/Tyresius92)
-- Icons based on **Material Design** principles
-- Color science based on **accessibility guidelines**
+Based on the beautiful Vira theme with extensive enhancements and customizations.
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/nishuuu/nishuuu-themes/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/nishuuu/nishuuu-themes/discussions)
+Found an issue? [Report it here](https://github.com/taraldinn/nishuuu-themes/issues)
 
 ---
 
-**Enjoy coding with Nishuuu Themes!** ✨
-
-Made with ❤️ by [Nishuuu](https://github.com/nishuuu)
+**Enjoy coding with Tara Themes!** 🚀

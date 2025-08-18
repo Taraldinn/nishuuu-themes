@@ -2,6 +2,23 @@
 
 All notable changes to the Tara Themes extension will be documented in this file.
 
+## [3.0.5] - 2025-08-18
+
+### Changed
+- **Complete Tab Border Removal**: Implemented clean, minimal tab design as requested
+  - Removed all tab borders (top, left, right, and separators between tabs)
+  - Only active tabs now show a bottom border (solid teal #80CBC4)
+  - Inactive and unfocused tabs have no visible borders for a completely clean look
+  - Applied across all 12 theme variants for consistent minimal design
+
+## [3.0.3] - 2025-08-18
+
+### Changed
+- **Tab Border Enhancement**: Improved tab visual design for better user experience
+  - Removed top border from tabs (`tab.activeBorderTop` and `tab.unfocusedActiveBorderTop` set to transparent)
+  - Enhanced bottom border visibility with solid teal for active tabs and semi-transparent for unfocused tabs
+  - Cleaner, more modern tab appearance across all 12 theme variants
+
 ## [3.0.2] - 2025-08-18
 
 ### Changed

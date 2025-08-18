@@ -2,6 +2,15 @@
 
 All notable changes to the Tara Themes extension will be documented in this file.
 
+## [3.0.6] - 2025-08-18
+
+### Fixed
+- **Tab Border Debug Fix**: Added comprehensive tab border tokens to ensure complete border removal
+  - Added `tab.hoverBorder`, `tab.unfocusedHoverBorder`, and `tab.lastPinnedBorder` tokens
+  - Set all additional tab border tokens to transparent to prevent any remaining borders
+  - Ensured hover states also have no borders for consistent clean appearance
+  - Applied across all 12 theme variants for complete tab border elimination
+
 ## [3.0.5] - 2025-08-18
 
 ### Changed

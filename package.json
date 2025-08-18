@@ -2,7 +2,7 @@
   "name": "nishuuu-themes",
   "displayName": "Nishuuu Themes",
   "description": "Beautiful dark themes based on Vira with 6 primary colors (Carbon, Deepforest, Graphene, Ocean, Palenight, Teal), dynamic accent colors with icon previews, and status bar integration. 12 clean, focused themes.",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "icon": "icon.png",
   "publisher": "taraldinn",
   "author": {
@@ -55,7 +55,7 @@
           "description": "Select accent color for the theme",
           "enum": [
             "teal",
-            "vira", 
+            "vira",
             "cyan",
             "blue",
             "indigo",
@@ -71,7 +71,7 @@
           ],
           "enumDescriptions": [
             "$(circle-filled) Teal - vibrant teal accent (#80CBC4)",
-            "$(circle-filled) Vira - signature vira color (#6C63FF)", 
+            "$(circle-filled) Vira - signature vira color (#6C63FF)",
             "$(circle-filled) Cyan - pure cyan blue (#64FFDA)",
             "$(circle-filled) Blue - classic blue accent (#5393FF)",
             "$(circle-filled) Indigo - deep indigo (#3F51B5)",

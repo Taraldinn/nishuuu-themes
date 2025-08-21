@@ -1,24 +1,41 @@
-.vscode/**
-.git/**
-.github/**
-.gitignore
-.vscodeignore
-**/*.ts
-**/*.map
-.nyc_output
-coverage
-**/*.spec.js
-**/*.test.js
-**/test/**
-**/tests/**
-**/*.sh
-**/scripts/**
-**/docs/**
-node_modules/**
-package-lock.json
-tsconfig.json
-tslint.json
-webpack.config.js
-.eslintrc.json
-**/.DS_Store
+# Development files
+.git/
+.github/
+.vscode/
 *.vsix
+
+# Documentation (keep only essential)
+*.md
+!README.md
+!LICENSE
+!CHANGELOG.md
+
+# Analysis and reference files
+vira-*/
+advanced-*.js
+vira-*.js
+vira-*.json
+
+# Build artifacts
+node_modules/
+package-lock.json
+
+# IDE files
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp

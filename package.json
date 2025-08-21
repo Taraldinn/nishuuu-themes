@@ -1,12 +1,12 @@
 {
   "name": "nishuuu-themes",
   "displayName": "Nishuuu Themes",
-  "description": "Beautiful dark themes based on Vira with 6 primary colors (Carbon, Deepforest, Graphene, Ocean, Palenight, Teal), dynamic accent colors with icon previews, and status bar integration. 12 clean, focused themes.",
-  "version": "3.0.6",
+  "description": "Beautiful dark themes based on Vira with dynamic accent colors and comprehensive UI integration",
+  "version": "3.1.0-vira-style",
   "icon": "icon.png",
   "publisher": "taraldinn",
   "author": {
-    "name": "Nishuuu",
+    "name": "Taraldinn",
     "email": "your-email@example.com"
   },
   "license": "MIT",
@@ -39,66 +39,110 @@
     "Themes"
   ],
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.95.0"
   },
-  "main": "./src/extension.js",
+  "main": "./src/index.js",
   "activationEvents": [
     "onStartupFinished"
   ],
   "contributes": {
     "configuration": {
+      "type": "object",
       "title": "Nishuuu Themes",
       "properties": {
-        "nishuuu.accent": {
+        "nishuuuTheme.accent": {
+          "order": 1,
           "type": "string",
-          "default": "teal",
-          "description": "Select accent color for the theme",
+          "default": "Teal",
           "enum": [
-            "teal",
-            "vira",
-            "cyan",
-            "blue",
-            "indigo",
-            "purple",
-            "pink",
-            "tomato",
-            "orange",
-            "yellow",
-            "acid-lime",
-            "lime",
-            "bright-teal",
-            "white"
+            "Lime",
+            "Blue",
+            "Cyan",
+            "Bright Teal",
+            "Indigo",
+            "Teal",
+            "Purple",
+            "Neon Lime",
+            "Vira",
+            "Tomato",
+            "Pink",
+            "Orange",
+            "Yellow",
+            "White"
           ],
-          "enumDescriptions": [
-            "$(circle-filled) Teal - vibrant teal accent (#80CBC4)",
-            "$(circle-filled) Vira - signature vira color (#6C63FF)",
-            "$(circle-filled) Cyan - pure cyan blue (#64FFDA)",
-            "$(circle-filled) Blue - classic blue accent (#5393FF)",
-            "$(circle-filled) Indigo - deep indigo (#3F51B5)",
-            "$(circle-filled) Purple - rich purple accent (#B54DFF)",
-            "$(circle-filled) Pink - vibrant pink accent (#FF669E)",
-            "$(circle-filled) Tomato - bright tomato red (#FF6347)",
-            "$(circle-filled) Orange - bright orange accent (#FF7042)",
-            "$(circle-filled) Yellow - golden yellow accent (#FFCF3D)",
-            "$(circle-filled) Acid Lime - electric lime (#C6FF00)",
-            "$(circle-filled) Lime - fresh lime green (#32CD32)",
-            "$(circle-filled) Bright Teal - electric teal (#1DE9B6)",
-            "$(circle-filled) White - clean white accent (#FFFFFF)"
-          ]
+          "description": "Set the accent color used across the interface and icons.",
+          "scope": "window"
         },
-        "nishuuu.customAccent": {
+        "nishuuuTheme.customAccent": {
+          "order": 2,
           "type": "string",
-          "default": "",
-          "description": "Use a custom accent color (hex format like #80CBC4). Overrides the accent setting when provided.",
-          "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+          "markdownDescription": "The custom accent **will override** the accent color. Run clear accent command or manually remove the value.",
+          "scope": "window",
+          "pattern": "^$|^#([A-Fa-f0-9]{6})$",
+          "patternErrorMessage": "Invalid color format. Enter a valid 6 digits hex color."
+        },
+        "nishuuuTheme.useOutlinedIcons": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Use outlined folder icons.",
+          "scope": "window"
+        },
+        "nishuuuTheme.useTopTabIndicator": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Put the current tab indicator at the top instead of the bottom.",
+          "scope": "window"
+        },
+        "nishuuuTheme.showBorders": {
+          "type": "boolean",
+          "default": false,
+          "scope": "window",
+          "markdownDescription": "Show borders in some area of the editor"
+        },
+        "nishuuuTheme.contrastedTabs": {
+          "type": "boolean",
+          "default": false,
+          "scope": "window",
+          "markdownDescription": "Add more contrast to tabs by using a different background for the tabs bar"
+        },
+        "nishuuuTheme.solidLineHighlight": {
+          "type": "boolean",
+          "default": false,
+          "scope": "window",
+          "markdownDescription": "Render a solid background highlight for the active line instead of a border"
+        },
+        "nishuuuTheme.hidesExplorerArrows": {
+          "type": "boolean",
+          "default": true,
+          "scope": "window",
+          "markdownDescription": "Hide arrow icons in the file explorer."
+        },
+        "nishuuuTheme.hidesShadows": {
+          "type": "boolean",
+          "default": false,
+          "scope": "window",
+          "markdownDescription": "Hide shadows across the interface for a completely flat look."
         }
       }
     },
     "commands": [
       {
-        "command": "nishuuu.selectAccentColor",
-        "title": "Select Accent Color",
-        "category": "Nishuuu Themes"
+        "command": "nishuuuTheme.switchAccent",
+        "title": "Switch Accent Color",
+        "category": "Nishuuu Themes",
+        "icon": "$(paintbrush)"
+      },
+      {
+        "command": "nishuuuTheme.clearAccent",
+        "title": "Clear Accent Color",
+        "category": "Nishuuu Themes",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "nishuuuTheme.testIcons",
+        "title": "Test Folder Icons",
+        "category": "Nishuuu Themes",
+        "icon": "$(folder-opened)"
       }
     ],
     "themes": [
@@ -197,12 +241,9 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "echo \"No compilation needed\"",
-    "package": "vsce package",
-    "publish": "vsce publish"
+    "package": "vsce package"
   },
   "devDependencies": {
-    "@types/vscode": "^1.74.0",
-    "@vscode/vsce": "^3.2.0"
+    "@vscode/vsce": "^3.6.0"
   }
 }

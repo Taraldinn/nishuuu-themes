@@ -2,6 +2,35 @@
 
 All notable changes to the Tara Themes extension will be documented in this file.
 
+## [3.1.0-beta.1] - 2025-08-18
+
+### Added
+- **🎨 Dynamic Accent Color Switcher**: New feature to dynamically change accent colors
+  - Status bar item on the right side showing current accent color
+  - Click to open accent color picker with 14 predefined colors
+  - Live UI updates without requiring theme reload
+  - Persistent accent color selection across VS Code sessions
+  
+### Enhanced
+- **Comprehensive UI Theming**: Accent color now affects:
+  - Tab bottom borders (only active tabs)
+  - All buttons with proper contrast and transparency
+  - File & folder icon colors  
+  - Product icon active colors
+  - Active text colors with link styling
+  - Extension page buttons with 50-100% transparency
+  - Explorer file names when active/selected
+  - Focus borders and selection highlights
+  - Progress bars, scrollbars, and badges
+  
+### Updated
+- **Color Palette**: Updated to match exact specifications:
+  - Lime (#39EA5F), Blue (#5393FF), Cyan (#57D7FF)
+  - Bright Teal (#64FFDA), Indigo (#758AFF), Teal (#80CBC4)
+  - Purple (#B54DFF), Acid Lime (#C6FF00), Vira (#E9A581)
+  - Tomato (#F85044), Pink (#FF669E), Orange (#FF7042)
+  - Yellow (#FFCF3D), White (#FFFFFF)
+
 ## [3.0.6] - 2025-08-18
 
 ### Fixed

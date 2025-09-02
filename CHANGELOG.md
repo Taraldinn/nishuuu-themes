@@ -1,6 +1,37 @@
 # Changelog
 
-All notable changes to the Tara Themes extension will be documented in this file.
+## [4.0.0] - 2024-09-02
+
+### 🎉 Complete Rebuild
+- **NEW**: Clean, minimal codebase architecture
+- **NEW**: Dynamic accent color system with real-time updates
+- **NEW**: Status bar integration with color sync
+- **NEW**: Simplified dropdown showing only icon + color name
+- **IMPROVED**: Lightweight extension with optimized performance
+- **IMPROVED**: Better error handling and user experience
+
+### ✨ Features
+- 14 built-in accent colors + custom hex color support
+- Status bar background syncs with accent color
+- Instant color switching without VS Code restart
+- Clean command palette integration
+- Settings-based configuration
+
+### 🎨 Themes
+- 6 Tara themes (Carbon, Deep Forest, Graphene, Ocean, Palenight, Teal)
+- High contrast variants for all themes
+- 6 matching icon themes
+- Full accent color customization for all themes
+
+### 🔧 Technical
+- Reduced extension size by removing unnecessary files
+- Streamlined codebase for better maintainability
+- Improved VS Code API integration
+- Better configuration management
+
+---
+
+*Previous versions focused on expanding theme variants. v4.0.0 introduces dynamic customization, making infinite theme variations possible with a single, powerful system.*
 
 ## [3.0.0] - 2025-08-13
 

@@ -1,24 +1,32 @@
-.vscode/**
-.git/**
-.github/**
-.gitignore
-.vscodeignore
-**/*.ts
-**/*.map
-.nyc_output
-coverage
-**/*.spec.js
-**/*.test.js
-**/test/**
-**/tests/**
-**/*.sh
-**/scripts/**
+# Git and GitHub
+**/.git/**
+**/.github/**
+**/node_modules/**
+**/.gitignore
+
+# Development files (exclude from package)
+**/package-lock.json
+**/*.vsix
+**/test-*
+**/demo-*
+
+# Non-essential documentation and scripts
 **/docs/**
-node_modules/**
-package-lock.json
-tsconfig.json
-tslint.json
-webpack.config.js
-.eslintrc.json
+**/scripts/ultimate-cleanup.sh
+**/scripts/verify-project.sh
+**/STRUCTURE.md
+**/logo-generator.html
+
+# Temporary and backup files
+**/*~
+**/*.backup
+**/*.old
+**/*.new
+**/tmp-*
 **/.DS_Store
-*.vsix
+**/cleanup.sh
+**/icon-placeholder.txt
+
+# Source backups
+**/src/*.backup
+**/src/*.new

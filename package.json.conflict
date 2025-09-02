@@ -1,0 +1,150 @@
+{
+  "name": "nishuuu-themes",
+  "displayName": "Nishuuu Themes",
+  "description": "Beautiful VS Code themes with dynamic accent colors",
+  "version": "4.0.0",
+  "publisher": "nishuuu",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  },
+  "categories": ["Themes"],
+  "keywords": ["theme", "dark", "accent", "color", "customization"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./src/extension.js",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1E1E1E",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nishuuu/nishuuu-themes"
+  },
+  "bugs": {
+    "url": "https://github.com/nishuuu/nishuuu-themes/issues"
+  },
+  "homepage": "https://github.com/nishuuu/nishuuu-themes#readme",
+  "license": "MIT",
+  "contributes": {
+<<<<<<< HEAD
+    "themes": [
+      { "label": "Tara Carbon", "uiTheme": "vs-dark", "path": "./themes/tara-carbon.json" },
+      { "label": "Tara Carbon High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-carbon-high-contrast.json" },
+      { "label": "Tara Deep Forest", "uiTheme": "vs-dark", "path": "./themes/tara-deepforest.json" },
+      { "label": "Tara Deep Forest High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-deepforest-high-contrast.json" },
+      { "label": "Tara Graphene", "uiTheme": "vs-dark", "path": "./themes/tara-graphene.json" },
+      { "label": "Tara Graphene High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-graphene-high-contrast.json" },
+      { "label": "Tara Ocean", "uiTheme": "vs-dark", "path": "./themes/tara-ocean.json" },
+      { "label": "Tara Ocean High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-ocean-high-contrast.json" },
+      { "label": "Tara Palenight", "uiTheme": "vs-dark", "path": "./themes/tara-palenight.json" },
+      { "label": "Tara Palenight High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-palenight-high-contrast.json" },
+      { "label": "Tara Teal", "uiTheme": "vs-dark", "path": "./themes/tara-teal.json" },
+      { "label": "Tara Teal High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-teal-high-contrast.json" }
+    ],
+    "iconThemes": [
+      { "id": "tara-icons-carbon", "label": "Tara Icons Carbon", "path": "./themes/tara-icons-carbon.json" },
+      { "id": "tara-icons-deepforest", "label": "Tara Icons Deep Forest", "path": "./themes/tara-icons-deepforest.json" },
+      { "id": "tara-icons-graphene", "label": "Tara Icons Graphene", "path": "./themes/tara-icons-graphene.json" },
+      { "id": "tara-icons-ocean", "label": "Tara Icons Ocean", "path": "./themes/tara-icons-ocean.json" },
+      { "id": "tara-icons-palenight", "label": "Tara Icons Palenight", "path": "./themes/tara-icons-palenight.json" },
+      { "id": "tara-icons-teal", "label": "Tara Icons Teal", "path": "./themes/tara-icons-teal.json" }
+    ],
+=======
+    "configuration": {
+      "title": "Nishuuu Themes",
+      "properties": {
+        "nishuuu.accent": {
+          "type": "string",
+          "default": "teal",
+          "description": "Select accent color for the theme",
+          "enum": [
+            "teal",
+            "vira",
+            "cyan",
+            "blue",
+            "indigo",
+            "purple",
+            "pink",
+            "tomato",
+            "orange",
+            "yellow",
+            "acid-lime",
+            "lime",
+            "bright-teal",
+            "white"
+          ],
+          "enumDescriptions": [
+            "$(circle-filled) Teal - vibrant teal accent (#80CBC4)",
+            "$(circle-filled) Vira - signature vira color (#6C63FF)",
+            "$(circle-filled) Cyan - pure cyan blue (#64FFDA)",
+            "$(circle-filled) Blue - classic blue accent (#5393FF)",
+            "$(circle-filled) Indigo - deep indigo (#3F51B5)",
+            "$(circle-filled) Purple - rich purple accent (#B54DFF)",
+            "$(circle-filled) Pink - vibrant pink accent (#FF669E)",
+            "$(circle-filled) Tomato - bright tomato red (#FF6347)",
+            "$(circle-filled) Orange - bright orange accent (#FF7042)",
+            "$(circle-filled) Yellow - golden yellow accent (#FFCF3D)",
+            "$(circle-filled) Acid Lime - electric lime (#C6FF00)",
+            "$(circle-filled) Lime - fresh lime green (#32CD32)",
+            "$(circle-filled) Bright Teal - electric teal (#1DE9B6)",
+            "$(circle-filled) White - clean white accent (#FFFFFF)"
+          ]
+        },
+        "nishuuu.customAccent": {
+          "type": "string",
+          "default": "",
+          "description": "Use a custom accent color (hex format like #80CBC4). Overrides the accent setting when provided.",
+          "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        }
+      }
+    },
+>>>>>>> b3943d794163fb9a5030abc7df78eb2d7fb6e877
+    "commands": [
+      {
+        "command": "nishuuu.selectAccentColor",
+        "title": "Select Accent Color",
+        "category": "Nishuuu"
+      },
+      {
+        "command": "nishuuu.toggleStatusBar",
+        "title": "Toggle Status Bar",
+        "category": "Nishuuu"
+      },
+      {
+        "command": "nishuuu.resetCustomizations",
+        "title": "Reset Color Customizations",
+        "category": "Nishuuu"
+      }
+    ],
+    "configuration": {
+      "title": "Nishuuu Themes",
+      "properties": {
+        "nishuuu.accentColor": {
+          "type": "string",
+          "default": "teal",
+          "enum": ["teal", "vira", "cyan", "blue", "indigo", "purple", "pink", "tomato", "orange", "yellow", "acid-lime", "lime", "bright-teal", "white"],
+          "description": "Choose an accent color for your theme"
+        },
+        "nishuuu.customAccentColor": {
+          "type": "string",
+          "default": "",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Custom hex color (e.g., #80CBC4). Overrides accent color when set."
+        },
+        "nishuuu.enableStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show accent color in status bar"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package",
+    "install": "vsce package && code --install-extension *.vsix"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^2.22.0"
+  }
+}

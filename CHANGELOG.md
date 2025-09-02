@@ -33,52 +33,6 @@
 
 *Previous versions focused on expanding theme variants. v4.0.0 introduces dynamic customization, making infinite theme variations possible with a single, powerful system.*
 
-## [3.0.6] - 2025-08-18
-
-### Fixed
-- **Tab Border Debug Fix**: Added comprehensive tab border tokens to ensure complete border removal
-  - Added `tab.hoverBorder`, `tab.unfocusedHoverBorder`, and `tab.lastPinnedBorder` tokens
-  - Set all additional tab border tokens to transparent to prevent any remaining borders
-  - Ensured hover states also have no borders for consistent clean appearance
-  - Applied across all 12 theme variants for complete tab border elimination
-
-## [3.0.5] - 2025-08-18
-
-### Changed
-- **Complete Tab Border Removal**: Implemented clean, minimal tab design as requested
-  - Removed all tab borders (top, left, right, and separators between tabs)
-  - Only active tabs now show a bottom border (solid teal #80CBC4)
-  - Inactive and unfocused tabs have no visible borders for a completely clean look
-  - Applied across all 12 theme variants for consistent minimal design
-
-## [3.0.3] - 2025-08-18
-
-### Changed
-- **Tab Border Enhancement**: Improved tab visual design for better user experience
-  - Removed top border from tabs (`tab.activeBorderTop` and `tab.unfocusedActiveBorderTop` set to transparent)
-  - Enhanced bottom border visibility with solid teal for active tabs and semi-transparent for unfocused tabs
-  - Cleaner, more modern tab appearance across all 12 theme variants
-
-## [3.0.2] - 2025-08-18
-
-### Changed
-- **Tab Border Enhancement**: Improved tab visual design for better user experience
-  - Removed top border from tabs (`tab.activeBorderTop` and `tab.unfocusedActiveBorderTop` set to transparent)
-  - Enhanced bottom border visibility with solid teal for active tabs and semi-transparent for unfocused tabs
-  - Cleaner, more modern tab appearance across all 12 theme variants
-
-## [3.0.1] - 2025-08-18
-
-### Fixed
-- **Critical Tab Border Fix**: Resolved visual issues with tab borders across all themes
-  - Fixed transparent `tab.activeBorderTop` (now fully visible teal accent)
-  - Fixed invisible `tab.unfocusedActiveBorderTop` (now semi-transparent teal)  
-  - Fixed invisible `tab.border` separators (now subtle but visible)
-  - Fixed background color mismatches between `editorGroupHeader.tabsBackground` and theme backgrounds
-  - Each theme now uses its correct background color for consistent appearance
-- Improved tab visibility and contrast across all 12 theme variants
-- Enhanced visual consistency between active and inactive tabs
-
 ## [3.0.0] - 2025-08-13
 
 ### Added

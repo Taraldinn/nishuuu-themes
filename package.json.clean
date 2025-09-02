@@ -3,7 +3,7 @@
   "displayName": "Nishuuu Themes",
   "description": "Beautiful VS Code themes with dynamic accent colors",
   "version": "4.0.0",
-  "publisher": "Taraldinn",
+  "publisher": "nishuuu",
   "engines": {
     "vscode": "^1.60.0"
   },

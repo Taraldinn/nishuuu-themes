@@ -3,14 +3,42 @@ const fs = require('fs');
 const path = require('path');
 
 const ACCENT_COLORS = {
-    'teal': '#80CBC4', 'vira': '#6C63FF', 'cyan': '#64FFDA', 'blue': '#5393FF',
-    'indigo': '#3F51B5', 'purple': '#B54DFF', 'pink': '#FF669E', 'tomato': '#FF6347',
-    'orange': '#FF7042', 'yellow': '#FFCF3D', 'acid-lime': '#C6FF00', 'lime': '#32CD32',
+    'teal': '#80CBC4', 'vira': '#E9A581', 'cyan': '#57D7FF', 'blue': '#5393FF',
+    'indigo': '#758AFF', 'purple': '#B54DFF', 'pink': '#FF669E', 'tomato': '#F85044',
+    'orange': '#FF7042', 'yellow': '#FFCF3D', 'acid-lime': '#C6FF00', 'lime': '#39EA5F',
     'bright-teal': '#1DE9B6', 'white': '#FFFFFF'
 };
 
 let statusBarItem;
 let extensionContext;
+
+function getColorIcon(colorName) {
+    if (!extensionContext) return undefined;
+    const iconPath = path.join(extensionContext.extensionPath, 'assets', `${colorName}.svg`);
+    return fs.existsSync(iconPath) ? vscode.Uri.file(iconPath) : undefined;
+}
+
+function getStatusBarIcon(colorName) {
+    // Map each color to an appropriate VS Code built-in icon
+    const iconMap = {
+        'teal': '$(symbol-misc)',
+        'vira': '$(flame)', 
+        'cyan': '$(symbol-color)',
+        'blue': '$(primitive-dot)',
+        'indigo': '$(symbol-namespace)',
+        'purple': '$(symbol-enum)',
+        'pink': '$(heart)',
+        'tomato': '$(circle-large)',
+        'orange': '$(symbol-constant)',
+        'yellow': '$(star-full)',
+        'acid-lime': '$(symbol-boolean)',
+        'lime': '$(symbol-property)',
+        'bright-teal': '$(symbol-field)',
+        'white': '$(circle-outline)'
+    };
+    
+    return iconMap[colorName] || '$(symbol-color)';
+}
 
 function activate(context) {
     extensionContext = context;
@@ -43,8 +71,11 @@ function setupConfigurationWatcher(context) {
     context.subscriptions.push(
         vscode.workspace.onDidChangeConfiguration(event => {
             if (event.affectsConfiguration('nishuuu.accentColor') || event.affectsConfiguration('nishuuu.customAccentColor')) {
-                updateStatusBar();
-                applyAccentColor();
+                // Force immediate update with slight delay to ensure settings are saved
+                setTimeout(() => {
+                    updateStatusBar();
+                    applyAccentColor();
+                }, 100);
             }
             if (event.affectsConfiguration('nishuuu.enableStatusBar')) {
                 handleStatusBarToggle();
@@ -63,7 +94,13 @@ function updateStatusBar() {
     const colorName = customColor ? 'Custom' : accentColor.charAt(0).toUpperCase() + accentColor.slice(1).replace('-', ' ');
     const colorValue = customColor || ACCENT_COLORS[accentColor];
     
-    statusBarItem.text = `$(circle-filled) ${colorName}`;
+    // Use appropriate icon for each color
+    if (customColor) {
+        statusBarItem.text = `$(edit) ${colorName}`;
+    } else {
+        const icon = getStatusBarIcon(accentColor);
+        statusBarItem.text = `${icon} ${colorName}`;
+    }
     statusBarItem.tooltip = `Nishuuu Themes - ${colorValue}`;
     statusBarItem.color = colorValue;
 }
@@ -81,12 +118,20 @@ function handleStatusBarToggle() {
 }
 
 async function selectAccentColor() {
-    const colorOptions = Object.keys(ACCENT_COLORS).map(key => ({
-        label: `$(circle-filled) ${key.charAt(0).toUpperCase() + key.slice(1).replace('-', ' ')}`,
-        value: key
-    }));
+    const colorOptions = Object.keys(ACCENT_COLORS).map(key => {
+        const displayName = key.charAt(0).toUpperCase() + key.slice(1).replace('-', ' ');
+        const iconPath = getColorIcon(key);
+        return {
+            label: displayName,
+            value: key,
+            iconPath: iconPath
+        };
+    });
     
-    colorOptions.push({ label: '$(edit) Custom Color', value: 'custom' });
+    colorOptions.push({ 
+        label: '$(edit) Custom Color', 
+        value: 'custom'
+    });
     
     const selected = await vscode.window.showQuickPick(colorOptions, {
         placeHolder: 'Select an accent color'
@@ -106,10 +151,20 @@ async function selectAccentColor() {
             });
             if (customColor) {
                 await config.update('customAccentColor', customColor, vscode.ConfigurationTarget.Global);
+                // Force immediate update
+                setTimeout(() => {
+                    updateStatusBar();
+                    applyAccentColor();
+                }, 150);
             }
         } else {
             await config.update('accentColor', selected.value, vscode.ConfigurationTarget.Global);
             await config.update('customAccentColor', '', vscode.ConfigurationTarget.Global);
+            // Force immediate update
+            setTimeout(() => {
+                updateStatusBar();
+                applyAccentColor();
+            }, 150);
         }
     }
 }
@@ -122,10 +177,11 @@ async function toggleStatusBar() {
 
 function loadAccentColorSettings(colorName) {
     try {
-        const settingsDir = path.join(extensionContext.extensionPath, 'nishuuu themes all settings');
+        const settingsDir = path.join(extensionContext.extensionPath, 'accent-colors-settings');
         const possibleFiles = [
             `${colorName}.json`,
-            `${colorName.charAt(0).toUpperCase() + colorName.slice(1)}.json`
+            `${colorName.charAt(0).toUpperCase() + colorName.slice(1)}.json`,
+            `${colorName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('-')}.json`
         ];
         
         for (const fileName of possibleFiles) {
@@ -234,10 +290,15 @@ async function applyAccentColor() {
                 ...colorSettings['workbench.colorCustomizations']
             }, vscode.ConfigurationTarget.Global);
             
-            updateStatusBar();
+            // Force status bar update after applying colors
+            setTimeout(() => {
+                updateStatusBar();
+            }, 50);
         }
     } catch (error) {
         console.error('Error applying accent color:', error);
+        // Fallback update in case of error
+        updateStatusBar();
     }
 }
 

@@ -2,8 +2,8 @@
   "name": "nishuuu-themes",
   "displayName": "Nishuuu Themes",
   "description": "Beautiful VS Code themes with dynamic accent colors",
-  "version": "4.0.0",
-  "publisher": "nishuuu",
+  "version": "4.1.0",
+  "publisher": "Taraldinn",
   "engines": {
     "vscode": "^1.60.0"
   },

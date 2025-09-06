@@ -2,12 +2,55 @@
 
 **Beautiful, Professional VS Code Themes with Dynamic Accent Color System**
 
-[![Version](https://img.shields.io/visual-studio-marketplace/v/nishuuu.nishuuu-themes?style=flat-square&logo=visual-studio-code&logoColor=white&color=007ACC)](https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/nishuuu.nishuuu-themes?s## 🖼️ Complete Icon Theme
+
+Includes comprehensive file icon themes with 2500+ icons:
+
+- **Programming Languages** - All major languages with beautiful icons
+- **Frameworks** - React, Vue, Angular, Svelte, Next.js, and more
+- **File Types** - From configs to assets, every file is beautifully represented
+- **Color Variants** - Icon themes that match each main theme
+
+### Activate Icons
+1. `Ctrl+Shift+P` → "Preferences: File Icon Theme"
+2. Select **"Tara Icons [Color]"** matching your theme
+
+## 📸 Screenshots
+
+### Theme Gallery & Accent Color Switching
+
+![Nishuuu Themes Overview](pictures/Screenshot%20from%202025-09-06%2013-28-43.png)
+*Overview of Nishuuu Themes with dynamic accent color system*
+
+![Theme Selection Menu](pictures/Screenshot%20from%202025-09-06%2013-29-45.png)
+*Beautiful theme selection with all Tara variants*
+
+![Accent Color Picker](pictures/Screenshot%20from%202025-09-06%2013-29-58.png)
+*Dynamic accent color picker with 14 preset colors*
+
+### Code Syntax Highlighting
+
+![Code Example 1](pictures/Screenshot%20from%202025-09-06%2013-30-11.png)
+*Beautiful syntax highlighting for JavaScript/TypeScript*
+
+![Code Example 2](pictures/Screenshot%20from%202025-09-06%2013-30-23.png)
+*Professional code display with accent color integration*
+
+![Code Example 3](pictures/Screenshot%20from%202025-09-06%2013-30-49.png)
+*Clean, readable code formatting with custom accent colors*
+
+### Key Features Showcase
+
+- **🎨 Dynamic Theming**: Watch your theme transform instantly when changing accent colors
+- **📊 Status Bar Integration**: One-click color switching directly from the status bar
+- **🌈 Color Harmony**: All UI elements beautifully coordinated with your chosen accent
+- **🖼️ File Icons**: Comprehensive icon support for all file types and frameworks
+- **♿ Accessibility**: High contrast variants available for all themesuare&logo=visual-studio-code&logoColor=white&color=007ACC)](https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes)
 [![Downloads](https://img.shields.io/visual-studio-marketplace/d/nishuuu.nishuuu-themes?style=flat-square&color=4CAF50)](https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes)
 [![Rating](https://img.shields.io/visual-studio-marketplace/r/nishuuu.nishuuu-themes?style=flat-square&color=FFB300)](https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes)
 [![GitHub](https://img.shields.io/github/stars/Taraldinn/nishuuu-themes?style=flat-square&logo=github)](https://github.com/Taraldinn/nishuuu-themes)
 
-> Transform your coding environment with **6 stunning dark themes** and **14 dynamic accent colors** that adapt to your style and mood.
+> Transform your coding environment with **6 stunning dark themes** and **14 dynamic accent colors** that adapt to your style and mood. See the complete visual gallery below showcasing real VS Code examples.
 
 ## ✨ What Makes Nishuuu Special
 
@@ -38,6 +81,16 @@ code --install-extension nishuuu.nishuuu-themes
 - Pick from 14 beautiful colors or create custom ones
 - Watch your theme transform instantly!
 
+## 🌟 See It In Action
+
+<div align="center">
+
+![Nishuuu Themes in Action](pictures/Screenshot%20from%202025-09-06%2013-28-43.png)
+
+*Experience the beauty of dynamic accent colors with professional theme design*
+
+</div>
+
 ## 🎨 Theme Gallery
 
 ### 🌙 Dark Themes Collection
@@ -52,6 +105,35 @@ code --install-extension nishuuu.nishuuu-themes
 | **Tara Teal** | Fresh aqua vibes | Web & frontend development |
 
 *Each theme includes a **High Contrast** variant for enhanced accessibility.*
+
+### 🎨 Theme & Accent Color Showcase
+
+<table>
+<tr>
+<td align="center">
+<img src="pictures/Screenshot%20from%202025-09-06%2013-29-45.png" width="400" alt="Theme Selection"><br>
+<strong>Theme Selection Menu</strong><br>
+<em>Choose from 6 beautiful Tara themes</em>
+</td>
+<td align="center">
+<img src="pictures/Screenshot%20from%202025-09-06%2013-29-58.png" width="400" alt="Accent Colors"><br>
+<strong>Accent Color Picker</strong><br>
+<em>14 preset colors + custom options</em>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="pictures/Screenshot%20from%202025-09-06%2013-30-11.png" width="400" alt="Code Example 1"><br>
+<strong>Professional Code Display</strong><br>
+<em>Beautiful syntax highlighting</em>
+</td>
+<td align="center">
+<img src="pictures/Screenshot%20from%202025-09-06%2013-30-23.png" width="400" alt="Code Example 2"><br>
+<strong>Accent Integration</strong><br>
+<em>UI elements match your accent color</em>
+</td>
+</tr>
+</table>
 
 ## 🌈 Accent Color Palette
 
@@ -157,6 +239,16 @@ Your accent color beautifully transforms:
 - **💻 Terminal** - Cursor, selection, and accent highlights
 - **🔍 Search** - Match highlighting and selection
 - **📋 Lists** - Active selections and focus indicators
+
+### 💻 Code Syntax Examples
+
+<div align="center">
+
+![Clean Code Formatting](pictures/Screenshot%20from%202025-09-06%2013-30-49.png)
+
+*Clean, readable code with beautiful syntax highlighting and accent color integration*
+
+</div>
 
 ## ⚙️ Configuration
 

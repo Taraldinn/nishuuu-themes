@@ -24,17 +24,73 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="icon.png">
     
-    <!-- NextUI CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nextui-org/theme@2.2.6/dist/components/button.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nextui-org/theme@2.2.6/dist/components/card.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nextui-org/theme@2.2.6/dist/components/chip.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nextui-org/theme@2.2.6/dist/components/divider.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nextui-org/theme@2.2.6/dist/components/image.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nextui-org/theme@2.2.6/dist/components/spacer.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nextui-org/theme@2.2.6/dist/base.css">
-    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- ShadCN UI Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: {
+                            DEFAULT: 'hsl(var(--primary))',
+                            foreground: 'hsl(var(--primary-foreground))'
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(var(--secondary))',
+                            foreground: 'hsl(var(--secondary-foreground))'
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(var(--destructive))',
+                            foreground: 'hsl(var(--destructive-foreground))'
+                        },
+                        muted: {
+                            DEFAULT: 'hsl(var(--muted))',
+                            foreground: 'hsl(var(--muted-foreground))'
+                        },
+                        accent: {
+                            DEFAULT: 'hsl(var(--accent))',
+                            foreground: 'hsl(var(--accent-foreground))'
+                        },
+                        popover: {
+                            DEFAULT: 'hsl(var(--popover))',
+                            foreground: 'hsl(var(--popover-foreground))'
+                        },
+                        card: {
+                            DEFAULT: 'hsl(var(--card))',
+                            foreground: 'hsl(var(--card-foreground))'
+                        }
+                    },
+                    borderRadius: {
+                        lg: 'var(--radius)',
+                        md: 'calc(var(--radius) - 2px)',
+                        sm: 'calc(var(--radius) - 4px)'
+                    },
+                    keyframes: {
+                        'accordion-down': {
+                            from: { height: 0 },
+                            to: { height: 'var(--radix-accordion-content-height)' }
+                        },
+                        'accordion-up': {
+                            from: { height: 'var(--radix-accordion-content-height)' },
+                            to: { height: 0 }
+                        }
+                    },
+                    animation: {
+                        'accordion-down': 'accordion-down 0.2s ease-out',
+                        'accordion-up': 'accordion-up 0.2s ease-out'
+                    }
+                }
+            }
+        }
+    </script>
     
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -45,100 +101,186 @@
     
     <style>
         :root {
-            /* Tara Carbon inspired color palette */
-            --carbon-bg-primary: #0d1117;
-            --carbon-bg-secondary: #161b22;
-            --carbon-bg-tertiary: #21262d;
-            --carbon-bg-canvas: #010409;
-            --carbon-border-default: #30363d;
-            --carbon-border-muted: #21262d;
-            --carbon-text-primary: #f0f6fc;
-            --carbon-text-secondary: #8b949e;
-            --carbon-text-muted: #656d76;
-            --carbon-accent: #80CBC4;
-            --carbon-accent-secondary: #58a6ff;
-            --carbon-success: #56d364;
-            --carbon-warning: #d29922;
-            --carbon-danger: #da3633;
-            --carbon-purple: #a5a3ff;
-            --carbon-pink: #f778ba;
+            /* ShadCN UI Dark Theme Variables */
+            --background: 224 71% 4%;
+            --foreground: 213 31% 91%;
+            --muted: 223 47% 11%;
+            --muted-foreground: 215.4 16.3% 56.9%;
+            --popover: 224 71% 4%;
+            --popover-foreground: 215 20.2% 65.1%;
+            --border: 216 34% 17%;
+            --input: 216 34% 17%;
+            --card: 224 71% 4%;
+            --card-foreground: 213 31% 91%;
+            --primary: 210 40% 98%;
+            --primary-foreground: 222.2 47.4% 1.2%;
+            --secondary: 222.2 84% 4.9%;
+            --secondary-foreground: 210 40% 98%;
+            --accent: 216 34% 17%;
+            --accent-foreground: 210 40% 98%;
+            --destructive: 0 63% 31%;
+            --destructive-foreground: 210 40% 98%;
+            --ring: 216 34% 17%;
+            --radius: 0.5rem;
             
-            /* NextUI medium components */
-            --nextui-radius-medium: 12px;
-            --nextui-radius-large: 16px;
-            --nextui-shadow-medium: 0 4px 18px 0 rgba(0, 0, 0, 0.4);
-            --nextui-shadow-large: 0 8px 30px 0 rgba(0, 0, 0, 0.5);
+            /* Custom Tara Carbon accent */
+            --teal-accent: 180 27% 64%;
+            --teal-accent-foreground: 180 100% 10%;
         }
         
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--carbon-bg-canvas);
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(128, 203, 196, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(88, 166, 255, 0.05) 0%, transparent 50%);
-            color: var(--carbon-text-primary);
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .code-font {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'JetBrains Mono', 'Consolas', 'Monaco', 'Cascadia Code', monospace;
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, var(--carbon-accent), var(--carbon-accent-secondary));
+            background: linear-gradient(135deg, hsl(var(--teal-accent)), hsl(210 40% 98%));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
+        /* ShadCN UI Component Classes */
+        .card {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: calc(var(--radius) + 2px);
+            color: hsl(var(--card-foreground));
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        .button-primary {
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            border: 1px solid hsl(var(--primary));
+            border-radius: var(--radius);
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        }
+        
+        .button-primary:hover {
+            background: hsl(var(--primary) / 0.9);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        
+        .button-secondary {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .button-secondary:hover {
+            background: hsl(var(--accent));
+            color: hsl(var(--accent-foreground));
+        }
+        
+        .button-accent {
+            background: hsl(var(--teal-accent));
+            color: hsl(var(--teal-accent-foreground));
+            border: 1px solid hsl(var(--teal-accent));
+            border-radius: var(--radius);
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .button-accent:hover {
+            background: hsl(var(--teal-accent) / 0.9);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        
         .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease-in-out;
         }
         
         .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--nextui-shadow-large);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-color: hsl(var(--teal-accent) / 0.5);
         }
         
         .color-dot {
-            width: 44px;
-            height: 44px;
-            border-radius: var(--nextui-radius-medium);
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius);
             display: inline-block;
-            margin: 0 6px;
-            border: 2px solid var(--carbon-border-default);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            margin: 0 4px;
+            border: 2px solid hsl(var(--border));
+            transition: all 0.2s ease-in-out;
             position: relative;
             overflow: hidden;
         }
         
         .color-dot:hover {
-            transform: scale(1.1);
-            border-color: var(--carbon-accent);
-            box-shadow: 0 0 20px rgba(128, 203, 196, 0.3);
+            transform: scale(1.05);
+            border-color: hsl(var(--teal-accent));
+            box-shadow: 0 0 0 2px hsl(var(--teal-accent) / 0.2);
         }
         
         .theme-preview {
-            border-radius: var(--nextui-radius-large);
+            border-radius: calc(var(--radius) + 4px);
             overflow: hidden;
-            box-shadow: var(--nextui-shadow-medium);
-            border: 1px solid var(--carbon-border-default);
-            background: var(--carbon-bg-secondary);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border: 1px solid hsl(var(--border));
+            background: hsl(var(--card));
         }
         
         .stats-card {
-            background: var(--carbon-bg-secondary);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--carbon-border-default);
-            border-radius: var(--nextui-radius-large);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: calc(var(--radius) + 2px);
+            color: hsl(var(--card-foreground));
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            transition: all 0.2s ease-in-out;
         }
         
         .stats-card:hover {
-            border-color: var(--carbon-accent);
-            box-shadow: 0 0 30px rgba(128, 203, 196, 0.1);
+            border-color: hsl(var(--teal-accent) / 0.5);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        
+        .code-block {
+            background: hsl(var(--muted));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            color: hsl(var(--muted-foreground));
+        }
+        
+        .badge {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+            border-radius: calc(var(--radius) - 2px);
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .input {
+            background: hsl(var(--background));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            color: hsl(var(--foreground));
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .input:focus {
+            border-color: hsl(var(--ring));
+            box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+            outline: none;
         }
         
         .floating-nav {
@@ -146,23 +288,22 @@
             top: 20px;
             right: 20px;
             z-index: 1000;
-            background: var(--carbon-bg-tertiary);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--carbon-border-default);
-            border-radius: var(--nextui-radius-medium);
+            background: hsl(var(--popover));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
             padding: 12px 16px;
-            box-shadow: var(--nextui-shadow-medium);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            backdrop-filter: blur(8px);
         }
         
         .scroll-indicator {
             position: fixed;
             top: 0;
             left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--carbon-accent), var(--carbon-accent-secondary));
+            height: 2px;
+            background: linear-gradient(90deg, hsl(var(--teal-accent)), hsl(210 40% 98%));
             z-index: 1001;
             transition: width 0.3s ease;
-            box-shadow: 0 0 10px rgba(128, 203, 196, 0.5);
         }
         
         .section-padding {
@@ -200,10 +341,10 @@
     
     <!-- Floating Navigation -->
     <div class="floating-nav">
-        <a href="#home" class="text-white hover:text-blue-400 mx-2">🏠</a>
-        <a href="#features" class="text-white hover:text-blue-400 mx-2">✨</a>
-        <a href="#themes" class="text-white hover:text-blue-400 mx-2">🎨</a>
-        <a href="#install" class="text-white hover:text-blue-400 mx-2">📥</a>
+        <a href="#home" class="text-muted-foreground hover:text-[hsl(var(--teal-accent))] mx-2 transition-colors">🏠</a>
+        <a href="#features" class="text-muted-foreground hover:text-[hsl(var(--teal-accent))] mx-2 transition-colors">✨</a>
+        <a href="#themes" class="text-muted-foreground hover:text-[hsl(var(--teal-accent))] mx-2 transition-colors">🎨</a>
+        <a href="#install" class="text-muted-foreground hover:text-[hsl(var(--teal-accent))] mx-2 transition-colors">📥</a>
     </div>
     
     <!-- Hero Section -->
@@ -220,13 +361,11 @@
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                     <a href="https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes" 
-                       class="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white px-8 py-4 font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg border border-teal-400/20"
-                       style="border-radius: var(--nextui-radius-medium); background: var(--carbon-accent); border-color: var(--carbon-accent);">
+                       class="button-accent px-8 py-4 font-medium text-lg inline-flex items-center justify-center whitespace-nowrap rounded-md transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
                         <i class="fas fa-download mr-2"></i>Install Extension
                     </a>
                     <a href="https://github.com/Taraldinn/nishuuu-themes" 
-                       class="text-white px-8 py-4 font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg border"
-                       style="border-radius: var(--nextui-radius-medium); background: var(--carbon-bg-tertiary); border-color: var(--carbon-border-default);">
+                       class="button-secondary px-8 py-4 font-medium text-lg inline-flex items-center justify-center whitespace-nowrap rounded-md transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
                         <i class="fab fa-github mr-2"></i>View on GitHub
                     </a>
                 </div>
@@ -234,20 +373,20 @@
                 <!-- Stats -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
                     <div class="stats-card p-6 text-center animate-fade-in animate-delay-1">
-                        <div class="text-3xl font-bold" style="color: var(--carbon-accent);">6</div>
-                        <div style="color: var(--carbon-text-secondary);">Dark Themes</div>
+                        <div class="text-3xl font-bold text-[hsl(var(--teal-accent))]">6</div>
+                        <div class="text-sm font-medium text-muted-foreground">Dark Themes</div>
                     </div>
                     <div class="stats-card p-6 text-center animate-fade-in animate-delay-2">
-                        <div class="text-3xl font-bold" style="color: var(--carbon-success);">14</div>
-                        <div style="color: var(--carbon-text-secondary);">Accent Colors</div>
+                        <div class="text-3xl font-bold text-green-400">14</div>
+                        <div class="text-sm font-medium text-muted-foreground">Accent Colors</div>
                     </div>
                     <div class="stats-card p-6 text-center animate-fade-in animate-delay-3">
-                        <div class="text-3xl font-bold" style="color: var(--carbon-purple);">2500+</div>
-                        <div style="color: var(--carbon-text-secondary);">File Icons</div>
+                        <div class="text-3xl font-bold text-purple-400">2500+</div>
+                        <div class="text-sm font-medium text-muted-foreground">File Icons</div>
                     </div>
                     <div class="stats-card p-6 text-center animate-fade-in animate-delay-4">
-                        <div class="text-3xl font-bold" style="color: var(--carbon-warning);">⚡</div>
-                        <div style="color: var(--carbon-text-secondary);">Instant Apply</div>
+                        <div class="text-3xl font-bold text-yellow-400">⚡</div>
+                        <div class="text-sm font-medium text-muted-foreground">Instant Apply</div>
                     </div>
                 </div>
             </div>
@@ -258,8 +397,8 @@
     <section class="section-padding">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">See It In Action</h2>
-                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">See It In Action</h2>
+                <p class="text-xl max-w-2xl mx-auto text-muted-foreground leading-7">
                     Experience the beauty of dynamic accent colors with professional theme design
                 </p>
             </div>
@@ -272,11 +411,11 @@
     </section>
     
     <!-- Features Section -->
-    <section id="features" class="section-padding" style="background: var(--carbon-bg-primary);">
+    <section id="features" class="section-padding bg-muted/30">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">What Makes Nishuuu Special</h2>
-                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">What Makes Nishuuu Special</h2>
+                <p class="text-xl max-w-2xl mx-auto text-muted-foreground leading-7">
                     Packed with features that enhance your coding experience
                 </p>
             </div>
@@ -284,38 +423,38 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="stats-card p-8 card-hover animate-fade-in">
                     <div class="text-4xl mb-4">🎨</div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">6 Handcrafted Themes</h3>
-                    <p style="color: var(--carbon-text-secondary);">Carbon, Ocean, Palenight, Deepforest, Graphene, Teal - each designed for different coding moods and preferences.</p>
+                    <h3 class="text-2xl font-semibold mb-4 tracking-tight">6 Handcrafted Themes</h3>
+                    <p class="text-muted-foreground leading-6">Carbon, Ocean, Palenight, Deepforest, Graphene, Teal - each designed for different coding moods and preferences.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in animate-delay-1">
                     <div class="text-4xl mb-4">🌈</div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">14 Accent Colors</h3>
-                    <p style="color: var(--carbon-text-secondary);">Instant switching with live preview. From calming teals to energetic oranges, find your perfect match.</p>
+                    <h3 class="text-2xl font-semibold mb-4 tracking-tight">14 Accent Colors</h3>
+                    <p class="text-muted-foreground leading-6">Instant switching with live preview. From calming teals to energetic oranges, find your perfect match.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in animate-delay-2">
                     <div class="text-4xl mb-4">🎯</div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Custom Colors</h3>
-                    <p style="color: var(--carbon-text-secondary);">Create your own with any hex code. Your entire theme adapts instantly to your unique style.</p>
+                    <h3 class="text-2xl font-semibold mb-4 tracking-tight">Custom Colors</h3>
+                    <p class="text-muted-foreground leading-6">Create your own with any hex code. Your entire theme adapts instantly to your unique style.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in animate-delay-3">
                     <div class="text-4xl mb-4">📊</div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Smart Status Bar</h3>
-                    <p style="color: var(--carbon-text-secondary);">One-click color switching directly from your status bar. Quick access to all your favorite colors.</p>
+                    <h3 class="text-2xl font-semibold mb-4 tracking-tight">Smart Status Bar</h3>
+                    <p class="text-muted-foreground leading-6">One-click color switching directly from your status bar. Quick access to all your favorite colors.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in animate-delay-4">
                     <div class="text-4xl mb-4">🖼️</div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">2500+ File Icons</h3>
-                    <p style="color: var(--carbon-text-secondary);">Complete icon theme collection for all programming languages, frameworks, and file types.</p>
+                    <h3 class="text-2xl font-semibold mb-4 tracking-tight">2500+ File Icons</h3>
+                    <p class="text-muted-foreground leading-6">Complete icon theme collection for all programming languages, frameworks, and file types.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in">
                     <div class="text-4xl mb-4">♿</div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">High Contrast</h3>
-                    <p style="color: var(--carbon-text-secondary);">Enhanced accessibility variants for better visibility and WCAG compliant color combinations.</p>
+                    <h3 class="text-2xl font-semibold mb-4 tracking-tight">High Contrast</h3>
+                    <p class="text-muted-foreground leading-6">Enhanced accessibility variants for better visibility and WCAG compliant color combinations.</p>
                 </div>
             </div>
         </div>
@@ -325,47 +464,47 @@
     <section id="themes" class="section-padding">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Theme Gallery</h2>
-                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Theme Gallery</h2>
+                <p class="text-xl max-w-2xl mx-auto text-muted-foreground leading-7">
                     6 carefully crafted dark themes, each with its own personality
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-text-primary);">Tara Carbon</h3>
-                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Deep charcoal elegance</p>
-                    <p class="text-sm" style="color: var(--carbon-text-muted);">Perfect for professional development</p>
+                    <h3 class="text-xl font-semibold mb-2 tracking-tight">Tara Carbon</h3>
+                    <p class="mb-3 text-muted-foreground">Deep charcoal elegance</p>
+                    <div class="badge">Perfect for professional development</div>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-accent-secondary);">Tara Ocean</h3>
-                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Calming blue depths</p>
-                    <p class="text-sm" style="color: var(--carbon-text-muted);">Ideal for long coding sessions</p>
+                    <h3 class="text-xl font-semibold mb-2 tracking-tight text-blue-400">Tara Ocean</h3>
+                    <p class="mb-3 text-muted-foreground">Calming blue depths</p>
+                    <div class="badge">Ideal for long coding sessions</div>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-purple);">Tara Palenight</h3>
-                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Soft purple harmony</p>
-                    <p class="text-sm" style="color: var(--carbon-text-muted);">Great for creative & design work</p>
+                    <h3 class="text-xl font-semibold mb-2 tracking-tight text-purple-400">Tara Palenight</h3>
+                    <p class="mb-3 text-muted-foreground">Soft purple harmony</p>
+                    <div class="badge">Great for creative & design work</div>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-success);">Tara Deepforest</h3>
-                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Rich emerald tones</p>
-                    <p class="text-sm" style="color: var(--carbon-text-muted);">Nature-inspired coding</p>
+                    <h3 class="text-xl font-semibold mb-2 tracking-tight text-green-400">Tara Deepforest</h3>
+                    <p class="mb-3 text-muted-foreground">Rich emerald tones</p>
+                    <div class="badge">Nature-inspired coding</div>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-text-primary);">Tara Graphene</h3>
-                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Modern minimalism</p>
-                    <p class="text-sm" style="color: var(--carbon-text-muted);">Clean, focused workflow</p>
+                    <h3 class="text-xl font-semibold mb-2 tracking-tight">Tara Graphene</h3>
+                    <p class="mb-3 text-muted-foreground">Modern minimalism</p>
+                    <div class="badge">Clean, focused workflow</div>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-accent);">Tara Teal</h3>
-                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Fresh aqua vibes</p>
-                    <p class="text-sm" style="color: var(--carbon-text-muted);">Web & frontend development</p>
+                    <h3 class="text-xl font-semibold mb-2 tracking-tight text-[hsl(var(--teal-accent))]">Tara Teal</h3>
+                    <p class="mb-3 text-muted-foreground">Fresh aqua vibes</p>
+                    <div class="badge">Web & frontend development</div>
                 </div>
             </div>
             
@@ -395,11 +534,11 @@
     </section>
     
     <!-- Accent Colors Palette -->
-    <section class="section-padding" style="background: var(--carbon-bg-primary);">
+    <section class="section-padding bg-muted/30">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Accent Color Palette</h2>
-                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Accent Color Palette</h2>
+                <p class="text-xl max-w-2xl mx-auto text-muted-foreground leading-7">
                     Carefully selected colors that enhance readability and reduce eye strain
                 </p>
             </div>
@@ -488,8 +627,8 @@
     <section class="section-padding">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Beautiful Code Syntax</h2>
-                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Beautiful Code Syntax</h2>
+                <p class="text-xl max-w-2xl mx-auto text-muted-foreground leading-7">
                     Professional syntax highlighting with accent color integration
                 </p>
             </div>
@@ -528,11 +667,11 @@
     </section>
     
     <!-- Installation & Configuration -->
-    <section id="install" class="section-padding" style="background: var(--carbon-bg-primary);">
+    <section id="install" class="section-padding bg-muted/30">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Quick Start</h2>
-                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Quick Start</h2>
+                <p class="text-xl max-w-2xl mx-auto text-muted-foreground leading-7">
                     Get up and running in just a few steps
                 </p>
             </div>
@@ -541,27 +680,27 @@
                 <div class="grid md:grid-cols-3 gap-8 mb-12">
                     <div class="stats-card p-8 text-center">
                         <div class="text-5xl mb-4">1️⃣</div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Install</h3>
-                        <p class="mb-4" style="color: var(--carbon-text-secondary);">Search "Nishuuu Themes" in VS Code Extensions or use the command line</p>
-                        <div class="p-4 rounded-lg code-font text-sm" style="background: var(--carbon-bg-tertiary); border: 1px solid var(--carbon-border-default); color: var(--carbon-accent);">
+                        <h3 class="text-2xl font-semibold mb-4 tracking-tight">Install</h3>
+                        <p class="mb-4 text-muted-foreground">Search "Nishuuu Themes" in VS Code Extensions or use the command line</p>
+                        <div class="code-block p-4 code-font text-sm text-[hsl(var(--teal-accent))]">
                             code --install-extension nishuuu.nishuuu-themes
                         </div>
                     </div>
                     
                     <div class="stats-card p-8 text-center">
                         <div class="text-5xl mb-4">2️⃣</div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Activate Theme</h3>
-                        <p class="mb-4" style="color: var(--carbon-text-secondary);">Press the keyboard shortcut and select any Tara theme</p>
-                        <div class="p-4 rounded-lg code-font text-sm" style="background: var(--carbon-bg-tertiary); border: 1px solid var(--carbon-border-default); color: var(--carbon-accent);">
+                        <h3 class="text-2xl font-semibold mb-4 tracking-tight">Activate Theme</h3>
+                        <p class="mb-4 text-muted-foreground">Press the keyboard shortcut and select any Tara theme</p>
+                        <div class="code-block p-4 code-font text-sm text-[hsl(var(--teal-accent))]">
                             Ctrl+K Ctrl+T
                         </div>
                     </div>
                     
                     <div class="stats-card p-8 text-center">
                         <div class="text-5xl mb-4">3️⃣</div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Choose Accent</h3>
-                        <p class="mb-4" style="color: var(--carbon-text-secondary);">Click the 🎨 icon in your status bar to pick colors</p>
-                        <div class="p-4 rounded-lg code-font text-sm" style="background: var(--carbon-bg-tertiary); border: 1px solid var(--carbon-border-default); color: var(--carbon-accent);">
+                        <h3 class="text-2xl font-semibold mb-4 tracking-tight">Choose Accent</h3>
+                        <p class="mb-4 text-muted-foreground">Click the 🎨 icon in your status bar to pick colors</p>
+                        <div class="code-block p-4 code-font text-sm text-[hsl(var(--teal-accent))]">
                             Instant transform!
                         </div>
                     </div>
@@ -569,30 +708,30 @@
                 
                 <!-- Configuration -->
                 <div class="stats-card p-8">
-                    <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--carbon-text-primary);">Configuration</h3>
-                    <div class="p-6 rounded-lg code-font text-sm overflow-x-auto" style="background: var(--carbon-bg-tertiary); border: 1px solid var(--carbon-border-default);">
-                        <pre style="color: var(--carbon-success);">{
-  <span style="color: var(--carbon-accent-secondary);">"nishuuu.accentColor"</span>: <span style="color: var(--carbon-warning);">"teal"</span>,
-  <span style="color: var(--carbon-accent-secondary);">"nishuuu.customAccentColor"</span>: <span style="color: var(--carbon-warning);">"#80CBC4"</span>,
-  <span style="color: var(--carbon-accent-secondary);">"nishuuu.enableStatusBar"</span>: <span style="color: var(--carbon-purple);">true</span>
+                    <h3 class="text-2xl font-semibold mb-6 text-center tracking-tight">Configuration</h3>
+                    <div class="code-block p-6 code-font text-sm overflow-x-auto">
+                        <pre class="text-green-400">{
+  <span class="text-blue-400">"nishuuu.accentColor"</span>: <span class="text-yellow-400">"teal"</span>,
+  <span class="text-blue-400">"nishuuu.customAccentColor"</span>: <span class="text-yellow-400">"#80CBC4"</span>,
+  <span class="text-blue-400">"nishuuu.enableStatusBar"</span>: <span class="text-purple-400">true</span>
 }</pre>
                     </div>
                     
                     <div class="grid md:grid-cols-3 gap-6 mt-8">
                         <div>
-                            <h4 class="font-bold text-lg mb-2" style="color: var(--carbon-text-primary);">nishuuu.accentColor</h4>
-                            <p class="text-sm" style="color: var(--carbon-text-secondary);">Current accent color name</p>
-                            <p class="text-xs mt-1" style="color: var(--carbon-text-muted);">Default: "teal"</p>
+                            <h4 class="font-semibold text-lg mb-2">nishuuu.accentColor</h4>
+                            <p class="text-sm text-muted-foreground">Current accent color name</p>
+                            <div class="badge mt-2">Default: "teal"</div>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg mb-2" style="color: var(--carbon-text-primary);">nishuuu.customAccentColor</h4>
-                            <p class="text-sm" style="color: var(--carbon-text-secondary);">Custom hex color value</p>
-                            <p class="text-xs mt-1" style="color: var(--carbon-text-muted);">Default: ""</p>
+                            <h4 class="font-semibold text-lg mb-2">nishuuu.customAccentColor</h4>
+                            <p class="text-sm text-muted-foreground">Custom hex color value</p>
+                            <div class="badge mt-2">Default: ""</div>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg mb-2" style="color: var(--carbon-text-primary);">nishuuu.enableStatusBar</h4>
-                            <p class="text-sm" style="color: var(--carbon-text-secondary);">Show status bar color indicator</p>
-                            <p class="text-xs mt-1" style="color: var(--carbon-text-muted);">Default: true</p>
+                            <h4 class="font-semibold text-lg mb-2">nishuuu.enableStatusBar</h4>
+                            <p class="text-sm text-muted-foreground">Show status bar color indicator</p>
+                            <div class="badge mt-2">Default: true</div>
                         </div>
                     </div>
                 </div>
@@ -604,8 +743,8 @@
     <section class="section-padding">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Perfect For</h2>
-                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Perfect For</h2>
+                <p class="text-xl max-w-2xl mx-auto text-muted-foreground leading-7">
                     Designed for developers, by developers
                 </p>
             </div>
@@ -613,75 +752,73 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="stats-card p-6 card-hover">
                     <div class="text-3xl mb-3">⚛️</div>
-                    <h3 class="text-lg font-bold mb-2">Frontend Developers</h3>
-                    <p class="text-gray-400 text-sm">Beautiful syntax for HTML, CSS, JS, TS</p>
+                    <h3 class="text-lg font-semibold mb-2">Frontend Developers</h3>
+                    <p class="text-muted-foreground text-sm">Beautiful syntax for HTML, CSS, JS, TS</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
                     <div class="text-3xl mb-3">🔧</div>
-                    <h3 class="text-lg font-bold mb-2">Backend Engineers</h3>
-                    <p class="text-gray-400 text-sm">Optimized for Python, Java, C#, Go, Rust</p>
+                    <h3 class="text-lg font-semibold mb-2">Backend Engineers</h3>
+                    <p class="text-muted-foreground text-sm">Optimized for Python, Java, C#, Go, Rust</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
                     <div class="text-3xl mb-3">🚀</div>
-                    <h3 class="text-lg font-bold mb-2">Full-Stack Teams</h3>
-                    <p class="text-gray-400 text-sm">Consistent theming across all technologies</p>
+                    <h3 class="text-lg font-semibold mb-2">Full-Stack Teams</h3>
+                    <p class="text-muted-foreground text-sm">Consistent theming across all technologies</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
                     <div class="text-3xl mb-3">🎨</div>
-                    <h3 class="text-lg font-bold mb-2">Designers</h3>
-                    <p class="text-gray-400 text-sm">Color-coded interface with customizable aesthetics</p>
+                    <h3 class="text-lg font-semibold mb-2">Designers</h3>
+                    <p class="text-muted-foreground text-sm">Color-coded interface with customizable aesthetics</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
                     <div class="text-3xl mb-3">🎓</div>
-                    <h3 class="text-lg font-bold mb-2">Students</h3>
-                    <p class="text-gray-400 text-sm">Clean, distraction-free learning environment</p>
+                    <h3 class="text-lg font-semibold mb-2">Students</h3>
+                    <p class="text-muted-foreground text-sm">Clean, distraction-free learning environment</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
                     <div class="text-3xl mb-3">📹</div>
-                    <h3 class="text-lg font-bold mb-2">Content Creators</h3>
-                    <p class="text-gray-400 text-sm">High contrast options for better screen recording</p>
+                    <h3 class="text-lg font-semibold mb-2">Content Creators</h3>
+                    <p class="text-muted-foreground text-sm">High contrast options for better screen recording</p>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- CTA Section -->
-    <section class="section-padding" style="background: linear-gradient(135deg, var(--carbon-bg-primary) 0%, var(--carbon-bg-secondary) 100%);">
+    <section class="section-padding bg-gradient-to-br from-background via-muted/50 to-background">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text">Ready to Transform Your Coding Experience?</h2>
-            <p class="text-xl mb-12 max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight">Ready to Transform Your Coding Experience?</h2>
+            <p class="text-xl mb-12 max-w-2xl mx-auto text-muted-foreground leading-7">
                 Join thousands of developers who have already enhanced their workflow with Nishuuu Themes
             </p>
             
             <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
                 <a href="https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes" 
-                   class="text-white px-10 py-5 font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl"
-                   style="background: var(--carbon-accent); border-radius: var(--nextui-radius-large); border: 1px solid var(--carbon-accent);">
+                   class="button-accent px-10 py-5 font-semibold text-xl inline-flex items-center justify-center whitespace-nowrap rounded-md transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
                     <i class="fas fa-download mr-3"></i>Install Now
                 </a>
                 <a href="https://github.com/Taraldinn/nishuuu-themes" 
-                   class="text-white px-10 py-5 font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl"
-                   style="background: var(--carbon-bg-tertiary); border-radius: var(--nextui-radius-large); border: 1px solid var(--carbon-border-default);">
+                   class="button-secondary px-10 py-5 font-semibold text-xl inline-flex items-center justify-center whitespace-nowrap rounded-md transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
                     <i class="fab fa-github mr-3"></i>Star on GitHub
                 </a>
             </div>
             
-            <div class="flex justify-center space-x-8" style="color: var(--carbon-text-secondary);">
+            <div class="flex justify-center space-x-8 text-muted-foreground">
                 <div class="text-center">
-                    <div class="text-2xl font-bold" style="color: var(--carbon-text-primary);">VS Code 1.60+</div>
+                    <div class="text-2xl font-bold">VS Code 1.60+</div>
                     <div class="text-sm">Requirement</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold" style="color: var(--carbon-text-primary);">MIT License</div>
+                    <div class="text-2xl font-bold">MIT License</div>
                     <div class="text-sm">Open Source</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold" style="color: var(--carbon-text-primary);">Free</div>
+                    <div class="text-2xl font-bold">Free</div>
                     <div class="text-sm">Always</div>
                 </div>
             </div>
@@ -689,43 +826,43 @@
     </section>
     
     <!-- Footer -->
-    <footer class="py-12" style="background: var(--carbon-bg-canvas); border-top: 1px solid var(--carbon-border-default);">
+    <footer class="py-12 bg-background border-t">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4 gradient-text">Nishuuu Themes</h3>
-                    <p class="text-sm mb-4" style="color: var(--carbon-text-secondary);">Beautiful VS Code themes with dynamic accent colors</p>
+                    <p class="text-sm mb-4 text-muted-foreground">Beautiful VS Code themes with dynamic accent colors</p>
                     <div class="flex space-x-4">
-                        <a href="https://github.com/Taraldinn/nishuuu-themes" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">
+                        <a href="https://github.com/Taraldinn/nishuuu-themes" class="text-muted-foreground hover:text-foreground transition-colors">
                             <i class="fab fa-github text-xl"></i>
                         </a>
-                        <a href="https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">
+                        <a href="https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes" class="text-muted-foreground hover:text-foreground transition-colors">
                             <i class="fas fa-cube text-xl"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4" style="color: var(--carbon-text-primary);">Quick Links</h4>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#features" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Features</a></li>
-                        <li><a href="#themes" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Themes</a></li>
-                        <li><a href="#install" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Installation</a></li>
+                        <li><a href="#features" class="text-muted-foreground hover:text-foreground transition-colors">Features</a></li>
+                        <li><a href="#themes" class="text-muted-foreground hover:text-foreground transition-colors">Themes</a></li>
+                        <li><a href="#install" class="text-muted-foreground hover:text-foreground transition-colors">Installation</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4" style="color: var(--carbon-text-primary);">Support</h4>
+                    <h4 class="font-semibold mb-4">Support</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/issues" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Bug Reports</a></li>
-                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/discussions" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Discussions</a></li>
-                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/wiki" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/issues" class="text-muted-foreground hover:text-foreground transition-colors">Bug Reports</a></li>
+                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/discussions" class="text-muted-foreground hover:text-foreground transition-colors">Discussions</a></li>
+                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/wiki" class="text-muted-foreground hover:text-foreground transition-colors">Documentation</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4" style="color: var(--carbon-text-primary);">Version</h4>
-                    <div class="text-sm" style="color: var(--carbon-text-secondary);">
+                    <h4 class="font-semibold mb-4">Version</h4>
+                    <div class="text-sm text-muted-foreground space-y-1">
                         <p>Current: v4.1.0</p>
                         <p>License: MIT</p>
                         <p>Made with ❤️ by Nishuuu Team</p>
@@ -733,7 +870,7 @@
                 </div>
             </div>
             
-            <div class="mt-8 pt-8 text-center text-sm" style="border-top: 1px solid var(--carbon-border-default); color: var(--carbon-text-secondary);">
+            <div class="mt-8 pt-8 text-center text-sm border-t text-muted-foreground">
                 <p>&copy; 2025 Nishuuu Themes. All rights reserved. Happy coding! 🚀</p>
             </div>
         </div>

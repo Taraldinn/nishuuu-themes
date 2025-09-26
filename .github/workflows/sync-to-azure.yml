@@ -1,0 +1,24 @@
+name: Sync to Azure Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "Taraldinn"
+          git config --global user.email "kferdoush617@gmail.com"
+
+      - name: Push to Azure DevOps
+        run: |
+          git remote add azure https://$AZURE_PAT@dev.azure.com/taraldinn/Nishuuu%20Themes/_git/nishuuu-themes
+          git push azure HEAD:main --force
+        env:
+          AZURE_PAT: ${{ secrets.AZURE_PAT }}

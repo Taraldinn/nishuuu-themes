@@ -19,24 +19,24 @@ Includes comprehensive file icon themes with 2500+ icons:
 
 ### Theme Gallery & Accent Color Switching
 
-![Nishuuu Themes Overview](pictures/Screenshot%20from%202025-09-06%2013-28-43.png)
+![Nishuuu Themes Overview](https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-28-43.png)
 *Overview of Nishuuu Themes with dynamic accent color system*
 
-![Theme Selection Menu](pictures/Screenshot%20from%202025-09-06%2013-29-45.png)
+![Theme Selection Menu](https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-29-45.png)
 *Beautiful theme selection with all Tara variants*
 
-![Accent Color Picker](pictures/Screenshot%20from%202025-09-06%2013-29-58.png)
+![Accent Color Picker](https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-29-58.png)
 *Dynamic accent color picker with 14 preset colors*
 
 ### Code Syntax Highlighting
 
-![Code Example 1](pictures/Screenshot%20from%202025-09-06%2013-30-11.png)
+![Code Example 1](https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-30-11.png)
 *Beautiful syntax highlighting for JavaScript/TypeScript*
 
-![Code Example 2](pictures/Screenshot%20from%202025-09-06%2013-30-23.png)
+![Code Example 2](https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-30-23.png)
 *Professional code display with accent color integration*
 
-![Code Example 3](pictures/Screenshot%20from%202025-09-06%2013-30-49.png)
+![Code Example 3](https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-30-49.png)
 *Clean, readable code formatting with custom accent colors*
 
 ### Key Features Showcase
@@ -85,7 +85,7 @@ code --install-extension nishuuu.nishuuu-themes
 
 <div align="center">
 
-![Nishuuu Themes in Action](pictures/Screenshot%20from%202025-09-06%2013-28-43.png)
+![Nishuuu Themes in Action](https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-28-43.png)
 
 *Experience the beauty of dynamic accent colors with professional theme design*
 
@@ -111,24 +111,24 @@ code --install-extension nishuuu.nishuuu-themes
 <table>
 <tr>
 <td align="center">
-<img src="pictures/Screenshot%20from%202025-09-06%2013-29-45.png" width="400" alt="Theme Selection"><br>
+<img src="https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-29-45.png" width="400" alt="Theme Selection"><br>
 <strong>Theme Selection Menu</strong><br>
 <em>Choose from 6 beautiful Tara themes</em>
 </td>
 <td align="center">
-<img src="pictures/Screenshot%20from%202025-09-06%2013-29-58.png" width="400" alt="Accent Colors"><br>
+<img src="https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-29-58.png" width="400" alt="Accent Colors"><br>
 <strong>Accent Color Picker</strong><br>
 <em>14 preset colors + custom options</em>
 </td>
 </tr>
 <tr>
 <td align="center">
-<img src="pictures/Screenshot%20from%202025-09-06%2013-30-11.png" width="400" alt="Code Example 1"><br>
+<img src="https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-30-11.png" width="400" alt="Code Example 1"><br>
 <strong>Professional Code Display</strong><br>
 <em>Beautiful syntax highlighting</em>
 </td>
 <td align="center">
-<img src="pictures/Screenshot%20from%202025-09-06%2013-30-23.png" width="400" alt="Code Example 2"><br>
+<img src="https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-30-23.png" width="400" alt="Code Example 2"><br>
 <strong>Accent Integration</strong><br>
 <em>UI elements match your accent color</em>
 </td>
@@ -244,7 +244,7 @@ Your accent color beautifully transforms:
 
 <div align="center">
 
-![Clean Code Formatting](pictures/Screenshot%20from%202025-09-06%2013-30-49.png)
+![Clean Code Formatting](https://raw.githubusercontent.com/Taraldinn/nishuuu-themes/main/pictures/Screenshot%20from%202025-09-06%2013-30-49.png)
 
 *Clean, readable code with beautiful syntax highlighting and accent color integration*
 

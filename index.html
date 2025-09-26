@@ -45,28 +45,41 @@
     
     <style>
         :root {
-            --nextui-primary: #006FEE;
-            --nextui-primary-50: #e6f1fe;
-            --nextui-primary-100: #cce3fd;
-            --nextui-primary-200: #99c7fb;
-            --nextui-primary-300: #66aaf9;
-            --nextui-primary-400: #338ef7;
-            --nextui-primary-500: #006FEE;
-            --nextui-primary-600: #0059d9;
-            --nextui-primary-700: #0043a4;
-            --nextui-primary-800: #002e6f;
-            --nextui-primary-900: #00183a;
-            --nextui-success: #17c964;
-            --nextui-warning: #f5a524;
-            --nextui-danger: #f31260;
+            /* Tara Carbon inspired color palette */
+            --carbon-bg-primary: #0d1117;
+            --carbon-bg-secondary: #161b22;
+            --carbon-bg-tertiary: #21262d;
+            --carbon-bg-canvas: #010409;
+            --carbon-border-default: #30363d;
+            --carbon-border-muted: #21262d;
+            --carbon-text-primary: #f0f6fc;
+            --carbon-text-secondary: #8b949e;
+            --carbon-text-muted: #656d76;
+            --carbon-accent: #80CBC4;
+            --carbon-accent-secondary: #58a6ff;
+            --carbon-success: #56d364;
+            --carbon-warning: #d29922;
+            --carbon-danger: #da3633;
+            --carbon-purple: #a5a3ff;
+            --carbon-pink: #f778ba;
+            
+            /* NextUI medium components */
+            --nextui-radius-medium: 12px;
+            --nextui-radius-large: 16px;
+            --nextui-shadow-medium: 0 4px 18px 0 rgba(0, 0, 0, 0.4);
+            --nextui-shadow-large: 0 8px 30px 0 rgba(0, 0, 0, 0.5);
         }
         
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
-            color: #ffffff;
+            background: var(--carbon-bg-canvas);
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(128, 203, 196, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(88, 166, 255, 0.05) 0%, transparent 50%);
+            color: var(--carbon-text-primary);
             margin: 0;
             padding: 0;
+            min-height: 100vh;
         }
         
         .code-font {
@@ -74,47 +87,58 @@
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, #80CBC4, #5393FF);
+            background: linear-gradient(135deg, var(--carbon-accent), var(--carbon-accent-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-4px);
+            box-shadow: var(--nextui-shadow-large);
         }
         
         .color-dot {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            border-radius: var(--nextui-radius-medium);
             display: inline-block;
-            margin: 0 8px;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.2s ease;
+            margin: 0 6px;
+            border: 2px solid var(--carbon-border-default);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
         
         .color-dot:hover {
-            transform: scale(1.2);
-            border-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+            border-color: var(--carbon-accent);
+            box-shadow: 0 0 20px rgba(128, 203, 196, 0.3);
         }
         
         .theme-preview {
-            border-radius: 12px;
+            border-radius: var(--nextui-radius-large);
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--nextui-shadow-medium);
+            border: 1px solid var(--carbon-border-default);
+            background: var(--carbon-bg-secondary);
         }
         
         .stats-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
+            background: var(--carbon-bg-secondary);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--carbon-border-default);
+            border-radius: var(--nextui-radius-large);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stats-card:hover {
+            border-color: var(--carbon-accent);
+            box-shadow: 0 0 30px rgba(128, 203, 196, 0.1);
         }
         
         .floating-nav {
@@ -122,20 +146,23 @@
             top: 20px;
             right: 20px;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 12px;
+            background: var(--carbon-bg-tertiary);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--carbon-border-default);
+            border-radius: var(--nextui-radius-medium);
+            padding: 12px 16px;
+            box-shadow: var(--nextui-shadow-medium);
         }
         
         .scroll-indicator {
             position: fixed;
             top: 0;
             left: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #80CBC4, #5393FF);
+            height: 3px;
+            background: linear-gradient(90deg, var(--carbon-accent), var(--carbon-accent-secondary));
             z-index: 1001;
             transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(128, 203, 196, 0.5);
         }
         
         .section-padding {
@@ -181,7 +208,7 @@
     
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-900/10 to-gray-800/20"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="animate-fade-in">
                 <img src="icon.png" alt="Nishuuu Themes" class="w-32 h-32 mx-auto mb-8 rounded-3xl shadow-2xl">
@@ -193,11 +220,13 @@
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                     <a href="https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes" 
-                       class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                       class="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white px-8 py-4 font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg border border-teal-400/20"
+                       style="border-radius: var(--nextui-radius-medium); background: var(--carbon-accent); border-color: var(--carbon-accent);">
                         <i class="fas fa-download mr-2"></i>Install Extension
                     </a>
                     <a href="https://github.com/Taraldinn/nishuuu-themes" 
-                       class="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                       class="text-white px-8 py-4 font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg border"
+                       style="border-radius: var(--nextui-radius-medium); background: var(--carbon-bg-tertiary); border-color: var(--carbon-border-default);">
                         <i class="fab fa-github mr-2"></i>View on GitHub
                     </a>
                 </div>
@@ -205,20 +234,20 @@
                 <!-- Stats -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
                     <div class="stats-card p-6 text-center animate-fade-in animate-delay-1">
-                        <div class="text-3xl font-bold text-blue-400">6</div>
-                        <div class="text-gray-400">Dark Themes</div>
+                        <div class="text-3xl font-bold" style="color: var(--carbon-accent);">6</div>
+                        <div style="color: var(--carbon-text-secondary);">Dark Themes</div>
                     </div>
                     <div class="stats-card p-6 text-center animate-fade-in animate-delay-2">
-                        <div class="text-3xl font-bold text-green-400">14</div>
-                        <div class="text-gray-400">Accent Colors</div>
+                        <div class="text-3xl font-bold" style="color: var(--carbon-success);">14</div>
+                        <div style="color: var(--carbon-text-secondary);">Accent Colors</div>
                     </div>
                     <div class="stats-card p-6 text-center animate-fade-in animate-delay-3">
-                        <div class="text-3xl font-bold text-purple-400">2500+</div>
-                        <div class="text-gray-400">File Icons</div>
+                        <div class="text-3xl font-bold" style="color: var(--carbon-purple);">2500+</div>
+                        <div style="color: var(--carbon-text-secondary);">File Icons</div>
                     </div>
                     <div class="stats-card p-6 text-center animate-fade-in animate-delay-4">
-                        <div class="text-3xl font-bold text-yellow-400">⚡</div>
-                        <div class="text-gray-400">Instant Apply</div>
+                        <div class="text-3xl font-bold" style="color: var(--carbon-warning);">⚡</div>
+                        <div style="color: var(--carbon-text-secondary);">Instant Apply</div>
                     </div>
                 </div>
             </div>
@@ -229,8 +258,8 @@
     <section class="section-padding">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">See It In Action</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">See It In Action</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
                     Experience the beauty of dynamic accent colors with professional theme design
                 </p>
             </div>
@@ -243,11 +272,11 @@
     </section>
     
     <!-- Features Section -->
-    <section id="features" class="section-padding bg-gradient-to-br from-gray-900/50 to-blue-900/20">
+    <section id="features" class="section-padding" style="background: var(--carbon-bg-primary);">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">What Makes Nishuuu Special</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">What Makes Nishuuu Special</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
                     Packed with features that enhance your coding experience
                 </p>
             </div>
@@ -255,38 +284,38 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="stats-card p-8 card-hover animate-fade-in">
                     <div class="text-4xl mb-4">🎨</div>
-                    <h3 class="text-2xl font-bold mb-4">6 Handcrafted Themes</h3>
-                    <p class="text-gray-300">Carbon, Ocean, Palenight, Deepforest, Graphene, Teal - each designed for different coding moods and preferences.</p>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">6 Handcrafted Themes</h3>
+                    <p style="color: var(--carbon-text-secondary);">Carbon, Ocean, Palenight, Deepforest, Graphene, Teal - each designed for different coding moods and preferences.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in animate-delay-1">
                     <div class="text-4xl mb-4">🌈</div>
-                    <h3 class="text-2xl font-bold mb-4">14 Accent Colors</h3>
-                    <p class="text-gray-300">Instant switching with live preview. From calming teals to energetic oranges, find your perfect match.</p>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">14 Accent Colors</h3>
+                    <p style="color: var(--carbon-text-secondary);">Instant switching with live preview. From calming teals to energetic oranges, find your perfect match.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in animate-delay-2">
                     <div class="text-4xl mb-4">🎯</div>
-                    <h3 class="text-2xl font-bold mb-4">Custom Colors</h3>
-                    <p class="text-gray-300">Create your own with any hex code. Your entire theme adapts instantly to your unique style.</p>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Custom Colors</h3>
+                    <p style="color: var(--carbon-text-secondary);">Create your own with any hex code. Your entire theme adapts instantly to your unique style.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in animate-delay-3">
                     <div class="text-4xl mb-4">📊</div>
-                    <h3 class="text-2xl font-bold mb-4">Smart Status Bar</h3>
-                    <p class="text-gray-300">One-click color switching directly from your status bar. Quick access to all your favorite colors.</p>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Smart Status Bar</h3>
+                    <p style="color: var(--carbon-text-secondary);">One-click color switching directly from your status bar. Quick access to all your favorite colors.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in animate-delay-4">
                     <div class="text-4xl mb-4">🖼️</div>
-                    <h3 class="text-2xl font-bold mb-4">2500+ File Icons</h3>
-                    <p class="text-gray-300">Complete icon theme collection for all programming languages, frameworks, and file types.</p>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">2500+ File Icons</h3>
+                    <p style="color: var(--carbon-text-secondary);">Complete icon theme collection for all programming languages, frameworks, and file types.</p>
                 </div>
                 
                 <div class="stats-card p-8 card-hover animate-fade-in">
                     <div class="text-4xl mb-4">♿</div>
-                    <h3 class="text-2xl font-bold mb-4">High Contrast</h3>
-                    <p class="text-gray-300">Enhanced accessibility variants for better visibility and WCAG compliant color combinations.</p>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">High Contrast</h3>
+                    <p style="color: var(--carbon-text-secondary);">Enhanced accessibility variants for better visibility and WCAG compliant color combinations.</p>
                 </div>
             </div>
         </div>
@@ -296,47 +325,47 @@
     <section id="themes" class="section-padding">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Theme Gallery</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Theme Gallery</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
                     6 carefully crafted dark themes, each with its own personality
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2 text-gray-300">Tara Carbon</h3>
-                    <p class="text-gray-400 mb-3">Deep charcoal elegance</p>
-                    <p class="text-sm text-gray-500">Perfect for professional development</p>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-text-primary);">Tara Carbon</h3>
+                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Deep charcoal elegance</p>
+                    <p class="text-sm" style="color: var(--carbon-text-muted);">Perfect for professional development</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2 text-blue-300">Tara Ocean</h3>
-                    <p class="text-gray-400 mb-3">Calming blue depths</p>
-                    <p class="text-sm text-gray-500">Ideal for long coding sessions</p>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-accent-secondary);">Tara Ocean</h3>
+                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Calming blue depths</p>
+                    <p class="text-sm" style="color: var(--carbon-text-muted);">Ideal for long coding sessions</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2 text-purple-300">Tara Palenight</h3>
-                    <p class="text-gray-400 mb-3">Soft purple harmony</p>
-                    <p class="text-sm text-gray-500">Great for creative & design work</p>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-purple);">Tara Palenight</h3>
+                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Soft purple harmony</p>
+                    <p class="text-sm" style="color: var(--carbon-text-muted);">Great for creative & design work</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2 text-green-300">Tara Deepforest</h3>
-                    <p class="text-gray-400 mb-3">Rich emerald tones</p>
-                    <p class="text-sm text-gray-500">Nature-inspired coding</p>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-success);">Tara Deepforest</h3>
+                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Rich emerald tones</p>
+                    <p class="text-sm" style="color: var(--carbon-text-muted);">Nature-inspired coding</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2 text-gray-300">Tara Graphene</h3>
-                    <p class="text-gray-400 mb-3">Modern minimalism</p>
-                    <p class="text-sm text-gray-500">Clean, focused workflow</p>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-text-primary);">Tara Graphene</h3>
+                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Modern minimalism</p>
+                    <p class="text-sm" style="color: var(--carbon-text-muted);">Clean, focused workflow</p>
                 </div>
                 
                 <div class="stats-card p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-2 text-teal-300">Tara Teal</h3>
-                    <p class="text-gray-400 mb-3">Fresh aqua vibes</p>
-                    <p class="text-sm text-gray-500">Web & frontend development</p>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--carbon-accent);">Tara Teal</h3>
+                    <p class="mb-3" style="color: var(--carbon-text-secondary);">Fresh aqua vibes</p>
+                    <p class="text-sm" style="color: var(--carbon-text-muted);">Web & frontend development</p>
                 </div>
             </div>
             
@@ -366,11 +395,11 @@
     </section>
     
     <!-- Accent Colors Palette -->
-    <section class="section-padding bg-gradient-to-br from-purple-900/20 to-blue-900/20">
+    <section class="section-padding" style="background: var(--carbon-bg-primary);">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Accent Color Palette</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Accent Color Palette</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
                     Carefully selected colors that enhance readability and reduce eye strain
                 </p>
             </div>
@@ -459,8 +488,8 @@
     <section class="section-padding">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Beautiful Code Syntax</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Beautiful Code Syntax</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
                     Professional syntax highlighting with accent color integration
                 </p>
             </div>
@@ -499,11 +528,11 @@
     </section>
     
     <!-- Installation & Configuration -->
-    <section id="install" class="section-padding bg-gradient-to-br from-green-900/20 to-blue-900/20">
+    <section id="install" class="section-padding" style="background: var(--carbon-bg-primary);">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Quick Start</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Quick Start</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
                     Get up and running in just a few steps
                 </p>
             </div>
@@ -512,27 +541,27 @@
                 <div class="grid md:grid-cols-3 gap-8 mb-12">
                     <div class="stats-card p-8 text-center">
                         <div class="text-5xl mb-4">1️⃣</div>
-                        <h3 class="text-2xl font-bold mb-4">Install</h3>
-                        <p class="text-gray-300 mb-4">Search "Nishuuu Themes" in VS Code Extensions or use the command line</p>
-                        <div class="bg-gray-800 p-4 rounded-lg code-font text-sm">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Install</h3>
+                        <p class="mb-4" style="color: var(--carbon-text-secondary);">Search "Nishuuu Themes" in VS Code Extensions or use the command line</p>
+                        <div class="p-4 rounded-lg code-font text-sm" style="background: var(--carbon-bg-tertiary); border: 1px solid var(--carbon-border-default); color: var(--carbon-accent);">
                             code --install-extension nishuuu.nishuuu-themes
                         </div>
                     </div>
                     
                     <div class="stats-card p-8 text-center">
                         <div class="text-5xl mb-4">2️⃣</div>
-                        <h3 class="text-2xl font-bold mb-4">Activate Theme</h3>
-                        <p class="text-gray-300 mb-4">Press the keyboard shortcut and select any Tara theme</p>
-                        <div class="bg-gray-800 p-4 rounded-lg code-font text-sm">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Activate Theme</h3>
+                        <p class="mb-4" style="color: var(--carbon-text-secondary);">Press the keyboard shortcut and select any Tara theme</p>
+                        <div class="p-4 rounded-lg code-font text-sm" style="background: var(--carbon-bg-tertiary); border: 1px solid var(--carbon-border-default); color: var(--carbon-accent);">
                             Ctrl+K Ctrl+T
                         </div>
                     </div>
                     
                     <div class="stats-card p-8 text-center">
                         <div class="text-5xl mb-4">3️⃣</div>
-                        <h3 class="text-2xl font-bold mb-4">Choose Accent</h3>
-                        <p class="text-gray-300 mb-4">Click the 🎨 icon in your status bar to pick colors</p>
-                        <div class="bg-gray-800 p-4 rounded-lg code-font text-sm">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--carbon-text-primary);">Choose Accent</h3>
+                        <p class="mb-4" style="color: var(--carbon-text-secondary);">Click the 🎨 icon in your status bar to pick colors</p>
+                        <div class="p-4 rounded-lg code-font text-sm" style="background: var(--carbon-bg-tertiary); border: 1px solid var(--carbon-border-default); color: var(--carbon-accent);">
                             Instant transform!
                         </div>
                     </div>
@@ -540,30 +569,30 @@
                 
                 <!-- Configuration -->
                 <div class="stats-card p-8">
-                    <h3 class="text-2xl font-bold mb-6 text-center">Configuration</h3>
-                    <div class="bg-gray-900 p-6 rounded-lg code-font text-sm overflow-x-auto">
-                        <pre class="text-green-400">{
-  <span class="text-blue-400">"nishuuu.accentColor"</span>: <span class="text-yellow-400">"teal"</span>,
-  <span class="text-blue-400">"nishuuu.customAccentColor"</span>: <span class="text-yellow-400">"#80CBC4"</span>,
-  <span class="text-blue-400">"nishuuu.enableStatusBar"</span>: <span class="text-purple-400">true</span>
+                    <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--carbon-text-primary);">Configuration</h3>
+                    <div class="p-6 rounded-lg code-font text-sm overflow-x-auto" style="background: var(--carbon-bg-tertiary); border: 1px solid var(--carbon-border-default);">
+                        <pre style="color: var(--carbon-success);">{
+  <span style="color: var(--carbon-accent-secondary);">"nishuuu.accentColor"</span>: <span style="color: var(--carbon-warning);">"teal"</span>,
+  <span style="color: var(--carbon-accent-secondary);">"nishuuu.customAccentColor"</span>: <span style="color: var(--carbon-warning);">"#80CBC4"</span>,
+  <span style="color: var(--carbon-accent-secondary);">"nishuuu.enableStatusBar"</span>: <span style="color: var(--carbon-purple);">true</span>
 }</pre>
                     </div>
                     
                     <div class="grid md:grid-cols-3 gap-6 mt-8">
                         <div>
-                            <h4 class="font-bold text-lg mb-2">nishuuu.accentColor</h4>
-                            <p class="text-gray-400 text-sm">Current accent color name</p>
-                            <p class="text-gray-500 text-xs mt-1">Default: "teal"</p>
+                            <h4 class="font-bold text-lg mb-2" style="color: var(--carbon-text-primary);">nishuuu.accentColor</h4>
+                            <p class="text-sm" style="color: var(--carbon-text-secondary);">Current accent color name</p>
+                            <p class="text-xs mt-1" style="color: var(--carbon-text-muted);">Default: "teal"</p>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg mb-2">nishuuu.customAccentColor</h4>
-                            <p class="text-gray-400 text-sm">Custom hex color value</p>
-                            <p class="text-gray-500 text-xs mt-1">Default: ""</p>
+                            <h4 class="font-bold text-lg mb-2" style="color: var(--carbon-text-primary);">nishuuu.customAccentColor</h4>
+                            <p class="text-sm" style="color: var(--carbon-text-secondary);">Custom hex color value</p>
+                            <p class="text-xs mt-1" style="color: var(--carbon-text-muted);">Default: ""</p>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg mb-2">nishuuu.enableStatusBar</h4>
-                            <p class="text-gray-400 text-sm">Show status bar color indicator</p>
-                            <p class="text-gray-500 text-xs mt-1">Default: true</p>
+                            <h4 class="font-bold text-lg mb-2" style="color: var(--carbon-text-primary);">nishuuu.enableStatusBar</h4>
+                            <p class="text-sm" style="color: var(--carbon-text-secondary);">Show status bar color indicator</p>
+                            <p class="text-xs mt-1" style="color: var(--carbon-text-muted);">Default: true</p>
                         </div>
                     </div>
                 </div>
@@ -575,8 +604,8 @@
     <section class="section-padding">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Perfect For</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--carbon-text-primary);">Perfect For</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
                     Designed for developers, by developers
                 </p>
             </div>
@@ -622,35 +651,37 @@
     </section>
     
     <!-- CTA Section -->
-    <section class="section-padding bg-gradient-to-br from-blue-900/30 to-purple-900/30">
+    <section class="section-padding" style="background: linear-gradient(135deg, var(--carbon-bg-primary) 0%, var(--carbon-bg-secondary) 100%);">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text">Ready to Transform Your Coding Experience?</h2>
-            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            <p class="text-xl mb-12 max-w-2xl mx-auto" style="color: var(--carbon-text-secondary);">
                 Join thousands of developers who have already enhanced their workflow with Nishuuu Themes
             </p>
             
             <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
                 <a href="https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes" 
-                   class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl">
+                   class="text-white px-10 py-5 font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl"
+                   style="background: var(--carbon-accent); border-radius: var(--nextui-radius-large); border: 1px solid var(--carbon-accent);">
                     <i class="fas fa-download mr-3"></i>Install Now
                 </a>
                 <a href="https://github.com/Taraldinn/nishuuu-themes" 
-                   class="bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl">
+                   class="text-white px-10 py-5 font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl"
+                   style="background: var(--carbon-bg-tertiary); border-radius: var(--nextui-radius-large); border: 1px solid var(--carbon-border-default);">
                     <i class="fab fa-github mr-3"></i>Star on GitHub
                 </a>
             </div>
             
-            <div class="flex justify-center space-x-8 text-gray-400">
+            <div class="flex justify-center space-x-8" style="color: var(--carbon-text-secondary);">
                 <div class="text-center">
-                    <div class="text-2xl font-bold text-white">VS Code 1.60+</div>
+                    <div class="text-2xl font-bold" style="color: var(--carbon-text-primary);">VS Code 1.60+</div>
                     <div class="text-sm">Requirement</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold text-white">MIT License</div>
+                    <div class="text-2xl font-bold" style="color: var(--carbon-text-primary);">MIT License</div>
                     <div class="text-sm">Open Source</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold text-white">Free</div>
+                    <div class="text-2xl font-bold" style="color: var(--carbon-text-primary);">Free</div>
                     <div class="text-sm">Always</div>
                 </div>
             </div>
@@ -658,43 +689,43 @@
     </section>
     
     <!-- Footer -->
-    <footer class="py-12 bg-black/50">
+    <footer class="py-12" style="background: var(--carbon-bg-canvas); border-top: 1px solid var(--carbon-border-default);">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4 gradient-text">Nishuuu Themes</h3>
-                    <p class="text-gray-400 text-sm mb-4">Beautiful VS Code themes with dynamic accent colors</p>
+                    <p class="text-sm mb-4" style="color: var(--carbon-text-secondary);">Beautiful VS Code themes with dynamic accent colors</p>
                     <div class="flex space-x-4">
-                        <a href="https://github.com/Taraldinn/nishuuu-themes" class="text-gray-400 hover:text-white">
+                        <a href="https://github.com/Taraldinn/nishuuu-themes" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">
                             <i class="fab fa-github text-xl"></i>
                         </a>
-                        <a href="https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes" class="text-gray-400 hover:text-white">
+                        <a href="https://marketplace.visualstudio.com/items?itemName=nishuuu.nishuuu-themes" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">
                             <i class="fas fa-cube text-xl"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <h4 class="font-bold mb-4" style="color: var(--carbon-text-primary);">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
-                        <li><a href="#themes" class="text-gray-400 hover:text-white">Themes</a></li>
-                        <li><a href="#install" class="text-gray-400 hover:text-white">Installation</a></li>
+                        <li><a href="#features" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#themes" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Themes</a></li>
+                        <li><a href="#install" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Installation</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4">Support</h4>
+                    <h4 class="font-bold mb-4" style="color: var(--carbon-text-primary);">Support</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/issues" class="text-gray-400 hover:text-white">Bug Reports</a></li>
-                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/discussions" class="text-gray-400 hover:text-white">Discussions</a></li>
-                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/wiki" class="text-gray-400 hover:text-white">Documentation</a></li>
+                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/issues" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Bug Reports</a></li>
+                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/discussions" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Discussions</a></li>
+                        <li><a href="https://github.com/Taraldinn/nishuuu-themes/wiki" style="color: var(--carbon-text-secondary);" class="hover:text-white transition-colors">Documentation</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4">Version</h4>
-                    <div class="text-sm text-gray-400">
+                    <h4 class="font-bold mb-4" style="color: var(--carbon-text-primary);">Version</h4>
+                    <div class="text-sm" style="color: var(--carbon-text-secondary);">
                         <p>Current: v4.1.0</p>
                         <p>License: MIT</p>
                         <p>Made with ❤️ by Nishuuu Team</p>
@@ -702,7 +733,7 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+            <div class="mt-8 pt-8 text-center text-sm" style="border-top: 1px solid var(--carbon-border-default); color: var(--carbon-text-secondary);">
                 <p>&copy; 2025 Nishuuu Themes. All rights reserved. Happy coding! 🚀</p>
             </div>
         </div>

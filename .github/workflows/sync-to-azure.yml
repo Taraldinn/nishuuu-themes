@@ -18,7 +18,7 @@ jobs:
 
       - name: Push to Azure DevOps
         run: |
-          git remote add azure "https://$AZURE_PAT@dev.azure.com/taraldinn/Nishuuu%20Themes/_git/nishuuu-themes"
+          git remote add azure "https://taraldinn@dev.azure.com/taraldinn/Nishuuu%20Themes/_git/Nishuuu%20Themes"
           git push azure HEAD:main --force
         env:
           AZURE_PAT: ${{ secrets.AZURE_PAT }}

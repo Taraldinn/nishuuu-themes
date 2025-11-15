@@ -1,0 +1,645 @@
+{
+    "fonts": [
+        {
+            "id": "tara-ui-icons",
+            "src": [
+                {
+                    "path": "../assets/tara-ui-icons.woff2",
+                    "format": "woff2"
+                }
+            ],
+            "weight": "normal",
+            "style": "normal"
+        }
+    ],
+    "iconDefinitions": {
+        "window": {
+            "fontCharacter": "\\f101",
+            "fontId": "tara-ui-icons"
+        },
+        "whole-word": {
+            "fontCharacter": "\\f102",
+            "fontId": "tara-ui-icons"
+        },
+        "whitespace": {
+            "fontCharacter": "\\f103",
+            "fontId": "tara-ui-icons"
+        },
+        "watch": {
+            "fontCharacter": "\\f104",
+            "fontId": "tara-ui-icons"
+        },
+        "warning": {
+            "fontCharacter": "\\f105",
+            "fontId": "tara-ui-icons"
+        },
+        "vira-logo": {
+            "fontCharacter": "\\f106",
+            "fontId": "tara-ui-icons"
+        },
+        "unfold": {
+            "fontCharacter": "\\f107",
+            "fontId": "tara-ui-icons"
+        },
+        "triangle-up": {
+            "fontCharacter": "\\f108",
+            "fontId": "tara-ui-icons"
+        },
+        "triangle-right": {
+            "fontCharacter": "\\f109",
+            "fontId": "tara-ui-icons"
+        },
+        "triangle-left": {
+            "fontCharacter": "\\f10a",
+            "fontId": "tara-ui-icons"
+        },
+        "triangle-down": {
+            "fontCharacter": "\\f10b",
+            "fontId": "tara-ui-icons"
+        },
+        "trash": {
+            "fontCharacter": "\\f10c",
+            "fontId": "tara-ui-icons"
+        },
+        "tools": {
+            "fontCharacter": "\\f10d",
+            "fontId": "tara-ui-icons"
+        },
+        "text-uppercase": {
+            "fontCharacter": "\\f10e",
+            "fontId": "tara-ui-icons"
+        },
+        "terminal": {
+            "fontCharacter": "\\f10f",
+            "fontId": "tara-ui-icons"
+        },
+        "sync": {
+            "fontCharacter": "\\f110",
+            "fontId": "tara-ui-icons"
+        },
+        "sync-ignored": {
+            "fontCharacter": "\\f111",
+            "fontId": "tara-ui-icons"
+        },
+        "symbol-class": {
+            "fontCharacter": "\\f112",
+            "fontId": "tara-ui-icons"
+        },
+        "stop": {
+            "fontCharacter": "\\f113",
+            "fontId": "tara-ui-icons"
+        },
+        "star": {
+            "fontCharacter": "\\f114",
+            "fontId": "tara-ui-icons"
+        },
+        "star-half": {
+            "fontCharacter": "\\f115",
+            "fontId": "tara-ui-icons"
+        },
+        "star-full": {
+            "fontCharacter": "\\f116",
+            "fontId": "tara-ui-icons"
+        },
+        "split-vertical": {
+            "fontCharacter": "\\f117",
+            "fontId": "tara-ui-icons"
+        },
+        "split-horizontal": {
+            "fontCharacter": "\\f118",
+            "fontId": "tara-ui-icons"
+        },
+        "sparkle": {
+            "fontCharacter": "\\f119",
+            "fontId": "tara-ui-icons"
+        },
+        "source-control": {
+            "fontCharacter": "\\f11a",
+            "fontId": "tara-ui-icons"
+        },
+        "sort-precedence": {
+            "fontCharacter": "\\f11b",
+            "fontId": "tara-ui-icons"
+        },
+        "shield": {
+            "fontCharacter": "\\f11c",
+            "fontId": "tara-ui-icons"
+        },
+        "settings": {
+            "fontCharacter": "\\f11d",
+            "fontId": "tara-ui-icons"
+        },
+        "settings-view-bar-icon": {
+            "fontCharacter": "\\f11e",
+            "fontId": "tara-ui-icons"
+        },
+        "settings-view-bar-alt": {
+            "fontCharacter": "\\f11f",
+            "fontId": "tara-ui-icons"
+        },
+        "settings-gear": {
+            "fontCharacter": "\\f120",
+            "fontId": "tara-ui-icons"
+        },
+        "server": {
+            "fontCharacter": "\\f121",
+            "fontId": "tara-ui-icons"
+        },
+        "server-process": {
+            "fontCharacter": "\\f122",
+            "fontId": "tara-ui-icons"
+        },
+        "server-environment": {
+            "fontCharacter": "\\f123",
+            "fontId": "tara-ui-icons"
+        },
+        "send": {
+            "fontCharacter": "\\f124",
+            "fontId": "tara-ui-icons"
+        },
+        "selection": {
+            "fontCharacter": "\\f125",
+            "fontId": "tara-ui-icons"
+        },
+        "search": {
+            "fontCharacter": "\\f126",
+            "fontId": "tara-ui-icons"
+        },
+        "search-stop": {
+            "fontCharacter": "\\f127",
+            "fontId": "tara-ui-icons"
+        },
+        "search-save": {
+            "fontCharacter": "\\f128",
+            "fontId": "tara-ui-icons"
+        },
+        "search-1": {
+            "fontCharacter": "\\f129",
+            "fontId": "tara-ui-icons"
+        },
+        "run": {
+            "fontCharacter": "\\f12a",
+            "fontId": "tara-ui-icons"
+        },
+        "rocket": {
+            "fontCharacter": "\\f12b",
+            "fontId": "tara-ui-icons"
+        },
+        "replace": {
+            "fontCharacter": "\\f12c",
+            "fontId": "tara-ui-icons"
+        },
+        "replace-all": {
+            "fontCharacter": "\\f12d",
+            "fontId": "tara-ui-icons"
+        },
+        "remove": {
+            "fontCharacter": "\\f12e",
+            "fontId": "tara-ui-icons"
+        },
+        "remote-explorer": {
+            "fontCharacter": "\\f12f",
+            "fontId": "tara-ui-icons"
+        },
+        "regex": {
+            "fontCharacter": "\\f130",
+            "fontId": "tara-ui-icons"
+        },
+        "refresh": {
+            "fontCharacter": "\\f131",
+            "fontId": "tara-ui-icons"
+        },
+        "record-keys": {
+            "fontCharacter": "\\f132",
+            "fontId": "tara-ui-icons"
+        },
+        "preview": {
+            "fontCharacter": "\\f133",
+            "fontId": "tara-ui-icons"
+        },
+        "preserve-case": {
+            "fontCharacter": "\\f134",
+            "fontId": "tara-ui-icons"
+        },
+        "plus": {
+            "fontCharacter": "\\f135",
+            "fontId": "tara-ui-icons"
+        },
+        "plug": {
+            "fontCharacter": "\\f136",
+            "fontId": "tara-ui-icons"
+        },
+        "play": {
+            "fontCharacter": "\\f137",
+            "fontId": "tara-ui-icons"
+        },
+        "play-all": {
+            "fontCharacter": "\\f138",
+            "fontId": "tara-ui-icons"
+        },
+        "pinned": {
+            "fontCharacter": "\\f139",
+            "fontId": "tara-ui-icons"
+        },
+        "pin": {
+            "fontCharacter": "\\f13a",
+            "fontId": "tara-ui-icons"
+        },
+        "pencil": {
+            "fontCharacter": "\\f13b",
+            "fontId": "tara-ui-icons"
+        },
+        "pass": {
+            "fontCharacter": "\\f13c",
+            "fontId": "tara-ui-icons"
+        },
+        "pass-filled": {
+            "fontCharacter": "\\f13d",
+            "fontId": "tara-ui-icons"
+        },
+        "paintcan": {
+            "fontCharacter": "\\f13e",
+            "fontId": "tara-ui-icons"
+        },
+        "output": {
+            "fontCharacter": "\\f13f",
+            "fontId": "tara-ui-icons"
+        },
+        "notifications-do-not-disturb": {
+            "fontCharacter": "\\f140",
+            "fontId": "tara-ui-icons"
+        },
+        "new-folder": {
+            "fontCharacter": "\\f141",
+            "fontId": "tara-ui-icons"
+        },
+        "new-file": {
+            "fontCharacter": "\\f142",
+            "fontId": "tara-ui-icons"
+        },
+        "lock": {
+            "fontCharacter": "\\f143",
+            "fontId": "tara-ui-icons"
+        },
+        "live-share": {
+            "fontCharacter": "\\f144",
+            "fontId": "tara-ui-icons"
+        },
+        "list-tree": {
+            "fontCharacter": "\\f145",
+            "fontId": "tara-ui-icons"
+        },
+        "list-selection": {
+            "fontCharacter": "\\f146",
+            "fontId": "tara-ui-icons"
+        },
+        "list-flat": {
+            "fontCharacter": "\\f147",
+            "fontId": "tara-ui-icons"
+        },
+        "link-external": {
+            "fontCharacter": "\\f148",
+            "fontId": "tara-ui-icons"
+        },
+        "lightbulb": {
+            "fontCharacter": "\\f149",
+            "fontId": "tara-ui-icons"
+        },
+        "layout": {
+            "fontCharacter": "\\f14a",
+            "fontId": "tara-ui-icons"
+        },
+        "keyboard": {
+            "fontCharacter": "\\f14b",
+            "fontId": "tara-ui-icons"
+        },
+        "issues": {
+            "fontCharacter": "\\f14c",
+            "fontId": "tara-ui-icons"
+        },
+        "info": {
+            "fontCharacter": "\\f14d",
+            "fontId": "tara-ui-icons"
+        },
+        "history": {
+            "fontCharacter": "\\f14e",
+            "fontId": "tara-ui-icons"
+        },
+        "heart": {
+            "fontCharacter": "\\f14f",
+            "fontId": "tara-ui-icons"
+        },
+        "gripper": {
+            "fontCharacter": "\\f150",
+            "fontId": "tara-ui-icons"
+        },
+        "go-to-file": {
+            "fontCharacter": "\\f151",
+            "fontId": "tara-ui-icons"
+        },
+        "gitlens-prev-commit": {
+            "fontCharacter": "\\f152",
+            "fontId": "tara-ui-icons"
+        },
+        "gitlens-next-commit": {
+            "fontCharacter": "\\f153",
+            "fontId": "tara-ui-icons"
+        },
+        "gitlens-graph": {
+            "fontCharacter": "\\f154",
+            "fontId": "tara-ui-icons"
+        },
+        "gitlens-gitlens": {
+            "fontCharacter": "\\f155",
+            "fontId": "tara-ui-icons"
+        },
+        "gitlens-commit-horizontal": {
+            "fontCharacter": "\\f156",
+            "fontId": "tara-ui-icons"
+        },
+        "git-commit": {
+            "fontCharacter": "\\f157",
+            "fontId": "tara-ui-icons"
+        },
+        "git-branch": {
+            "fontCharacter": "\\f158",
+            "fontId": "tara-ui-icons"
+        },
+        "gear": {
+            "fontCharacter": "\\f159",
+            "fontId": "tara-ui-icons"
+        },
+        "folder": {
+            "fontCharacter": "\\f15a",
+            "fontId": "tara-ui-icons"
+        },
+        "filter": {
+            "fontCharacter": "\\f15b",
+            "fontId": "tara-ui-icons"
+        },
+        "files": {
+            "fontCharacter": "\\f15c",
+            "fontId": "tara-ui-icons"
+        },
+        "file-directory": {
+            "fontCharacter": "\\f15d",
+            "fontId": "tara-ui-icons"
+        },
+        "file-code": {
+            "fontCharacter": "\\f15e",
+            "fontId": "tara-ui-icons"
+        },
+        "eye": {
+            "fontCharacter": "\\f15f",
+            "fontId": "tara-ui-icons"
+        },
+        "extensions": {
+            "fontCharacter": "\\f160",
+            "fontId": "tara-ui-icons"
+        },
+        "extensions-install-count": {
+            "fontCharacter": "\\f161",
+            "fontId": "tara-ui-icons"
+        },
+        "extension-activation-time": {
+            "fontCharacter": "\\f162",
+            "fontId": "tara-ui-icons"
+        },
+        "explorer-view-icon": {
+            "fontCharacter": "\\f163",
+            "fontId": "tara-ui-icons"
+        },
+        "expand-all": {
+            "fontCharacter": "\\f164",
+            "fontId": "tara-ui-icons"
+        },
+        "exclude": {
+            "fontCharacter": "\\f165",
+            "fontId": "tara-ui-icons"
+        },
+        "error": {
+            "fontCharacter": "\\f166",
+            "fontId": "tara-ui-icons"
+        },
+        "ellipsis": {
+            "fontCharacter": "\\f167",
+            "fontId": "tara-ui-icons"
+        },
+        "edit": {
+            "fontCharacter": "\\f168",
+            "fontId": "tara-ui-icons"
+        },
+        "discard": {
+            "fontCharacter": "\\f169",
+            "fontId": "tara-ui-icons"
+        },
+        "diff-multiple": {
+            "fontCharacter": "\\f16a",
+            "fontId": "tara-ui-icons"
+        },
+        "debug": {
+            "fontCharacter": "\\f16b",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-stop": {
+            "fontCharacter": "\\f16c",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-step-over": {
+            "fontCharacter": "\\f16d",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-step-out": {
+            "fontCharacter": "\\f16e",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-step-into": {
+            "fontCharacter": "\\f16f",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-step-back": {
+            "fontCharacter": "\\f170",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-start": {
+            "fontCharacter": "\\f171",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-stackframe": {
+            "fontCharacter": "\\f172",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-stackframe-focused": {
+            "fontCharacter": "\\f173",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-reverse-continue": {
+            "fontCharacter": "\\f174",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-restart": {
+            "fontCharacter": "\\f175",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-restart-frame": {
+            "fontCharacter": "\\f176",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-pause": {
+            "fontCharacter": "\\f177",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-disconnect": {
+            "fontCharacter": "\\f178",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-continue": {
+            "fontCharacter": "\\f179",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-console": {
+            "fontCharacter": "\\f17a",
+            "fontId": "tara-ui-icons"
+        },
+        "debug-alt": {
+            "fontCharacter": "\\f17b",
+            "fontId": "tara-ui-icons"
+        },
+        "compare-changes": {
+            "fontCharacter": "\\f17c",
+            "fontId": "tara-ui-icons"
+        },
+        "comment": {
+            "fontCharacter": "\\f17d",
+            "fontId": "tara-ui-icons"
+        },
+        "comment-discussion": {
+            "fontCharacter": "\\f17e",
+            "fontId": "tara-ui-icons"
+        },
+        "collapse-all": {
+            "fontCharacter": "\\f17f",
+            "fontId": "tara-ui-icons"
+        },
+        "code-review": {
+            "fontCharacter": "\\f180",
+            "fontId": "tara-ui-icons"
+        },
+        "code 1": {
+            "fontCharacter": "\\f181",
+            "fontId": "tara-ui-icons"
+        },
+        "cloud-download": {
+            "fontCharacter": "\\f182",
+            "fontId": "tara-ui-icons"
+        },
+        "close": {
+            "fontCharacter": "\\f183",
+            "fontId": "tara-ui-icons"
+        },
+        "close-all": {
+            "fontCharacter": "\\f184",
+            "fontId": "tara-ui-icons"
+        },
+        "clear-all": {
+            "fontCharacter": "\\f185",
+            "fontId": "tara-ui-icons"
+        },
+        "circle-large-outline": {
+            "fontCharacter": "\\f186",
+            "fontId": "tara-ui-icons"
+        },
+        "chevron-up": {
+            "fontCharacter": "\\f187",
+            "fontId": "tara-ui-icons"
+        },
+        "chevron-right": {
+            "fontCharacter": "\\f188",
+            "fontId": "tara-ui-icons"
+        },
+        "chevron-left": {
+            "fontCharacter": "\\f189",
+            "fontId": "tara-ui-icons"
+        },
+        "chevron-down": {
+            "fontCharacter": "\\f18a",
+            "fontId": "tara-ui-icons"
+        },
+        "check": {
+            "fontCharacter": "\\f18b",
+            "fontId": "tara-ui-icons"
+        },
+        "chat-sparkle": {
+            "fontCharacter": "\\f18c",
+            "fontId": "tara-ui-icons"
+        },
+        "case-sensitive": {
+            "fontCharacter": "\\f18d",
+            "fontId": "tara-ui-icons"
+        },
+        "call-outgoing": {
+            "fontCharacter": "\\f18e",
+            "fontId": "tara-ui-icons"
+        },
+        "call-incoming": {
+            "fontCharacter": "\\f18f",
+            "fontId": "tara-ui-icons"
+        },
+        "bug": {
+            "fontCharacter": "\\f190",
+            "fontId": "tara-ui-icons"
+        },
+        "bracket": {
+            "fontCharacter": "\\f191",
+            "fontId": "tara-ui-icons"
+        },
+        "book": {
+            "fontCharacter": "\\f192",
+            "fontId": "tara-ui-icons"
+        },
+        "bell": {
+            "fontCharacter": "\\f193",
+            "fontId": "tara-ui-icons"
+        },
+        "bell-dot": {
+            "fontCharacter": "\\f194",
+            "fontId": "tara-ui-icons"
+        },
+        "beaker": {
+            "fontCharacter": "\\f195",
+            "fontId": "tara-ui-icons"
+        },
+        "auxiliarybar-maximize": {
+            "fontCharacter": "\\f196",
+            "fontId": "tara-ui-icons"
+        },
+        "arrow-up": {
+            "fontCharacter": "\\f197",
+            "fontId": "tara-ui-icons"
+        },
+        "arrow-right": {
+            "fontCharacter": "\\f198",
+            "fontId": "tara-ui-icons"
+        },
+        "arrow-left": {
+            "fontCharacter": "\\f199",
+            "fontId": "tara-ui-icons"
+        },
+        "arrow-down": {
+            "fontCharacter": "\\f19a",
+            "fontId": "tara-ui-icons"
+        },
+        "add": {
+            "fontCharacter": "\\f19b",
+            "fontId": "tara-ui-icons"
+        },
+        "activate-breakpoints": {
+            "fontCharacter": "\\f19c",
+            "fontId": "tara-ui-icons"
+        },
+        "account": {
+            "fontCharacter": "\\f19d",
+            "fontId": "tara-ui-icons"
+        }
+    }
+}

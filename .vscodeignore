@@ -30,3 +30,12 @@
 # Source backups
 **/src/*.backup
 **/src/*.new
+
+# Exclude large screenshot/demo files
+pictures/**
+index.html
+GITHUB_PAGES.md
+TESTING.md
+CHANGELOG.md
+fix-all-colors.sh
+accent-colors-settings/**

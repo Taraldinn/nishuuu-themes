@@ -4,6 +4,7 @@
 
 [![Version](https://img.shields.io/visual-studio-marketplace/v/nishuuu.nishuuu-themes?s## 🖼️ Complete Icon Theme
 
+### File Icons
 Includes comprehensive file icon themes with 2500+ icons:
 
 - **Programming Languages** - All major languages with beautiful icons
@@ -11,9 +12,23 @@ Includes comprehensive file icon themes with 2500+ icons:
 - **File Types** - From configs to assets, every file is beautifully represented
 - **Color Variants** - Icon themes that match each main theme
 
-### Activate Icons
+**Activate File Icons:**
 1. `Ctrl+Shift+P` → "Preferences: File Icon Theme"
 2. Select **"Tara Icons [Color]"** matching your theme
+
+### Product Icons (NEW!)
+Transform VS Code's entire UI with 157 custom product icons:
+
+- **Debug Toolbar** - Play, pause, step-over, breakpoint controls
+- **Source Control** - Git commit, branch, sync, merge icons
+- **File Explorer** - Folder, new file, refresh, collapse icons
+- **Search & Replace** - Find, replace, filter, regex icons
+- **Settings & Extensions** - Gear, puzzle piece, settings icons
+- **Terminal & Output** - Terminal, output, problems icons
+
+**Activate Product Icons:**
+1. `Ctrl+Shift+P` → "Preferences: Product Icon Theme"
+2. Select **"Tara Product Icons"**
 
 ## 📸 Screenshots
 
@@ -57,8 +72,9 @@ Includes comprehensive file icon themes with 2500+ icons:
 - 🎨 **6 Handcrafted Themes** - Carbon, Ocean, Palenight, Deepforest, Graphene, Teal
 - 🌈 **14 Accent Colors** - Instant switching with live preview
 - 🎯 **Custom Colors** - Create your own with any hex code
-- � **Smart Status Bar** - One-click color switching
-- �️ **2500+ File Icons** - Complete icon theme collection
+- 🖼️ **Smart Status Bar** - One-click color switching
+- 📁 **2500+ File Icons** - Complete icon theme collection
+- 🎭 **Product Icons** - 157 custom UI icons for VS Code interface
 - ♿ **High Contrast** - Enhanced accessibility variants
 - ⚡ **Instant Apply** - No reload required
 
@@ -332,7 +348,12 @@ We welcome contributions! See our [Contributing Guide](https://github.com/Tarald
 
 ## 📝 Changelog
 
-### Latest Version
+### Version 4.2.0 (Latest)
+- 🎭 **NEW**: Tara Product Icons - 157 custom UI icons for VS Code interface
+- 📦 Optimized package size (2 MB - 88% smaller!)
+- ⚡ Faster installation and loading times
+
+### Previous Updates
 - ✨ Complete theme system rebuild
 - 🎨 6 new Tara theme variants
 - 🌈 Dynamic accent color system

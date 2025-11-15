@@ -2,14 +2,24 @@
   "name": "nishuuu-themes",
   "displayName": "Nishuuu Themes",
   "description": "Beautiful VS Code themes with dynamic accent colors",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "publisher": "Taraldinn",
   "engines": {
     "vscode": "^1.60.0"
   },
-  "categories": ["Themes"],
-  "keywords": ["theme", "dark", "accent", "color", "customization"],
-  "activationEvents": ["onStartupFinished"],
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "accent",
+    "color",
+    "customization"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./src/extension.js",
   "icon": "icon.png",
   "galleryBanner": {
@@ -27,26 +37,105 @@
   "license": "MIT",
   "contributes": {
     "themes": [
-      { "label": "Tara Carbon", "uiTheme": "vs-dark", "path": "./themes/tara-carbon.json" },
-      { "label": "Tara Carbon High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-carbon-high-contrast.json" },
-      { "label": "Tara Deep Forest", "uiTheme": "vs-dark", "path": "./themes/tara-deepforest.json" },
-      { "label": "Tara Deep Forest High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-deepforest-high-contrast.json" },
-      { "label": "Tara Graphene", "uiTheme": "vs-dark", "path": "./themes/tara-graphene.json" },
-      { "label": "Tara Graphene High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-graphene-high-contrast.json" },
-      { "label": "Tara Ocean", "uiTheme": "vs-dark", "path": "./themes/tara-ocean.json" },
-      { "label": "Tara Ocean High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-ocean-high-contrast.json" },
-      { "label": "Tara Palenight", "uiTheme": "vs-dark", "path": "./themes/tara-palenight.json" },
-      { "label": "Tara Palenight High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-palenight-high-contrast.json" },
-      { "label": "Tara Teal", "uiTheme": "vs-dark", "path": "./themes/tara-teal.json" },
-      { "label": "Tara Teal High Contrast", "uiTheme": "vs-dark", "path": "./themes/tara-teal-high-contrast.json" }
+      {
+        "label": "Tara Carbon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-carbon.json"
+      },
+      {
+        "label": "Tara Carbon High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-carbon-high-contrast.json"
+      },
+      {
+        "label": "Tara Deep Forest",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-deepforest.json"
+      },
+      {
+        "label": "Tara Deep Forest High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-deepforest-high-contrast.json"
+      },
+      {
+        "label": "Tara Graphene",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-graphene.json"
+      },
+      {
+        "label": "Tara Graphene High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-graphene-high-contrast.json"
+      },
+      {
+        "label": "Tara Ocean",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-ocean.json"
+      },
+      {
+        "label": "Tara Ocean High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-ocean-high-contrast.json"
+      },
+      {
+        "label": "Tara Palenight",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-palenight.json"
+      },
+      {
+        "label": "Tara Palenight High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-palenight-high-contrast.json"
+      },
+      {
+        "label": "Tara Teal",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-teal.json"
+      },
+      {
+        "label": "Tara Teal High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tara-teal-high-contrast.json"
+      }
     ],
     "iconThemes": [
-      { "id": "tara-icons-carbon", "label": "Tara Icons Carbon", "path": "./themes/tara-icons-carbon.json" },
-      { "id": "tara-icons-deepforest", "label": "Tara Icons Deep Forest", "path": "./themes/tara-icons-deepforest.json" },
-      { "id": "tara-icons-graphene", "label": "Tara Icons Graphene", "path": "./themes/tara-icons-graphene.json" },
-      { "id": "tara-icons-ocean", "label": "Tara Icons Ocean", "path": "./themes/tara-icons-ocean.json" },
-      { "id": "tara-icons-palenight", "label": "Tara Icons Palenight", "path": "./themes/tara-icons-palenight.json" },
-      { "id": "tara-icons-teal", "label": "Tara Icons Teal", "path": "./themes/tara-icons-teal.json" }
+      {
+        "id": "tara-icons-carbon",
+        "label": "Tara Icons Carbon",
+        "path": "./themes/tara-icons-carbon.json"
+      },
+      {
+        "id": "tara-icons-deepforest",
+        "label": "Tara Icons Deep Forest",
+        "path": "./themes/tara-icons-deepforest.json"
+      },
+      {
+        "id": "tara-icons-graphene",
+        "label": "Tara Icons Graphene",
+        "path": "./themes/tara-icons-graphene.json"
+      },
+      {
+        "id": "tara-icons-ocean",
+        "label": "Tara Icons Ocean",
+        "path": "./themes/tara-icons-ocean.json"
+      },
+      {
+        "id": "tara-icons-palenight",
+        "label": "Tara Icons Palenight",
+        "path": "./themes/tara-icons-palenight.json"
+      },
+      {
+        "id": "tara-icons-teal",
+        "label": "Tara Icons Teal",
+        "path": "./themes/tara-icons-teal.json"
+      }
+    ],
+    "productIconThemes": [
+      {
+        "id": "tara-product-icons",
+        "label": "Tara Product Icons",
+        "path": "./themes/tara-product-icons.json"
+      }
     ],
     "commands": [
       {
@@ -71,7 +160,22 @@
         "nishuuu.accentColor": {
           "type": "string",
           "default": "teal",
-          "enum": ["teal", "vira", "cyan", "blue", "indigo", "purple", "pink", "tomato", "orange", "yellow", "acid-lime", "lime", "bright-teal", "white"],
+          "enum": [
+            "teal",
+            "vira",
+            "cyan",
+            "blue",
+            "indigo",
+            "purple",
+            "pink",
+            "tomato",
+            "orange",
+            "yellow",
+            "acid-lime",
+            "lime",
+            "bright-teal",
+            "white"
+          ],
           "description": "Choose an accent color for your theme"
         },
         "nishuuu.customAccentColor": {
